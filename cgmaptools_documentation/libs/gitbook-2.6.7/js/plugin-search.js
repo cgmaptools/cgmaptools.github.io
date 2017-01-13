@@ -171,12 +171,7 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
                 e.preventDefault();
                 toggleSearch(false);
             } else if (key == 38) {
-              if (hi <= 0 && $highlighted) hi = $highlighted.length;
-              hi--;
-              scrollToHighlighted();
-            } else if (key == 40) {
-              hi++;
-              if ($highlighted && hi >= $highlighted.length) hi = 0;
+              if (hi <= 0="" &&="" $highlighted)="" hi="$highlighted.length;" hi--;="" scrolltohighlighted();="" }="" else="" if="" (key="=" 40)="" {="" hi++;="" ($highlighted="">= $highlighted.length) hi = 0;
               scrollToHighlighted();
             }
         }).on("input", ".book-search input", function(e) {
@@ -210,3 +205,4 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
     // [Yihui] do not try to recover search; always start fresh
     // gitbook.events.bind("page.change", recoverSearch);
 });
+</=></div>
