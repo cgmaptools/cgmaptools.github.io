@@ -82,16 +82,19 @@
 
 
 
-<meta name="description" content="Installation123456789101112131415# decompress the gzip tarballtar -zxf cgmaptool.1.0.0.tar.gz# go to cgmaptool.1.0.0cd cgmaptool.1.0.0# installsh ./install.sh# add cgmaptool to your system PATH if nec">
+<meta name="description" content="In this section, we only show you some basic implementation of the CGmapTool toolset, please go to the tutorial page for more detail introduction of our CGmapTool.
+Installation123456789101112131415# d">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Quick Start">
 <meta property="og:url" content="https://cgmaptools.github.io/quick-start/index.html">
 <meta property="og:site_name" content="CGmapTool">
-<meta property="og:description" content="Installation123456789101112131415# decompress the gzip tarballtar -zxf cgmaptool.1.0.0.tar.gz# go to cgmaptool.1.0.0cd cgmaptool.1.0.0# installsh ./install.sh# add cgmaptool to your system PATH if nec">
-<meta property="og:updated_time" content="2017-01-18T04:46:37.000Z">
+<meta property="og:description" content="In this section, we only show you some basic implementation of the CGmapTool toolset, please go to the tutorial page for more detail introduction of our CGmapTool.
+Installation123456789101112131415# d">
+<meta property="og:updated_time" content="2017-01-18T04:52:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quick Start">
-<meta name="twitter:description" content="Installation123456789101112131415# decompress the gzip tarballtar -zxf cgmaptool.1.0.0.tar.gz# go to cgmaptool.1.0.0cd cgmaptool.1.0.0# installsh ./install.sh# add cgmaptool to your system PATH if nec">
+<meta name="twitter:description" content="In this section, we only show you some basic implementation of the CGmapTool toolset, please go to the tutorial page for more detail introduction of our CGmapTool.
+Installation123456789101112131415# d">
 
 
 
@@ -283,7 +286,8 @@
 
     
     
-      <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># decompress the gzip tarball</span></div><div class="line">tar -zxf cgmaptool.1.0.0.tar.gz</div><div class="line"><span class="comment"># go to cgmaptool.1.0.0</span></div><div class="line"><span class="built_in">cd</span> cgmaptool.1.0.0</div><div class="line"><span class="comment"># install</span></div><div class="line">sh ./install.sh</div><div class="line"></div><div class="line"><span class="comment"># add cgmaptool to your system PATH if necessary</span></div><div class="line"><span class="comment"># open ~/.bashrc</span></div><div class="line">vi ~/.bashrc</div><div class="line"><span class="comment"># add the following lines to the end of ~/.bashrc</span></div><div class="line">PATH=/path/to/cgmaptool.1.0.0/bin:<span class="variable">$PATH</span></div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="comment"># then, souce your .bashrc</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
+      <p>In this section, we only show you some basic implementation of the CGmapTool toolset, please go to the tutorial page for more detail introduction of our CGmapTool.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># decompress the gzip tarball</span></div><div class="line">tar -zxf cgmaptool.1.0.0.tar.gz</div><div class="line"><span class="comment"># go to cgmaptool.1.0.0</span></div><div class="line"><span class="built_in">cd</span> cgmaptool.1.0.0</div><div class="line"><span class="comment"># install</span></div><div class="line">sh ./install.sh</div><div class="line"></div><div class="line"><span class="comment"># add cgmaptool to your system PATH if necessary</span></div><div class="line"><span class="comment"># open ~/.bashrc</span></div><div class="line">vi ~/.bashrc</div><div class="line"><span class="comment"># add the following lines to the end of ~/.bashrc</span></div><div class="line">PATH=/path/to/cgmaptool.1.0.0/bin:<span class="variable">$PATH</span></div><div class="line"><span class="built_in">export</span> PATH</div><div class="line"><span class="comment"># then, souce your .bashrc</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
 <h2 id="1-DNA-methylation-profiles-from-alignments"><a href="#1-DNA-methylation-profiles-from-alignments" class="headerlink" title="1. DNA methylation profiles from alignments"></a>1. DNA methylation profiles from alignments</h2><p>Suppose we have aligned reads stored in BAM format files. Currently, we support alignments in bam format from BSseeker2 and bismark.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Obtain CGmap and ATCGmap</span></div><div class="line">cgmaptools convert bam2cgmap -b &lt;BAM&gt; -g &lt;genome.fa&gt; -o &lt;prefix&gt;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>If it’s paired-end sequencing strategy, we recommend you add <code>--rmOverlap</code> to the above command to remove overlapped region of two mate reads avoiding twice consideration of the same DNA fragment.</p>
@@ -298,7 +302,6 @@
 <p><strong>Tanghulu</strong> plot supports two kinds of region format.</p>
 <p>format 1, e.g.: <u>chr1:133</u>. This will ask CGmapTool to show reads mapped over this site. If this is a heterozygous SNP site, we recommand you to add assign the genotype option <code>-g</code> to resolve more vague reads caused by bisulfite coversion.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># display reads linked by a given SNP</span></div><div class="line">cgmaptools tanghulu -r genome.fa -b BAM <span class="_">-l</span> chr1:133 -g GT</div></pre></td></tr></table></figure></p>
 <p>format 2, e.g.: <u>chr1:133-144</u>. This region format will tell CGmapTool to show reads mapped over this region.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># display reads mapped over a specified region</span></div><div class="line">cgmaptools tanghulu -r genome.fa -b BAM <span class="_">-l</span> chr1:133-144</div></pre></td></tr></table></figure></p>
-<p>There are many optional setting in each utility, go to the tutorial page for more information.</p>
 
     
   </div>
