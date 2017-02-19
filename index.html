@@ -61,7 +61,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Arial, Lato:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Arial, Lato:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -96,13 +96,11 @@ Use standard CGmap/ATCGmap formats as central format, for ease of sharing methyl
 <meta property="og:site_name" content="CGmapTools">
 <meta property="og:description" content="Advanced Features1. Unified data formats
 Use standard CGmap/ATCGmap formats as central format, for ease of sharing methylomes. ATCGmap/CGmap could be derived from BAM files, which are produced by BS-S">
-<meta property="og:image" content="https://cgmaptools.github.io/images/cgmaptools_run_exmaple.png">
-<meta property="og:updated_time" content="2017-02-18T07:32:23.000Z">
+<meta property="og:updated_time" content="2017-02-19T01:25:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Command-line Toolset for Bisulfite Sequencing Data Analysis">
 <meta name="twitter:description" content="Advanced Features1. Unified data formats
 Use standard CGmap/ATCGmap formats as central format, for ease of sharing methylomes. ATCGmap/CGmap could be derived from BAM files, which are produced by BS-S">
-<meta name="twitter:image" content="https://cgmaptools.github.io/images/cgmaptools_run_exmaple.png">
 
 
 
@@ -315,8 +313,51 @@ Use standard CGmap/ATCGmap formats as central format, for ease of sharing methyl
 <h4 id="7-Advanced-methylation-analysis-and-visualization"><a href="#7-Advanced-methylation-analysis-and-visualization" class="headerlink" title="7. Advanced methylation analysis and visualization"></a>7. Advanced methylation analysis and visualization</h4><blockquote>
 <p>provide user-friendly functions for visualizing methylomes at multiple levels, such as design a Tanghulu plot for visualizing methylation status on original reads, and design a Lollipop plot to reveal both lowly-covered cytosines and un-methylated cytosines in a local region</p>
 </blockquote>
-<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p><img src="images/cgmaptools_run_exmaple.png" alt="CGmapTools"></p>
-
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><pre><code>$ cgmaptools -h
+Program : cgmaptools (Tools for analysis in CGmap/ATCGmap format)
+Version:  0.0.1
+Usage:    cgmaptools &lt;command&gt; [options]
+Commands:
+  -- File manipulation
+     convert     + data format conversion tools
+     fetch       + fetch a region by random accessing
+     refill        refill the missing columns
+     intersect     intersect two files
+     merge2      + merge two files into one
+     mergelist   + merge a list of files
+     sort          sort lines by chromosome and position
+     split       + split file by chromosomes
+     select      + select lines by region/site
+  -- SNV analysis
+     snv           snv analysis
+  -- Methylation analysis
+     dms           differentially methylated site analysis
+     dmr           differentially methylated region analysis
+     asm           allele-specific methylation analysis
+     mbed          average methylation level in regions
+     mbin        * single sample, mC levels in bins
+     mmbin         multiple samples, mC levels in bins
+     mfg           methlation levels across fragmented region
+     mstat       * methyaltion statistic
+     mtr           methylation level to each region
+  -- Coverage analysis
+     oac        +* overall coverage (for ATCGmap)
+     mec        +* methylation effective coverage (for CGmap)
+  -- Graph related functions
+     lollipop    * show local mC levels as lollipop bars
+     heatmap     * global mC distribution for multiple samples
+     fragreg     * show mC profile across fragmented regions
+     tanghulu    * show local mapped reads in Tanghulu shape
+  -- Other Utils
+     findCCGG      get MspI cutting sites for RRBS
+     bed2fragreg   get fragmented region based on region
+Note:
+  Commands support figures generation are marked with &quot;*&quot;
+  Commands contain sub-commands are marked with &quot;+&quot;
+Authors:
+  GUO, Weilong; guoweilong@126.com;  http://guoweilong.github.io
+  ZHU, Ping; pingzhu.work@gmail.com; http://perry-zhu.github.io
+</code></pre>
     
   </div>
 
