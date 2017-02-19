@@ -503,7 +503,7 @@ pre,
 }
 pre,
 code {
-  font-family: 'Verdana', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'monospace, consolas, Courier New'', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -1685,7 +1685,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #03d6ff;
+  background: #ecff8a;
 }
 .links-of-blogroll {
   font-size: 13px;
