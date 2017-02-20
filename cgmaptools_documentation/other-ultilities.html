@@ -82,7 +82,7 @@
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
 <li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snp-calling.html"><a href="snp-calling.html"><i class="fa fa-check"></i><b>4</b> SNP calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -136,7 +136,9 @@
 -i FILE     Genome sequence file in Fasta format
 -o FILE     Name of the output file (standard output if not
             specified).Format: chr cCgg_pos ccGg_pos (0-base)</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools findCCGG -i genome.fa -o genome.ccgg</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The output file format:</p>
 <pre><code>chr1    4025    5652
 chr1    8274    8431</code></pre></li>
@@ -153,7 +155,7 @@ chr1    8274    8431</code></pre></li>
 -T INT_list  List of region lengths in downstream of 3&#39; end, Ex: 40,20. List
              is from 5&#39;end-&gt;3&#39;end
 -n INT       Number of bins to be equally split [Default:1]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>File format</strong>:</p>
 <p>The input file format:</p>
 <pre><code>chr1   1000    2000   +
 chr2   9000    8000   -</code></pre>

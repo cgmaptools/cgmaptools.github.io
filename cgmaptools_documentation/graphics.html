@@ -82,7 +82,7 @@
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
 <li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snp-calling.html"><a href="snp-calling.html"><i class="fa fa-check"></i><b>4</b> SNP calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -133,7 +133,7 @@
 <li><p><strong>Description</strong>: Plot local mC level for multiple samples.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools lollipop [options] file</code></p>
 <pre><code>-i INFILE, --infile=INFILE
-    input file
+      input file
 -a ANNOTATION, --annotation=ANNOTATION
     [opt] sample name
 -o OUTFILE, --outfile=OUTFILE
@@ -156,7 +156,9 @@
     [opt] file of site to be marked
 -b BED, --bed=BED
     [opt] BED file for region to be markered</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools lollipop -i matrix.CG.gz -a anno.refFlat -f pdf</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The input file format:</p>
 <blockquote>
 <p>&gt;= 3 columns, 1st line is the header, using R color name or “NaN”. Can be output by CGmapFillIndex.py. Use STDIN if omitted.</p>
@@ -211,7 +213,9 @@ Figure 7.2: Lollipop example-2
     [opt] format of output figure. Alternative: png. [default: pdf]
 -R RESOLUTION, --resolution=RESOLUTION
     [opt] Resolution in ppi. Only available for png format. [default: 300]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools heatmap -i mmbin -c -o cluster.pdf -f pdf</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The input file format:</p>
 <blockquote>
 <p>The 1st line is the header. Each column contains methylation measurements of a sample.</p>
@@ -246,7 +250,7 @@ Figure 7.3: heatmap example-1
     [opt] format of output figure. Alternative: png. [default: pdf]
 -R RESOLUTION, --resolution=RESOLUTION
     [opt] Resolution in ppi. Only available for png format. [default: 300]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>File format</strong>:</p>
 <p>The input file format:</p>
 <blockquote>
 <p>The 1st line is the header. Each row contains methylation measurements of a sample.</p>
@@ -296,6 +300,8 @@ Figure 7.4: FragRegMC example
 -H    Height of graphics reigon in inches. [default: 4]
 -R    Resolution in ppi. [default: 300]
       - only available for png device.</code></pre></li>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="FragRegMC example" width="80%" />

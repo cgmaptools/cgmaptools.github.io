@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="methylation-analysis.html">
-<link rel="next" href="graphics.html">
+<link rel="prev" href="file-manipulation.html">
+<link rel="next" href="methylation-analysis.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -125,120 +125,46 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coverage-analysis" class="section level1">
-<h1><span class="header-section-number">6</span> Coverage Analysis</h1>
-<div id="oac" class="section level2">
-<h2><span class="header-section-number">6.1</span> oac</h2>
+<div id="snv-calling" class="section level1">
+<h1><span class="header-section-number">4</span> SNV calling</h1>
+<p>Bisulfite sequencing data contains information of both methylation and genome sequences. In addition to DNA methylation analysis, we can also call variants using bisulfite data. Due to bisulfite coversion and PCR amplification during library preparation, the unmethylated cytosines on the DNA fragments would be converted to thymines. Thus, it’s difficult to distinguish thymine produced by bisulfite coversion with the real thymine allele.</p>
+<p>In recent years, few tools are adapted to bisulfite data for SNP calling. The main idea is removing vague reads that may contain unmethylated cytosines for a given positoin. Consequently, the rest reads can be regarded as reads generated from a normal genome DNA without bisulfite treatment and can be used to call variants using regular methods without consideration of bisulfite conversion.</p>
+<p>However, removing the vague reads leads to information lost in most cases making variant calling less confident, especially when the sequencing depth is low. To solve this problem, we proposed two independent methods called BinomWC (based on binomial) and BayesWC (based on bayesian), taking vague reads into consideration.</p>
 <ul>
-<li><p><strong>Description</strong>: Overall coverage (for ATCGmap).</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools oac &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Command</strong>:</p>
-<p><strong>bin</strong>: Overall coverage in bins.</p>
-<p>Usage: <code>cgmaptools oac bin  [-i &lt;ATCGmap&gt;] [-B 5000000]</code></p>
-<pre><code>-i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
-                      specified, STDIN will be used.
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools oac bin -i WG.ATCGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.oac_bin.data</code></p>
-<p><strong>stat</strong>: Get the distribution of overall coverages.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools oac stat [-i &lt;ATCGmap&gt;]</code></p>
-<pre><code>-i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
-                      specified, STDIN will be used.
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools oac stat -i WG.ATCGmap.gz -p WG -f png &gt; WG.oac_stat.data</code></p></li>
-<li><p><strong>output format</strong>:</p>
-<p>The output format of <code>bin</code>:</p>
-<pre><code>chr1    1       5000    29.0000
-chr1    5001    10000   30.0396
-chr2    1       5000    35.0755
-chr2    5001    10000   40.0027
-chr3    1       5000    na</code></pre>
-<p>The output format of <code>stat</code>:</p>
-<pre><code>OverAllCov      global  47.0395
-OverAllCov      chr1    45.3157
-OverAllCov      chr10   47.7380
-CovAndCount     1       1567
-CovAndCount     2       655
-CovAndCount     3       380</code></pre></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools snv [-i &lt;ATCGmap&gt;] [-o &lt;output&gt; -v &lt;VCF&gt;]</code></p>
+<pre><code>-i FILE               ATCGmap format, STDIN if not specified
+-v FILE, --vcf=FILE   VCF format file for output
+-a, --all_nt          Show all sites with enough coverage (-l). Only show
+                      SNP sites if not specified.
+-o OUTFILE            STDOUT if not specified
+-m MODE, --mode=MODE  Mode for calling SNP [Default: binom]
+                      binom: binomial,  separate strands
+                      bayes: bayesian mode
+--bayes-e=BAYES_ER    (BayesWC mode) Error rate for calling a nucleotide
+                      [Default: 0.05]
+--bayes-p=BAYES_PV    (BayesWC mode) P value as cut-off [Default: 0.001]
+--bayes-dynamicP      (BayesWC mode) Use dynamic p-value for different
+                      coverages install of specific p-value. (Recomended)
+                      &quot;--bayes-p&quot; will be ignored if &quot;--bayes-dynamicP&quot; is
+                      specified.
+--binom-e=BINOM_ER    (BinomWC mode) Error rate for calling a nucleotide
+                      [Default: 0.05]
+--binom-p=BINOM_PV    (BinomWC mode) P value as cut-off [Default: 0.01]
+--binom-cov=BINOM_COV
+                      (BinomWC mode) The coverage checkpoint [Default: 10]</code></pre></li>
+<li><p><strong>Example commands</strong> :</p>
+<p><code>cgmaptools snv -i WG.ATCGmap.gz -m bayes -v bayes.vcf -o bayes.snv --bayes-dynamicP</code></p>
+<p><code>cgmaptools snv -i WG.ATCGmap.gz -m binom -o binom.snv</code></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
-<img src="AML.OverAllCove.png" alt="MEC example" width="80%" />
-<p class="caption">
-Figure 6.1: MEC example
-</p>
-</div>
-</div>
-<div id="mec" class="section level2">
-<h2><span class="header-section-number">6.2</span> mec</h2>
-<ul>
-<li><p><strong>Description</strong>: Methylation effective coverage (for CGmap).</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mec &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>bin</strong>: Generate the methylation-effective coverage in Bins.</p>
-<p>Usage: <code>cgmaptools mec bin [-i &lt;CGmap&gt;] [-B 5000000]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. If not
-                      specified, STDIN will be used.
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools mec bin -i WG.CGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.mec_bin.data</code></p></li>
-<li><p><strong>output format</strong>:</p>
-<p>The output format of <code>bin</code>:</p>
-<pre><code>chr1    1       5000    29.0000
-chr1    5001    10000   30.0396
-chr2    1       5000    35.0755
-chr2    5001    10000   40.0027
-chr3    1       5000    na</code></pre>
-<p><strong>stat</strong>: Get the distribution of methylation-effective coverages.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mec stat [-i &lt;CGmap&gt;]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. If not
-                      specified, STDIN will be used.
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools mec stat -i WG.CGmap.gz -p WG -f png &gt; WG.mec_stat.data</code></p></li>
-<li><p><strong>Output format</strong>:</p>
-<p>The output format of <code>stat</code>:</p>
-<pre><code>OverAllCov      global  47.0395
-OverAllCov      chr1    45.3157
-OverAllCov      chr10   47.7380
-CovAndCount     1       1567
-CovAndCount     2       655
-CovAndCount     3       380</code></pre></li>
-</ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="AML.MethEffectCove.png" alt="MEC example" width="80%" />
-<p class="caption">
-Figure 6.2: MEC example
-</p>
-</div>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="methylation-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphics.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="file-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methylation-analysis.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

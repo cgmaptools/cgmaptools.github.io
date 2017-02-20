@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="new-file-format.html">
-<link rel="next" href="snp-calling.html">
+<link rel="next" href="snv-calling.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -82,7 +82,7 @@
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
 <li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snp-calling.html"><a href="snp-calling.html"><i class="fa fa-check"></i><b>4</b> SNP calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -134,7 +134,7 @@
 <ul>
 <li><p><strong>Description</strong>: File format coversion.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools convert &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p></li>
+<li><p><strong>sub-command table</strong>:</p></li>
 </ul>
 <table>
 <thead>
@@ -183,11 +183,14 @@
 </tbody>
 </table>
 <ul>
-<li><p><strong>Example</strong>:</p>
-<p>#1 The commands below will covert bam file to cgmap format.</p>
-<p><code>cgmaptools convert bam2cgmap -b &lt;BAM&gt; -g &lt;genome.fa&gt; -o &lt;prefix&gt;</code></p>
-<p>#2 This command will convert cgmap to wig format.</p>
-<p><code>cgmaptools convert cgmap2wig [-i &lt;CGmap&gt;] [-w &lt;wig&gt;] [-c &lt;INT&gt; -b &lt;float&gt;]</code></p></li>
+<li><p><strong>Example commands</strong> :</p>
+<p>BAM to CGmap <code>cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG</code></p>
+<p>BAM to CGmap <code>cgmaptools convert bam2cgmap -b RR.bam -g genome.fa --rmOverlap -o RR</code></p>
+<p>ATCGmap to ATCGbz <code>cgmaptools convert atcgmap2atcgbz -c WG.ATCGmap.gz -b WG.ATCGbz</code></p>
+<p>ATCGvz to ATCGmap <code>cgmaptools convert atcgbz2atcgmap -c WG2.ATCGmap.gz -b WG.ATCGbz</code></p>
+<p>CGmap to CGbz <code>cgmaptools convert cgmap2cgbz -c RR.CGmap.gz -b RR.CGbz</code></p>
+<p>CGbz to CGmap <code>cgmaptools convert cgbz2cgmap -c RR2.CGmap.gz -b RR.CGbz</code></p>
+<p>CGmap =&gt; WIG <code>cgmaptools convert cgmap2wig [-i &lt;CGmap&gt;] [-w &lt;wig&gt;] [-c &lt;INT&gt; -b &lt;float&gt;]</code></p></li>
 </ul>
 <blockquote>
 <p>Note: please refer to the help message for usage details using <code>-h</code> option.</p>
@@ -199,8 +202,8 @@
 <li><p><strong>Description</strong>: Fastly acess methylation data in specified region.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools fetch &lt;command&gt; [options]</code></p></li>
 <li><p><strong>Commands</strong>:</p>
-<p><strong>atcgbz</strong>: fetch lines from ATCGbz file.</p>
-<p>Usage: <code>cgmaptools fetch atcgbz -b &lt;ATCGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;</code></p>
+<p><strong>atcgbz</strong>: fetch lines from ATCGbz file.</p></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools fetch atcgbz -b &lt;ATCGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;</code></p>
 <pre><code>-b, --ATCGbz &lt;arg&gt;     input ATCGbz file  
 -C, --CHR &lt;arg&gt;        specify the chromosome name  
 -L, --leftPos &lt;arg&gt;    the left position  
@@ -211,6 +214,9 @@
 -C, --CHR &lt;arg&gt;        specify the chromosome name
 -L, --leftPos &lt;arg&gt;    the left position
 -R, --rightPos &lt;arg&gt;   the right position</code></pre></li>
+<li><p><strong>Example commands</strong> :</p>
+<p><code>cgmaptools fetch atcgbz -b WG.ATCGbz -C chr2 -L 90 -R 100</code></p>
+<p><code>cgmaptools fetch cgbz -b RR.CGbz -C chr3 -L 2200 -R 2400</code></p></li>
 </ul>
 </div>
 <div id="refill" class="section level2">
@@ -222,11 +228,13 @@
 -g STRING     genome file, FASTA format (gzipped if end with &#39;.gz&#39;)
 -o STRING     Output file name (gzipped if end with &#39;.gz&#39;)
 -0, --0-base  0-based genome if specified [Default: 1-based]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>File formats</strong>:</p>
 <p>The input CGmap file, which is lacking C context on the 3rd and 4th columns:</p>
 <pre><code>Chr1    C       3541    -       -       0.0     0       1</code></pre>
 <p>After <code>refill</code> processing, the CGmap file would be as below, added C context information:</p>
 <pre><code>Chr1    C       3541    CG      CG      0.0     0       1</code></pre></li>
+<li><p><strong>Example command</strong>:</p>
+<p><code>zcat RR2.CGmap.gz | gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; '{$4=&quot;-&quot;; $5=&quot;-&quot;; print;}' | cgmaptools refill -g genome.fa -o RR3.CGmap.gz</code></p></li>
 </ul>
 </div>
 <div id="intersect" class="section level2">
@@ -238,13 +246,15 @@
 -2 CGmap File  standard input if not specified
 -o OUTFILE     To standard output if not specified. Compressed output if end
                with .gz</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>File formats</strong>:</p>
 <p>Suppose you have two CGmap file from two samples, the first one is:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.8  4  5</code></pre>
 <p>and the second CGmap file is:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.4  4  10</code></pre>
 <p>After intersction, the output contains sites covered in both CGmap files. And the last three columns of the output are extracted from the second CGmap file:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre></li>
+<li><p><strong>Example command</strong> :</p>
+<p><code>cgmaptools intersect -1 WG.CGmap.gz -2 RR.CGmap.gz -C CG -o intersect_CG.gz</code></p></li>
 </ul>
 </div>
 <div id="merge2" class="section level2">
@@ -253,18 +263,21 @@
 <li><p><strong>Description</strong>: Merge two CGmap or ATCGmap files together.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools merge2 &lt;command&gt; [options]</code></p></li>
 <li><p><strong>Commands</strong>:</p>
-<p><strong>atcgmap</strong>: merge two ATCGmap files into one.</p>
-<p>Usage: <code>cgmaptools merge2 atcgmap -1 &lt;ATCGmap&gt; -2 &lt;ATCGmap&gt;</code></p>
+<p><strong>atcgmap</strong>: merge two ATCGmap files into one.</p></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools merge2 atcgmap -1 &lt;ATCGmap&gt; -2 &lt;ATCGmap&gt;</code></p>
 <pre><code>-1  Input, 1st ATCGmap file
 -2  Input, 2nd ATCGmap file
 Output to STDOUT in ATCGmap format
 Tips: Two input files should have the same order of chromosomes</code></pre>
-<p><strong>cgmap</strong>: merge two CGmap files into one.</p>
-<p>Usage: <code>cgmaptools merge2 cgmap -1 &lt;CGmap_1&gt; -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]</code></p>
+<p><strong>cgmap</strong>: merge two CGmap files into one.</p></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools merge2 cgmap -1 &lt;CGmap_1&gt; -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]</code></p>
 <pre><code>-1 FILE     File name end with .CGmap or .CGmap.gz
 -2 FILE     If not specified, STDIN will be used.
 -o OUTFILE  CGmap, output file. Use STDOUT if omitted (gzipped if end with
             &#39;.gz&#39;).</code></pre></li>
+<li><p><strong>Example command</strong> :</p>
+<p><code>cgmaptools merge2 atcgmap -1 WG.ATCGmap.gz -2 RR.ATCGmap.gz | gzip &gt; merge.ATCGmap.gz</code></p>
+<p><code>cgmaptools merge2 cgmap -1 WG.CGmap.gz -2 RR.CGmap.gz | gzip &gt; merge.CGmap.gz</code></p></li>
 </ul>
 </div>
 <div id="mergelist" class="section level2">
@@ -273,14 +286,17 @@ Tips: Two input files should have the same order of chromosomes</code></pre>
 <li><p><strong>Description</strong>: merge a list of files.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools mergelist &lt;command&gt; [options]</code></p></li>
 <li><p><strong>Commands</strong>:</p>
-<p><strong>tomatrix</strong>: Fill methylation levels according to the Index file for CGmap files in list.</p>
-<p>Usage: <code>cgmaptools mergelist tomatrix  [-i &lt;index&gt;] -f &lt;IN1,IN2,..&gt; -t &lt;tag1,tag2,..&gt; [-o output]</code></p>
+<p><strong>tomatrix</strong>: Fill methylation levels according to the Index file for CGmap files in list.</p></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools mergelist tomatrix  [-i &lt;index&gt;] -f &lt;IN1,IN2,..&gt; -t &lt;tag1,tag2,..&gt; [-o output]</code></p>
 <pre><code>-i FILE     TXT file, index file, use STDIN if omitted
 -f STRING   List of (input) CGmap files (CGmap or CGmap.gz)
 -t STRING   List of tags, same order with &#39;-f&#39;
 -c INT      minimum coverage [default: 1]
 -C INT      maximum coverage [default: 200]
--o STRING   Output file name (gzipped if end with &#39;.gz&#39;)</code></pre>
+-o STRING   Output file name (gzipped if end with &#39;.gz&#39;)</code></pre></li>
+<li><p><strong>Example commands</strong> :</p>
+<p><code>zcat RR*.CGmap.gz WG.CGmap.gz | gawk '$8&gt;=5' | cut -f1,3 | sort -u | cgmaptools sort -c 1 -p 2 &gt; index</code></p>
+<p><code>cgmaptools mergelist tomatrix -i index -f RR.CGmap.gz,RR2.CGmap.gz,WG.CGmap.gz -t RR,RR2,WG -c 5 -C 100 -o matrix.CG.gz</code></p>
 <p><strong>tosingle</strong>: merge list of input files into one.</p>
 <p>Usage: <code>cgmaptools mergelist tosingle -i f1,f2,..,fn [-o &lt;output&gt;]</code></p>
 <pre><code>-i FILE     List of input files; gzipped file ends with &#39;.gz&#39;
@@ -310,6 +326,8 @@ Tips: Two input files should have the same order of chromosomes</code></pre>
             (gzipped if end with &#39;gz&#39;).
 -p STRING   The prefix for output file
 -s STRING   The suffix for output file (gzipped if end with &#39;gz&#39;).</code></pre></li>
+<li><p><strong>Example command</strong> :</p>
+<p><code>cgmaptools split -i WG.CGmap.gz -p WG -s CGmap.gz</code></p></li>
 </ul>
 </div>
 <div id="select" class="section level2">
@@ -318,21 +336,27 @@ Tips: Two input files should have the same order of chromosomes</code></pre>
 <li><p><strong>Description</strong>: Split the files by each chromosomes.</p></li>
 <li><p><strong>Usage</strong>: <code>cgmaptools select &lt;command&gt; [options]</code></p></li>
 <li><p><strong>Commands</strong>:</p>
-<p><strong>region</strong>: Lines in input CGmap/ATCGmap be selected/excluded by BED file. Strand is NOT considered. Output to STDOUT in same format with input.</p>
-<p>Usage: <code>cgmaptools select region [-i &lt;CGmap/ATCGmap&gt;] -r &lt;BED&gt; [-R]</code></p>
+<p><strong>region</strong>: Lines in input CGmap/ATCGmap be selected/excluded by BED file. Strand is NOT considered. Output to STDOUT in same format with input.</p></li>
+<li><p><strong>Usage</strong>: <code>cgmaptools select region [-i &lt;CGmap/ATCGmap&gt;] -r &lt;BED&gt; [-R]</code></p>
 <pre><code>-i  Input, CGmap/ATCGmap file; use STDIN if not specified
     Please use &quot;gunzip -c &lt;input&gt;.gz &quot; and pipe as input for gzipped file.
     Ex: chr12   G   19898796    ...
 -r  Input, Region file, BED file to store regions
     At least 3 columns are required
     Ex: chr12 19898766 19898966 XX XXX XXX
--R  [optional] Reverse selection. Sites in region file will be excluded when specified</code></pre>
-<p><strong>site</strong>: Select lines from input CGmap/ATCGmap in index or reverse.</p>
-<p>Usage: <code>cgmaptools select site -i &lt;index&gt; [-f &lt;CGmap/ATCGmap&gt;] [-r] [-o output]</code></p>
+-R  [optional] Reverse selection. Sites in region file will be excluded when specified</code></pre></li>
+<li><p><strong>Example command</strong> :</p>
+<p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+200, &quot;+&quot;;}' ; done) ; done &gt; region.bed</code></p>
+<p><code>zcat WG.CGmap.gz | cgmaptools select region -r region.bed | head</code></p>
+<p><strong>site</strong>: Select lines from input CGmap/ATCGmap in index or reverse.</p></li>
+<li><p><strong>Usage</strong> : <code>cgmaptools select site -i &lt;index&gt; [-f &lt;CGmap/ATCGmap&gt;] [-r] [-o output]</code></p>
 <pre><code>-i FILE     Name of Index file required (gzipped if end with &#39;.gz&#39;).
 -r          reverse selected, remove site in index if specified
 -f STRING   Input CGmap/ATCGmap files. Use STDIN if not specified
 -o STRING   CGmap, Output file name (gzipped if end with &#39;.gz&#39;).</code></pre></li>
+<li><p><strong>Example commands</strong> :</p>
+<p><code>gawk 'NR%100==50' index &gt; site</code></p>
+<p><code>cgmaptools select site -f RR.CGmap.gz -i site -o RR_select.CGmap.gz</code></p></li>
 </ul>
 
 </div>
@@ -343,7 +367,7 @@ Tips: Two input files should have the same order of chromosomes</code></pre>
         </div>
       </div>
 <a href="new-file-format.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="snp-calling.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="snv-calling.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

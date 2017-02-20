@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="snp-calling.html">
+<link rel="prev" href="snv-calling.html">
 <link rel="next" href="coverage-analysis.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -82,7 +82,7 @@
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
 <li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snp-calling.html"><a href="snp-calling.html"><i class="fa fa-check"></i><b>4</b> SNP calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -139,7 +139,9 @@
                       end with .gz
 -t STRING, --test-method=STRING
                       chisq, fisher [default : chisq]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong> :</p>
+<p><code>cgmaptools dms -i intersect_CG.gz -m 4 -M 100 -o DMS.gz -t fisher</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>#1 Using the output of <code>intersect</code> as input:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre>
 <p>The output of <code>dms</code> is:</p>
@@ -161,13 +163,15 @@ chr1    G   8376    CG  CG  0.62    0.64    9.35e-01</code></pre></li>
 -n INT, --minNSite=INT  min N sites [default : 2]
 -o OUTFILE              To standard output if omitted. Compressed output if
                         end with .gz</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>File format</strong>:</p>
 <p>#1 Using the output of <code>intersect</code> as input:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre>
 <p>The output of <code>dms</code> is:</p>
 <pre><code>chr1    1004572 1004574 inf     0.00e+00    0.1100  0.0000
 chr1    1009552 1009566 -0.2774 8.08e-01    0.0200  0.0300
 chr1    1063405 1063498 0.1435  8.93e-01    0.6333  0.5733</code></pre></li>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools dmr -i intersect_CG.gz -o DMR.gz</code></p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="Dynamic_Fragment_Strategy.png" alt="Dynamic Fragmentation Strategy" width="80%" />
@@ -210,6 +214,9 @@ Figure 5.1: Dynamic Fragmentation Strategy
         no less than this threshold.
 -q    Adjusted p value using Benjamini &amp; Hochberg (1995) 
       (&quot;BH&quot; or its alias &quot;fdr&quot;). [default: 0.05]</code></pre></li>
+<li><p><strong>Example command</strong>:</p>
+<p><code>gawk '{if(/^#/){print}else{print &quot;chr&quot;$0;}}' bayes.vcf &gt; bayes2.vcf</code></p>
+<p><code>cgmaptools asm -r genome.fa -b WG.bam -l bayes2.vcf &gt; WG.asm</code></p></li>
 </ul>
 </div>
 <div id="mbed" class="section level2">
@@ -224,9 +231,16 @@ Figure 5.1: Dynamic Fragmentation Strategy
 -c  Int, minimum Coverage [Default: 5]
 -C  Int, maximum Coverage [Default: 500]
 -s  Strands would be distinguished when specified</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>zcat WG.CGmap.gz | cgmaptools mbed -b region.bed</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The output format:</p>
-<pre><code></code></pre></li>
+<pre><code>chr   sense_Count   sense_mC    anti_Count  anti_mC all_Count   all_mC
+chr1    203   0.08127     178     0.1148      381     0.09692
+chr2    185   0.07045     257     0.05586     442     0.06197
+chr3    313   0.1042      250     0.1358      563     0.1182
+chr4    300   0.1218      271     0.13      571   0.1257
+chr5    282   0.1272      222     0.1589      504     0.1412</code></pre></li>
 </ul>
 </div>
 <div id="mbin" class="section level2">
@@ -249,7 +263,11 @@ Figure 5.1: Dynamic Fragmentation Strategy
 -p STRING             Prefix for output figures
 -t STRING, --title=STRING
                       title in the output figures</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p></li>
+</ul>
+<p><code>cgmaptools mbin -i WG.CGmap.gz -B 500 -c 4 -f png -t WG -p WG &gt; mbin.WG.data</code></p>
+<ul>
+<li><p><strong>File format</strong>:</p>
 <p>The output format:</p>
 <pre><code>chr1    1       5000    0.0000
 chr1    5001    10000   0.0396
@@ -273,7 +291,9 @@ chr3    1       5000    na</code></pre></li>
 -c COVERAGE           The minimum coverage for site selection [Default: 10]
 --cXY=COVERAGEXY      Coverage for chrX/Y should be half that of autosome
                       for male [Default: same with -c]</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools mmbin -l WG.CGmap.gz,RR.CGmap.gz,RR2.CGmap.gz,merge.CGmap.gz -c 4 -B 2000 | gawk '{printf(&quot;%s:%s-%s&quot;, $1, $2, $3); for(i=4;i&lt;=NF;i++){printf(&quot;\t%s&quot;, $i);} printf(&quot;\n&quot;);}' &gt; mmbin</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The output format:</p>
 <pre><code>chr1    1       5000    0.0000
 chr1    5001    10000   0.0396
@@ -299,7 +319,11 @@ chr3    1       5000    na</code></pre></li>
 -c  Int, minimum Coverage [Default: 5]
 -C  Int, maximum Coverage [Default: 500]
     Sites exceed the coverage range will be discarded</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code></p>
+<p><code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p>
+<p><code>cgmaptools fragreg -i WG.mfg -f pdf -o WG_mfg.pdf</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The output format:</p>
 <pre><code>Region_ID       R_1     R_2     R_3     R_4
 sense_ave_mC    0.50    0.40    0.30    0.20
@@ -327,7 +351,9 @@ total_sum_NO    30      30      30      10</code></pre></li>
 -p STRING             Prefix for output figures
 -t STRING, --title=STRING
                       title in the output figures</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools mstat -i WG.CGmap.gz -c 4 -f png -p WG -t WG &gt; WG.mstat.data</code></p></li>
+<li><p><strong>File format</strong>:</p>
 <p>The output format:</p>
 <pre><code>MethStat        context C       CG      CHG     CHH     CA      CC      CT      CH      CW
 mean_mC         global  0.0798  0.3719  0.0465  0.0403  0.0891  0.0071  0.0241  0.0419  0.0559
@@ -367,7 +393,9 @@ Figure 5.4: mC fragmented distribution example
             will be used.
 -r FILE     Filename for region file, support *.gz
 -o OUTFILE  To standard output if not specified.</code></pre></li>
-<li><p><strong>Example</strong>:</p>
+<li><p><strong>Example command</strong>:</p>
+<p><code>cgmaptools mtr -i WG.CGmap.gz -r region.bed -o WG.mtr.gz</code></p></li>
+<li><p><strong>File formats</strong>:</p>
 <p>The input file format:</p>
 <pre><code>#chr    start_pos  end_pos
 chr1    8275       8429</code></pre>
@@ -383,7 +411,7 @@ chr1   8275       8429     0.34     72         0.40             164</code></pre>
           </div>
         </div>
       </div>
-<a href="snp-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="snv-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="coverage-analysis.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
