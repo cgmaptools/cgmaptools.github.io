@@ -431,9 +431,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     ```
 -->
 <ul>
-<li><p><strong>Example</strong> :</p>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools intersect -1 WG.CGmap.gz -2 RR.CGmap.gz -C CG -o intersect_CG.gz</code></p></li>
+<li><p><strong>Output format</strong></p>
+<ul>
+<li><strong>Example</strong></li>
 </ul>
+<pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
+Chr1  C  3542  CG  CG  0.8  3  5  0.2  2  10
+Chr1  C  3545  CHG CA  0.0  0  5  0.1  1  10</code></pre>
+<ul>
+<li><strong>Column Description</strong></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
+<img src="CGmapInter.png" alt="Output format description for cgmaptools intersect" width="100%" />
+<p class="caption">
+Figure 3.1: Output format description for cgmaptools intersect
+</p>
+</div>
 </div>
 <div id="merge2" class="section level2">
 <h2><span class="header-section-number">3.5</span> merge2</h2>
@@ -529,7 +545,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><strong>Example</strong></p>
 <p><code>zcat RR*.CGmap.gz WG.CGmap.gz | gawk '$8&gt;=5' | cut -f1,3 | sort -u | cgmaptools sort -c 1 -p 2 &gt; index</code></p>
 <p><code>cgmaptools mergelist tomatrix -i index -f RR.CGmap.gz,RR2.CGmap.gz,WG.CGmap.gz -t RR,RR2,WG -c 5 -C 100 -o matrix.CG.gz</code></p></li>
+<li><p><strong>Format for Index file</strong></p>
+<ul>
+<li><strong>Example</strong></li>
 </ul>
+<pre><code>Chr1   940
+Chr1   1840
+Chr2   9060</code></pre>
+<ul>
+<li><strong>Column Description</strong></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
+<img src="TAB_Site.png" alt="Format description for INDEX file" width="100%" />
+<p class="caption">
+Figure 3.2: Format description for INDEX file
+</p>
+</div>
+<ul>
+<li><p><strong>Format for output file</strong></p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code>chr     pos     tag1    tag2    tag3
+Chr1    111403  0.05    nan     0.02
+Chr1    111500  1.00    0.80    0.60
+Chr2    20000   0.96    0.33    0.66</code></pre>
+<ul>
+<li><strong>Column Description</strong></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
+<img src="TAB_SMM.png" alt="Output format description for cgmaptools fill tomatrix" width="80%" />
+<p class="caption">
+Figure 3.3: Output format description for cgmaptools fill tomatrix
+</p>
+</div>
 </div>
 <div id="mergelist-tosingle" class="section level3">
 <h3><span class="header-section-number">3.6.2</span> mergelist tosingle</h3>

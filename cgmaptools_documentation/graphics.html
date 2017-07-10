@@ -259,13 +259,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>cgmaptools lollipop -i matrix.CG.gz -a anno.refFlat -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-61"></span>
 <img src="TRIM59.png" alt="Lollipop example-1" width="80%" />
 <p class="caption">
 Figure 7.1: Lollipop example-1
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-62"></span>
 <img src="VCAN.png" alt="Lollipop example-2" width="80%" />
 <p class="caption">
 Figure 7.2: Lollipop example-2
@@ -335,7 +335,7 @@ Figure 7.2: Lollipop example-2
 <p><code>cgmaptools heatmap -i mmbin -c -o cluster.pdf -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-54"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-64"></span>
 <img src="mC_Cluster.png" alt="heatmap example-1" width="80%" />
 <p class="caption">
 Figure 7.3: heatmap example-1
@@ -391,9 +391,32 @@ Figure 7.3: heatmap example-1
 <ul>
 <li><p><strong>Example</strong></p>
 <p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code> <code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p></li>
+<li><p><strong>Output format</strong></p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code>Region_ID       R_1     R_2     R_3     R_4
+sense_ave_mC    0.50    0.40    0.30    0.20
+sense_sum_mC    5.0     4.0     3.0     2.0
+sense_sum_NO    10      10      10      10   
+anti_ave_mC     0.40    0.20    0.10    NaN
+anti_sum_mC     8.0     4.0     2.0     0.0
+anti_sum_NO     20      20      20      0
+total_ave_mC    0.43    0.27    0.17    0.2
+total_sum_mC    13.0    8.0     5.0     2.0
+total_sum_NO    30      30      30      10</code></pre>
+<ul>
+<li><p><strong>Column Description</strong></p>
+<ul>
+<li>Tab-delimited file with header line</li>
+<li>Content in 1st col is fixed</li>
+<li>Column number is dynamic</li>
+<li>Invalid number is annotated as “NaN”</li>
+</ul></li>
+</ul></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-56"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
 <img src="GeneBody_mC_profile.png" alt="FragRegMC example" width="80%" />
 <p class="caption">
 Figure 7.4: FragRegMC example
@@ -452,7 +475,7 @@ Figure 7.4: FragRegMC example
 <p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
 <img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="FragRegMC example" width="50%" />
 <p class="caption">
 Figure 7.5: FragRegMC example

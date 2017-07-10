@@ -226,7 +226,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><strong>Example commands</strong> :</p>
 <p><code>cgmaptools snv -i WG.ATCGmap.gz -m bayes -v bayes.vcf -o bayes.snv --bayes-dynamicP</code></p>
 <p><code>cgmaptools snv -i WG.ATCGmap.gz -m binom -o binom.snv</code></p></li>
+<li><p><strong>Output format</strong></p>
+<ul>
+<li><strong>Example</strong></li>
 </ul>
+<pre><code>#chr    nuc     pos     ATCG_watson     ATCG_crick      predicted_nuc   p_value
+chr1    G       4752    17, 0, 0, 69    0, 0, 0, 0      A,G             9.3e-07
+chr1    A       4770    40, 0, 0, 29    0, 0, 0, 0      A,G             0.0e+00
+chr1    T       8454    0, 39, 0, 0     0, 0, 0, 0      T/C             1.00e-01</code></pre>
+<ul>
+<li><strong>Column Description</strong></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
+<img src="ATCG_SNV.png" alt="Output format description for cgmaptools snv" width="100%" />
+<p class="caption">
+Figure 4.1: Output format description for cgmaptools snv
+</p>
+</div>
 
 </div>
             </section>
