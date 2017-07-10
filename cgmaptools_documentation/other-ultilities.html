@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -25,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-02-20">
+<meta name="date" content="2017-07-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +32,6 @@
   
   
 <link rel="prev" href="graphics.html">
-
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,10 +48,48 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -67,20 +103,34 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="what-is-cgmaptools.html"><a href="what-is-cgmaptools.html"><i class="fa fa-check"></i><b>1</b> What is CGmapTools</a></li>
-<li class="chapter" data-level="2" data-path="new-file-format.html"><a href="new-file-format.html"><i class="fa fa-check"></i><b>2</b> New File Format</a><ul>
-<li class="chapter" data-level="2.1" data-path="new-file-format.html"><a href="new-file-format.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
-<li class="chapter" data-level="2.2" data-path="new-file-format.html"><a href="new-file-format.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2" data-path="file-formats.html"><a href="file-formats.html"><i class="fa fa-check"></i><b>2</b> File Formats</a><ul>
+<li class="chapter" data-level="2.1" data-path="file-formats.html"><a href="file-formats.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
+<li class="chapter" data-level="2.2" data-path="file-formats.html"><a href="file-formats.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2.3" data-path="file-formats.html"><a href="file-formats.html#atcgbz-format"><i class="fa fa-check"></i><b>2.3</b> ATCGbz Format</a></li>
+<li class="chapter" data-level="2.4" data-path="file-formats.html"><a href="file-formats.html#cgbz-format"><i class="fa fa-check"></i><b>2.4</b> CGbz Format</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="file-manipulation.html"><a href="file-manipulation.html"><i class="fa fa-check"></i><b>3</b> File Manipulation</a><ul>
 <li class="chapter" data-level="3.1" data-path="file-manipulation.html"><a href="file-manipulation.html#convert"><i class="fa fa-check"></i><b>3.1</b> convert</a></li>
-<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a></li>
+<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-cgbz"><i class="fa fa-check"></i><b>3.2.1</b> fetch cgbz</a></li>
+<li class="chapter" data-level="3.2.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-atcgbz"><i class="fa fa-check"></i><b>3.2.2</b> fetch atcgbz</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="file-manipulation.html"><a href="file-manipulation.html#refill"><i class="fa fa-check"></i><b>3.3</b> refill</a></li>
 <li class="chapter" data-level="3.4" data-path="file-manipulation.html"><a href="file-manipulation.html#intersect"><i class="fa fa-check"></i><b>3.4</b> intersect</a></li>
-<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a></li>
-<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a></li>
+<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-atcgmap"><i class="fa fa-check"></i><b>3.5.1</b> merge2 atcgmap</a></li>
+<li class="chapter" data-level="3.5.2" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-cgmap"><i class="fa fa-check"></i><b>3.5.2</b> merge2 cgmap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tomatrix"><i class="fa fa-check"></i><b>3.6.1</b> mergelist tomatrix</a></li>
+<li class="chapter" data-level="3.6.2" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tosingle"><i class="fa fa-check"></i><b>3.6.2</b> mergelist tosingle</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="file-manipulation.html"><a href="file-manipulation.html#sort"><i class="fa fa-check"></i><b>3.7</b> sort</a></li>
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
-<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
+<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="file-manipulation.html"><a href="file-manipulation.html#select-region"><i class="fa fa-check"></i><b>3.9.1</b> select region</a></li>
+<li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
@@ -95,8 +145,14 @@
 <li class="chapter" data-level="5.9" data-path="methylation-analysis.html"><a href="methylation-analysis.html#mtr"><i class="fa fa-check"></i><b>5.9</b> mtr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="coverage-analysis.html"><a href="coverage-analysis.html"><i class="fa fa-check"></i><b>6</b> Coverage Analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a></li>
-<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a></li>
+<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-bin"><i class="fa fa-check"></i><b>6.1.1</b> oac bin</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-stat"><i class="fa fa-check"></i><b>6.1.2</b> oac stat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-bin"><i class="fa fa-check"></i><b>6.2.1</b> mec bin</a></li>
+<li class="chapter" data-level="6.2.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-stat"><i class="fa fa-check"></i><b>6.2.2</b> mec stat</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>7</b> Graphics</a><ul>
 <li class="chapter" data-level="7.1" data-path="graphics.html"><a href="graphics.html#lollipop"><i class="fa fa-check"></i><b>7.1</b> lollipop</a></li>
@@ -130,38 +186,60 @@
 <div id="findccgg" class="section level2">
 <h2><span class="header-section-number">8.1</span> findCCGG</h2>
 <ul>
-<li><p><strong>Description</strong>: Get MspI cutting sites for RRBS.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools findCCGG -i &lt;genome.fa&gt; [-o &lt;output&gt;]</code></p>
-<pre><code>-i INFILE, --infile=INFILE
--i FILE     Genome sequence file in Fasta format
--o FILE     Name of the output file (standard output if not
-            specified).Format: chr cCgg_pos ccGg_pos (0-base)</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> findCCGG -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools findCCGG -i &lt;genome.fa&gt; [-o &lt;output&gt;]
+#         (aka FiindCCGG)
+#   Description: Get the positions of all the C&#39;CGG---CCG&#39;G fragments.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#   Output Ex:
+#       chr1    4025    5652
+#       chr1    8274    8431
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     Genome sequence file in Fasta format
+#     -o FILE     Name of the output file (standard output if not
+#                 specified).Format: chr cCgg_pos ccGg_pos (0-base)</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools findCCGG -i genome.fa -o genome.ccgg</code></p></li>
-<li><p><strong>File format</strong>:</p>
-<p>The output file format:</p>
-<pre><code>chr1    4025    5652
-chr1    8274    8431</code></pre></li>
 </ul>
 </div>
 <div id="bed2fragreg" class="section level2">
 <h2><span class="header-section-number">8.2</span> bed2fragreg</h2>
 <ul>
-<li><p><strong>Description</strong>: Generate fragmented regions from BED file.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools bed2fragreg [-i &lt;BED&gt;] [-n &lt;N&gt;] [-F &lt;50,50,..&gt; -T &lt;50,..&gt;] [-o output]</code></p>
-<pre><code>-i FILE      BED format, STDIN if omitted
--F INT_list  List of region lengths in upstream of 5&#39; end, Ex: 10,50. List
-             is from 5&#39;end-&gt;3&#39;end
--T INT_list  List of region lengths in downstream of 3&#39; end, Ex: 40,20. List
-             is from 5&#39;end-&gt;3&#39;end
--n INT       Number of bins to be equally split [Default:1]</code></pre></li>
-<li><p><strong>File format</strong>:</p>
-<p>The input file format:</p>
-<pre><code>chr1   1000    2000   +
-chr2   9000    8000   -</code></pre>
-<p>The output file format:</p>
-<pre><code>chr1   +   940  950  1000 1200 1400 1600 1800 1850
-chr2   -   9060 9050 9000 8800 8600 8400 8200 8150</code></pre></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> bed2fragreg -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools bed2fragreg [-i &lt;BED&gt;] [-n &lt;N&gt;] [-F &lt;50,50,..&gt; -T &lt;50,..&gt;] [-o output]
+#         (aka FragRegFromBED)
+#   Description: Generate fragmented regions from BED file.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#      Split input region into N bins, get fragments from 5&#39; end and 3&#39; end.
+#   Input Ex:
+#      chr1   1000    2000   +
+#      chr2   9000    8000   -
+#   Output Ex:
+#      chr1   +   940  950  1000 1200 1400 1600 1800 1850
+#      chr2   -   9060 9050 9000 8800 8600 8400 8200 8150
+#   
+#   
+#   Options:
+#     -h, --help   show this help message and exit
+#     -i FILE      BED format, STDIN if omitted
+#     -F INT_list  List of region lengths in upstream of 5&#39; end, Ex: 10,50. List
+#                  is from 5&#39;end-&gt;3&#39;end
+#     -T INT_list  List of region lengths in downstream of 3&#39; end, Ex: 40,20. List
+#                  is from 5&#39;end-&gt;3&#39;end
+#     -n INT       Number of bins to be equally split [Default:1]
+#     -o OUTFILE   To standard output if omitted. Compressed output if end with
+#                  .gz</code></pre>
+<ul>
+<li><strong>Example</strong></li>
 </ul>
 
 </div>
@@ -173,7 +251,8 @@ chr2   -   9060 9050 9000 8800 8600 8400 8200 8150</code></pre></li>
       </div>
 <a href="graphics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

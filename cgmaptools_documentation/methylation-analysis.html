@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -25,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-02-20">
+<meta name="date" content="2017-07-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +33,6 @@
   
 <link rel="prev" href="snv-calling.html">
 <link rel="next" href="coverage-analysis.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +48,48 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -67,20 +103,34 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="what-is-cgmaptools.html"><a href="what-is-cgmaptools.html"><i class="fa fa-check"></i><b>1</b> What is CGmapTools</a></li>
-<li class="chapter" data-level="2" data-path="new-file-format.html"><a href="new-file-format.html"><i class="fa fa-check"></i><b>2</b> New File Format</a><ul>
-<li class="chapter" data-level="2.1" data-path="new-file-format.html"><a href="new-file-format.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
-<li class="chapter" data-level="2.2" data-path="new-file-format.html"><a href="new-file-format.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2" data-path="file-formats.html"><a href="file-formats.html"><i class="fa fa-check"></i><b>2</b> File Formats</a><ul>
+<li class="chapter" data-level="2.1" data-path="file-formats.html"><a href="file-formats.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
+<li class="chapter" data-level="2.2" data-path="file-formats.html"><a href="file-formats.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2.3" data-path="file-formats.html"><a href="file-formats.html#atcgbz-format"><i class="fa fa-check"></i><b>2.3</b> ATCGbz Format</a></li>
+<li class="chapter" data-level="2.4" data-path="file-formats.html"><a href="file-formats.html#cgbz-format"><i class="fa fa-check"></i><b>2.4</b> CGbz Format</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="file-manipulation.html"><a href="file-manipulation.html"><i class="fa fa-check"></i><b>3</b> File Manipulation</a><ul>
 <li class="chapter" data-level="3.1" data-path="file-manipulation.html"><a href="file-manipulation.html#convert"><i class="fa fa-check"></i><b>3.1</b> convert</a></li>
-<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a></li>
+<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-cgbz"><i class="fa fa-check"></i><b>3.2.1</b> fetch cgbz</a></li>
+<li class="chapter" data-level="3.2.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-atcgbz"><i class="fa fa-check"></i><b>3.2.2</b> fetch atcgbz</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="file-manipulation.html"><a href="file-manipulation.html#refill"><i class="fa fa-check"></i><b>3.3</b> refill</a></li>
 <li class="chapter" data-level="3.4" data-path="file-manipulation.html"><a href="file-manipulation.html#intersect"><i class="fa fa-check"></i><b>3.4</b> intersect</a></li>
-<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a></li>
-<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a></li>
+<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-atcgmap"><i class="fa fa-check"></i><b>3.5.1</b> merge2 atcgmap</a></li>
+<li class="chapter" data-level="3.5.2" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-cgmap"><i class="fa fa-check"></i><b>3.5.2</b> merge2 cgmap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tomatrix"><i class="fa fa-check"></i><b>3.6.1</b> mergelist tomatrix</a></li>
+<li class="chapter" data-level="3.6.2" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tosingle"><i class="fa fa-check"></i><b>3.6.2</b> mergelist tosingle</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="file-manipulation.html"><a href="file-manipulation.html#sort"><i class="fa fa-check"></i><b>3.7</b> sort</a></li>
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
-<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
+<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="file-manipulation.html"><a href="file-manipulation.html#select-region"><i class="fa fa-check"></i><b>3.9.1</b> select region</a></li>
+<li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
@@ -95,8 +145,14 @@
 <li class="chapter" data-level="5.9" data-path="methylation-analysis.html"><a href="methylation-analysis.html#mtr"><i class="fa fa-check"></i><b>5.9</b> mtr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="coverage-analysis.html"><a href="coverage-analysis.html"><i class="fa fa-check"></i><b>6</b> Coverage Analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a></li>
-<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a></li>
+<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-bin"><i class="fa fa-check"></i><b>6.1.1</b> oac bin</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-stat"><i class="fa fa-check"></i><b>6.1.2</b> oac stat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-bin"><i class="fa fa-check"></i><b>6.2.1</b> mec bin</a></li>
+<li class="chapter" data-level="6.2.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-stat"><i class="fa fa-check"></i><b>6.2.2</b> mec stat</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>7</b> Graphics</a><ul>
 <li class="chapter" data-level="7.1" data-path="graphics.html"><a href="graphics.html#lollipop"><i class="fa fa-check"></i><b>7.1</b> lollipop</a></li>
@@ -130,50 +186,82 @@
 <div id="dms" class="section level2">
 <h2><span class="header-section-number">5.1</span> dms</h2>
 <ul>
-<li><p><strong>Description</strong>: Get the differentially methylated sites between two samples.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools dms [-i &lt;CGmapInter&gt;] [-m 5 -M 100] [-o output]</code></p>
-<pre><code>-i FILE               File name for CGmapInter, STDIN if omitted
--m INT, --min=INT     min coverage [default : 0]
--M INT, --max=INT     max coverage [default : 100]
--o OUTFILE            To standard output if omitted. Compressed output if
-                      end with .gz
--t STRING, --test-method=STRING
-                      chisq, fisher [default : chisq]</code></pre></li>
-<li><p><strong>Example command</strong> :</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> dms -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools dms [-i &lt;CGmapInter&gt;] [-m 5 -M 100] [-o output]
+#         (aka CGmapInterDiffSite)
+#   Description: 
+#     Get the differentially methylated sites for two samples.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#   Input Format, same as the output of CGmapIntersect.py:
+#       Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
+#   Output Format:
+#      chr1 C   4654    CG  CG  0.92    1.00    8.40e-01
+#      chr1 C   4658    CHH CC  0.50    0.00    3.68e-04
+#      chr1 G   8376    CG  CG  0.62    0.64    9.35e-01
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name for CGmapInter, STDIN if omitted
+#     -m INT, --min=INT     min coverage [default : 0]
+#     -M INT, --max=INT     max coverage [default : 100]
+#     -o OUTFILE            To standard output if omitted. Compressed output if
+#                           end with .gz
+#     -t STRING, --test-method=STRING
+#                           chisq, fisher [default : chisq]</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools dms -i intersect_CG.gz -m 4 -M 100 -o DMS.gz -t fisher</code></p></li>
-<li><p><strong>File format</strong>:</p>
-<p>#1 Using the output of <code>intersect</code> as input:</p>
-<pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre>
-<p>The output of <code>dms</code> is:</p>
-<pre><code>chr1    C   4654    CG  CG  0.92    1.00    8.40e-01
-chr1    C   4658    CHH CC  0.50    0.00    3.68e-04
-chr1    G   8376    CG  CG  0.62    0.64    9.35e-01</code></pre></li>
 </ul>
 </div>
 <div id="dmr" class="section level2">
 <h2><span class="header-section-number">5.2</span> dmr</h2>
 <ul>
-<li><p><strong>Description</strong>: Get the differentially methylated region by Fisher’s exact test.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools dmr [-i &lt;CGmapInter&gt;] [-m 5 -M 100] [-o output]</code></p>
-<pre><code>-i FILE                 File name for CGmapInter, STDIN if omitted
--c INT, --minCov=INT    min coverage [default : 0]
--C INT, --maxCov=INT    max coverage [default : 100]
--s INT, --minStep=INT   min step in bp [default : 100]
--S INT, --maxStep=INT   max step in bp [default : 500]
--n INT, --minNSite=INT  min N sites [default : 2]
--o OUTFILE              To standard output if omitted. Compressed output if
-                        end with .gz</code></pre></li>
-<li><p><strong>File format</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> dmr -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools dmr [-i &lt;CGmapInter&gt;] [-m 5 -M 100] [-o output]
+#         (aka CGmapInterDiffReg)
+#   Description: 
+#     Get the differentially methylated sites by Fisher&#39;s exact test.
+#   Author:       Guo, Weilong; guoweilong@126.com; 
+#   Last Updated: 2017-01-20
+#   Input Format, same as the output of CGmapIntersect.py:
+#      chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
+#   Output Format, Ex:
+#      chr1 1004572 1004574 inf     0.00e+00    0.1100  0.0000
+#      chr1 1009552 1009566 -0.2774 8.08e-01    0.0200  0.0300
+#      chr1 1063405 1063498 0.1435  8.93e-01    0.6333  0.5733
+#   
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name for CGmapInter, STDIN if omitted
+#     -c INT, --minCov=INT  min coverage [default : 4]
+#     -C INT, --maxCov=INT  max coverage [default : 500]
+#     -s INT, --minStep=INT
+#                           min step in bp [default : 100]
+#     -S INT, --maxStep=INT
+#                           max step in bp [default : 1000]
+#     -n INT, --minNSite=INT
+#                           min N sites [default : 5]
+#     -o OUTFILE            To standard output if omitted. Compressed output if
+#                           end with .gz</code></pre>
+<ul>
+<li><p><strong>File format</strong></p>
 <p>#1 Using the output of <code>intersect</code> as input:</p>
 <pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre>
 <p>The output of <code>dms</code> is:</p>
 <pre><code>chr1    1004572 1004574 inf     0.00e+00    0.1100  0.0000
 chr1    1009552 1009566 -0.2774 8.08e-01    0.0200  0.0300
 chr1    1063405 1063498 0.1435  8.93e-01    0.6333  0.5733</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools dmr -i intersect_CG.gz -o DMR.gz</code></p></li>
+<li><p><strong>Strategy</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
 <img src="Dynamic_Fragment_Strategy.png" alt="Dynamic Fragmentation Strategy" width="80%" />
 <p class="caption">
 Figure 5.1: Dynamic Fragmentation Strategy
@@ -183,38 +271,51 @@ Figure 5.1: Dynamic Fragmentation Strategy
 <div id="asm" class="section level2">
 <h2><span class="header-section-number">5.3</span> asm</h2>
 <ul>
-<li><p><strong>Description</strong>: Allele specific methylation analysis.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools asm [options] -r &lt;ref.fa&gt; -b &lt;input.bam&gt; -l &lt;snp.vcf&gt;</code></p>
-<pre><code>-r    Samtools indexed reference genome seqeunce, fasta format. eg. hg19.fa
-      - use samtools to index reference first: samtools faidx hg19.fa
--b    Samtools indexed Bam format file.
-      - use samtools to index bam file first: samtools index &lt;input.bam&gt;
--l    SNPs in vcf file format.
--s    Path to samtools eg. /home/user/bin/samtools
-      - by defualt, we try to search samtools in your system PATH,
--o    Output results to file. [default: STDOUT]
--t    C context. [default: CG]
-      - available context: C, CG, CH, CW, CC, CA, CT, CHG, CHH
--m    Specify calling mode. [default: asr]
-      - alternative: ass
-      - asr: allele specific methylated region
-      - ass: allele specific methylated site
--d    Minimum number of read for each allele linked site to call ass. [default: 3]
-      - ass specific.
--n    Minimum number of C site each allele linked to call asr. [default: 2]
-      - asr specific.
--D    Minimum read depth for C site to call methylation level when calling asr.
-      [default: 1]
-      - asr specific.
--L    Low methylation level threshold. [default: 0.2]
-      - allele linked region [or site] with low methylation level should be 
-        no greater than this threshold.
--H    High methylation level threshold. [default: 0.8]
-      - allele linked region[or site] with high methylation level should be
-        no less than this threshold.
--q    Adjusted p value using Benjamini &amp; Hochberg (1995) 
-      (&quot;BH&quot; or its alias &quot;fdr&quot;). [default: 0.05]</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> asm -h</code></pre></div>
+<pre><code>#   DESCRIPTION
+#           Allele specific methylated region/site calling
+#           * Fisher exact test for site calling.
+#           * Students&#39; t-test for region calling.
+#   
+#   USAGE
+#           cgmaptools asm [options] -r &lt;ref.fa&gt; -b &lt;input.bam&gt; -l &lt;snp.vcf&gt;
+#           (aka ASM)
+#   
+#           Options:
+#           -r    Samtools indexed reference genome seqeunce, fasta format. eg. hg19.fa
+#                 - use samtools to index reference first: samtools faidx hg19.fa
+#           -b    Samtools indexed Bam format file.
+#                 - use samtools to index bam file first: samtools index &lt;input.bam&gt;
+#           -l    SNPs in vcf file format.
+#           -s    Path to samtools eg. /home/user/bin/samtools
+#                 - by defualt, we try to search samtools in your system PATH,
+#           -o    Output results to file. [default: STDOUT]
+#           -t    C context. [default: CG]
+#                 - available context: C, CG, CH, CW, CC, CA, CT, CHG, CHH
+#           -m    Specify calling mode. [default: asr]
+#                 - alternative: ass
+#                 - asr: allele specific methylated region
+#                 - ass: allele specific methylated site
+#           -d    Minimum number of read for each allele linked site to call ass. [default: 3]
+#                 - ass specific.
+#           -n    Minimum number of C site each allele linked to call asr. [default: 2]
+#                 - asr specific.
+#           -D    Minimum read depth for C site to call methylation level when calling asr. [default: 1]
+#                 - asr specific.
+#           -L    Low methylation level threshold. [default: 0.2]
+#                 - allele linked region [or site] with low methylation level should be no greater than this threshold.
+#           -H    High methylation level threshold. [default: 0.8]
+#                 - allele linked region[or site] with high methylation level should be no less than this threshold.
+#           -q    Adjusted p value using Benjamini &amp; Hochberg (1995) (&quot;BH&quot; or its alias &quot;fdr&quot;). [default: 0.05]
+#           -h    Help message.
+#   
+#   AUTHOR
+#           Contact:     Zhu, Ping; pingzhu.work@gmail.com
+#           Last update: 2016-12-07</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>gawk '{if(/^#/){print}else{print &quot;chr&quot;$0;}}' bayes.vcf &gt; bayes2.vcf</code></p>
 <p><code>cgmaptools asm -r genome.fa -b WG.bam -l bayes2.vcf &gt; WG.asm</code></p></li>
 </ul>
@@ -222,18 +323,37 @@ Figure 5.1: Dynamic Fragmentation Strategy
 <div id="mbed" class="section level2">
 <h2><span class="header-section-number">5.4</span> mbed</h2>
 <ul>
-<li><p><strong>Description</strong>: Calculate average methylation levels in given regions.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mbed [-i &lt;CGmap&gt;]  -b &lt;regin.bed&gt; [-c 5 -C 500 -s]</code></p>
-<pre><code>-i  String, CGmap file; use STDIN if not specified
-    Ex: chr1    G   3000851 CHH CC  0.1 1   10
--b  String, BED file
-    Ex: chr1    3000000 3005000 -
--c  Int, minimum Coverage [Default: 5]
--C  Int, maximum Coverage [Default: 500]
--s  Strands would be distinguished when specified</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mbed -h</code></pre></div>
+<pre><code>#   Usage:  cgmaptools mbed [-i &lt;CGmap&gt;]  -b &lt;regin.bed&gt; [-c 5 -C 500 -s] 
+#         (aka CGmapMethylInBed)
+#   Description: Calculated bulk average methylation levels in given regions.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#   Options:
+#      -i  String, CGmap file; use STDIN if not specified
+#          Please use &quot;gunzip -c &lt;input&gt;.gz &quot; and pipe as input for gzipped file.
+#          Ex: chr1 G   3000851 CHH CC  0.1 1   10
+#      -b  String, BED file, should have at least 4 columns
+#          Ex: chr1 3000000 3005000 -
+#      -c  Int, minimum Coverage [Default: 5] 
+#      -C  Int, maximum Coverage [Default: 500] 
+#      -s  Strands would be distinguished when specified
+#      -h  help
+#   
+#   Output to STDOUT:
+#       Title         Count    mean_mC
+#       sense         34       0.2353
+#       antisense     54       0.2778
+#       total         88       0.2614
+#   Notice:
+#       The overlapping of regions would not be checked. 
+#       A site might be considered multiple times.</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>zcat WG.CGmap.gz | cgmaptools mbed -b region.bed</code></p></li>
-<li><p><strong>File format</strong>:</p>
+<li><p><strong>File format</strong></p>
 <p>The output format:</p>
 <pre><code>chr   sense_Count   sense_mC    anti_Count  anti_mC all_Count   all_mC
 chr1    203   0.08127     178     0.1148      381     0.09692
@@ -246,28 +366,46 @@ chr5    282   0.1272      222     0.1589      504     0.1412</code></pre></li>
 <div id="mbin" class="section level2">
 <h2><span class="header-section-number">5.5</span> mbin</h2>
 <ul>
-<li><p><strong>Description</strong>: Generate the methylation level in Bins.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mbin [-i &lt;CGmap&gt;] [-c 10 --CXY 5 -B 5000000]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. 
-                      If not specified, STDIN will be used.
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--c COVERAGE           The minimum coverage for site selection [Default: 10]
--C CONTEXT, --context=CONTEXT
-                      specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
-                      use all sites if not specified
---cXY=COVERAGEXY      Coverage for chrX/Y should be half that of autosome
-                      for male [Default: same with -c]
--f FIGTYPE, --figure-type=FIGTYPE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mbin -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mbin [-i &lt;CGmap&gt;] [-c 10 --CXY 5 -B 5000000] 
+#         (aka CGmapMethInBins)
+#   Description: Generate the methylation in Bins.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-10-26
+#   Output Ex:
+#      chr1    1       5000    0.0000
+#      chr1    5001    10000   0.0396
+#      chr2    1       5000    0.0755
+#      chr2    5001    10000   0.0027
+#      chr3    1       5000    na
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .CGmap or .CGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -B BIN_SIZE           Define the size of bins [Default: 5000000]
+#     -c COVERAGE           The minimum coverage for site selection [Default: 10]
+#     -C CONTEXT, --context=CONTEXT
+#                           specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
+#                           use all sites if not specified
+#     --cXY=COVERAGEXY      Coverage for chrX/Y should be half that of autosome
+#                           for male [Default: same with -c]
+#     -f FIGTYPE, --figure-type=FIGTYPE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Height of figure in inch [Default: 4]
+#     -W FLOAT              Width of figure in inch [Default: 8]
+#     -p STRING             Prefix for output figures
+#     -t STRING, --title=STRING
+#                           title in the output figures</code></pre>
+<ul>
+<li><strong>Example</strong></li>
 </ul>
 <p><code>cgmaptools mbin -i WG.CGmap.gz -B 500 -c 4 -f png -t WG -p WG &gt; mbin.WG.data</code></p>
 <ul>
-<li><p><strong>File format</strong>:</p>
+<li><p><strong>File format</strong></p>
 <p>The output format:</p>
 <pre><code>chr1    1       5000    0.0000
 chr1    5001    10000   0.0396
@@ -279,81 +417,124 @@ chr3    1       5000    na</code></pre></li>
 <div id="mmbin" class="section level2">
 <h2><span class="header-section-number">5.6</span> mmbin</h2>
 <ul>
-<li><p><strong>Description</strong>: Generate the methylation level in Bins for multiple samples.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mmbin [-l &lt;1.CGmap[,2.CGmap,..]&gt;] [-c 10 --CXY 5 -B 5000000]</code></p>
-<pre><code>-l FILE               File name list, end with .CGmap or .CGmap.gz. If not
-                    specified, STDIN will be used.
--t FILE               List of samples
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--C CONTEXT, --context=CONTEXT
-                      specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
-                      use all sites if not specified
--c COVERAGE           The minimum coverage for site selection [Default: 10]
---cXY=COVERAGEXY      Coverage for chrX/Y should be half that of autosome
-                      for male [Default: same with -c]</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools mmbin -l WG.CGmap.gz,RR.CGmap.gz,RR2.CGmap.gz,merge.CGmap.gz -c 4 -B 2000 | gawk '{printf(&quot;%s:%s-%s&quot;, $1, $2, $3); for(i=4;i&lt;=NF;i++){printf(&quot;\t%s&quot;, $i);} printf(&quot;\n&quot;);}' &gt; mmbin</code></p></li>
-<li><p><strong>File format</strong>:</p>
-<p>The output format:</p>
-<pre><code>chr1    1       5000    0.0000
-chr1    5001    10000   0.0396
-chr2    1       5000    0.0755
-chr2    5001    10000   0.0027
-chr3    1       5000    na</code></pre></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mmbin -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mmbin [-l &lt;1.CGmap[,2.CGmap,..]&gt;] [-c 10 --CXY 5 -B 5000000] 
+#         (aka CGmapsMethInBins)
+#   Description: Generate the methylation in Bins.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   Output Ex:
+#      chr1    1       5000    0.0000
+#      chr1    5001    10000   0.0396
+#      chr2    1       5000    0.0755
+#      chr2    5001    10000   0.0027
+#      chr3    1       5000    na
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -l FILE               File name list, end with .CGmap or .CGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -t FILE               List of samples
+#     -B BIN_SIZE           Define the size of bins [Default: 5000000]
+#     -C CONTEXT, --context=CONTEXT
+#                           specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
+#                           use all sites if not specified
+#     -c COVERAGE           The minimum coverage for site selection [Default: 10]
+#     --cXY=COVERAGEXY      Coverage for chrX/Y should be half that of autosome
+#                           for male [Default: same with -c]</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>cgmaptools mmbin -l WG.CGmap.gz,RR.CGmap.gz,RR2.CGmap.gz,merge.CGmap.gz -c 4 -B 2000 | gawk '{printf(&quot;%s:%s-%s&quot;, $1, $2, $3); for(i=4;i&lt;=NF;i++){printf(&quot;\t%s&quot;, $i);} printf(&quot;\n&quot;);}' &gt; mmbin</code></p>
+<p>```</p></li>
 </ul>
 </div>
 <div id="mfg" class="section level2">
 <h2><span class="header-section-number">5.7</span> mfg</h2>
 <ul>
-<li><p><strong>Description</strong>: Calculated methylation profile across fragmented regions.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mfg [-i &lt;CGmap&gt;]  -r &lt;region&gt; [-c 5 -C 500]</code></p>
-<pre><code>-i  String, CGmap file; use STDIN if not specified
-    chr1    G   851 CHH CC  0.1 1   10
--r  String, Region file, at least 4 columns
-    Format: chr strand  pos_1   pos_2   pos_3   ...
-    Regions would be considered as [pos_1, pos_2), [pos_2, pos_3)
-    Strand information will be used for distinguish sense/antisense strand
-    Ex:
-    chr1    +   600 700 800 900 950
-    chr1    -   1600    1500    1400    1300    1250
--c  Int, minimum Coverage [Default: 5]
--C  Int, maximum Coverage [Default: 500]
-    Sites exceed the coverage range will be discarded</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mfg -h</code></pre></div>
+<pre><code>#   Usage:  cgmaptools mfg [-i &lt;CGmap&gt;]  -r &lt;region&gt; [-c 5 -C 500] 
+#   Description: Calculated methylation profile across fragmented regions.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#   Options:
+#      -i  String, CGmap file; use STDIN if not specified
+#          Please use &quot;gunzip -c &lt;input&gt;.gz &quot; and pipe as input for gzipped file.
+#          chr1 G   851 CHH CC  0.1 1   10
+#      -r  String, Region file, at least 4 columns
+#          Format: chr  strand  pos_1   pos_2   pos_3   ...
+#          Regions would be considered as [pos_1, pos_2), [pos_2, pos_3)
+#          Strand information will be used for distinguish sense/antisense strand
+#          Ex:
+#          #chr strand  U1  R1  R2  D1  End
+#          chr1 +   600 700 800 900 950
+#          chr1 -   1600    1500    1400    1300    1250
+#      -c  Int, minimum Coverage [Default: 5] 
+#      -C  Int, maximum Coverage [Default: 500] 
+#          Sites exceed the coverage range will be discarded
+#      -x  String, context [use all sites by default] 
+#          string can be CG, CH, CHG, CHH, CA, CC, CT, CW
+#      -h  help
+#   Output to STDOUT:
+#      Region_ID       U1      R1      R2      D1
+#      sense_ave_mC    0.50    0.40    0.30    0.20
+#      sense_sum_mC    5.0     4.0     3.0     2.0
+#      sense_sum_NO    10      10      10      10
+#      anti_ave_mC     0.40    0.20    0.10    NaN
+#      anti_sum_mC     8.0     4.0     2.0     0.0
+#      anti_sum_NO     20      20      20      0
+#      total_ave_mC    0.43    0.27    0.17    0.2
+#      total_sum_mC    13.0    8.0     5.0     2.0
+#      total_sum_NO    30      30      30      10</code></pre>
+<ul>
+<li><p><strong>Example</strong>:</p>
 <p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code></p>
 <p><code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p>
 <p><code>cgmaptools fragreg -i WG.mfg -f pdf -o WG_mfg.pdf</code></p></li>
-<li><p><strong>File format</strong>:</p>
-<p>The output format:</p>
-<pre><code>Region_ID       R_1     R_2     R_3     R_4
-sense_ave_mC    0.50    0.40    0.30    0.20
-sense_sum_mC    5.0     4.0     3.0     2.0
-sense_sum_NO    10      10      10      10
-anti_ave_mC     0.40    0.20    0.10    NaN
-anti_sum_mC     8.0     4.0     2.0     0.0
-anti_sum_NO     20      20      20      0
-total_ave_mC    0.43    0.27    0.17    0.2
-total_sum_mC    13.0    8.0     5.0     2.0
-total_sum_NO    30      30      30      10</code></pre></li>
 </ul>
 </div>
 <div id="mstat" class="section level2">
 <h2><span class="header-section-number">5.8</span> mstat</h2>
 <ul>
-<li><p><strong>Description</strong>: Methyaltion statistic.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mstat [-i &lt;CGmap&gt;]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. If not
-                      specified, STDIN will be used.
--c COVERAGE           The minimum coverage for site selection [Default: 10]
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mstat -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mstat [-i &lt;CGmap&gt;]  
+#         (aka CGmapStatMeth)
+#   Description: Generate the bulk methylation.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-08
+#   Output Ex:
+#      MethStat        context C       CG      CHG      CHH     CA      CC      CT      CH      CW
+#      mean_mC         global  0.0798  0.3719  0.0465  0.0403  0.0891  0.0071  0.0241  0.0419  0.0559
+#      sd_mCbyChr      global  0.0078  0.0341  0.0163  0.0110  0.0252  0.0049  0.0076  0.0096  0.0148
+#      count_C         global  10000   1147    2332    6521    3090    2539    3224    8853    6314
+#      contrib_mC      global  1.0000  0.5348  0.1360  0.3292  0.3452  0.0228  0.0973  0.4652  0.4424
+#      quant_mC        [0]     8266    471     2012    5783    2422    2421    2952    7795    5374
+#      quant_mC   (0.00 ,0.20] 705     182     155     368     272     97      154     523     426
+#      mean_mC_byChr   chr1    0.0840  0.4181  0.0340  0.0412  0.0794  0.0065  0.0251  0.0393  0.0513
+#      mean_mC_byChr   chr10   0.0917  0.4106  0.0758  0.0421  0.0968  0.0097  0.0349  0.0502  0.0655
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .CGmap or .CGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -c COVERAGE           The minimum coverage for site selection [Default: 10]
+#     -f FILE, --figure-type=FILE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Height of figure in inch [Default: 3]
+#     -W FLOAT              Width of figure in inch [Default: 8]
+#     -p STRING             Prefix for output figures
+#     -t STRING, --title=STRING
+#                           title in the output figures</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools mstat -i WG.CGmap.gz -c 4 -f png -p WG -t WG &gt; WG.mstat.data</code></p></li>
-<li><p><strong>File format</strong>:</p>
+<li><p><strong>File format</strong></p>
 <p>The output format:</p>
 <pre><code>MethStat        context C       CG      CHG     CHH     CA      CC      CT      CH      CW
 mean_mC         global  0.0798  0.3719  0.0465  0.0403  0.0891  0.0071  0.0241  0.0419  0.0559
@@ -364,20 +545,21 @@ quant_mC        [0]     8266    471     2012    5783    2422    2421    2952    
 quant_mC   (0.00 ,0.20] 705     182     155     368     272     97      154     523     426
 mean_mC_byChr   chr1    0.0840  0.4181  0.0340  0.0412  0.0794  0.0065  0.0251  0.0393  0.0513
 mean_mC_byChr   chr10   0.0917  0.4106  0.0758  0.0421  0.0968  0.0097  0.0349  0.0502  0.0655</code></pre></li>
+<li><p><strong>Output figures</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-38"></span>
 <img src="Pie_mC_contribution.png" alt="mC contribution example" width="80%" />
 <p class="caption">
 Figure 5.2: mC contribution example
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-39"></span>
 <img src="DNAmethylationLevel_ByContext.png" alt="Bulk mC example" width="80%" />
 <p class="caption">
 Figure 5.3: Bulk mC example
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-40"></span>
 <img src="DNAmethylationDistribution_ByContext.png" alt="mC fragmented distribution example" width="80%" />
 <p class="caption">
 Figure 5.4: mC fragmented distribution example
@@ -387,15 +569,33 @@ Figure 5.4: mC fragmented distribution example
 <div id="mtr" class="section level2">
 <h2><span class="header-section-number">5.9</span> mtr</h2>
 <ul>
-<li><p><strong>Description</strong>: Calculate the methylation levels in regions in two ways.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mtr [-i &lt;CGmap&gt;] -r &lt;region&gt; [-o &lt;output&gt;]</code></p>
-<pre><code>-i FILE     File name end with .CGmap or .CGmap.gz. If not specified, STDIN
-            will be used.
--r FILE     Filename for region file, support *.gz
--o OUTFILE  To standard output if not specified.</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mtr -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mtr [-i &lt;CGmap&gt;] -r &lt;region&gt; [-o &lt;output&gt;]
+#         (aka CGmapToRegion)
+#   Description: Calculated the methylation levels in regions in two ways.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2017-01-20
+#   Format of Region file:
+#     #chr    start_pos  end_pos
+#      chr1   8275       8429
+#   Output file format:
+#      #chr  start_pos  end_pos  mean(mC)  #_C  #read(C)/#read(T+C)  #read(T+C)
+#      chr1   8275       8429     0.34     72         0.40             164
+#   Note: The two input CGmap files should be sorted by Sort_chr_pos.py first.
+#         This script would not distinguish CG/CHG/CHH contexts.
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     File name end with .CGmap or .CGmap.gz. If not specified, STDIN
+#                 will be used.
+#     -r FILE     Filename for region file, support *.gz
+#     -o OUTFILE  To standard output if not specified.</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools mtr -i WG.CGmap.gz -r region.bed -o WG.mtr.gz</code></p></li>
-<li><p><strong>File formats</strong>:</p>
+<li><p><strong>File formats</strong></p>
 <p>The input file format:</p>
 <pre><code>#chr    start_pos  end_pos
 chr1    8275       8429</code></pre>
@@ -412,8 +612,9 @@ chr1   8275       8429     0.34     72         0.40             164</code></pre>
         </div>
       </div>
 <a href="snv-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coverage-analysis.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="coverage-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

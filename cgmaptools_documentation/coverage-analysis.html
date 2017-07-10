@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -25,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-02-20">
+<meta name="date" content="2017-07-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +33,6 @@
   
 <link rel="prev" href="methylation-analysis.html">
 <link rel="next" href="graphics.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +48,48 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -67,20 +103,34 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="what-is-cgmaptools.html"><a href="what-is-cgmaptools.html"><i class="fa fa-check"></i><b>1</b> What is CGmapTools</a></li>
-<li class="chapter" data-level="2" data-path="new-file-format.html"><a href="new-file-format.html"><i class="fa fa-check"></i><b>2</b> New File Format</a><ul>
-<li class="chapter" data-level="2.1" data-path="new-file-format.html"><a href="new-file-format.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
-<li class="chapter" data-level="2.2" data-path="new-file-format.html"><a href="new-file-format.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2" data-path="file-formats.html"><a href="file-formats.html"><i class="fa fa-check"></i><b>2</b> File Formats</a><ul>
+<li class="chapter" data-level="2.1" data-path="file-formats.html"><a href="file-formats.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
+<li class="chapter" data-level="2.2" data-path="file-formats.html"><a href="file-formats.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2.3" data-path="file-formats.html"><a href="file-formats.html#atcgbz-format"><i class="fa fa-check"></i><b>2.3</b> ATCGbz Format</a></li>
+<li class="chapter" data-level="2.4" data-path="file-formats.html"><a href="file-formats.html#cgbz-format"><i class="fa fa-check"></i><b>2.4</b> CGbz Format</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="file-manipulation.html"><a href="file-manipulation.html"><i class="fa fa-check"></i><b>3</b> File Manipulation</a><ul>
 <li class="chapter" data-level="3.1" data-path="file-manipulation.html"><a href="file-manipulation.html#convert"><i class="fa fa-check"></i><b>3.1</b> convert</a></li>
-<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a></li>
+<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-cgbz"><i class="fa fa-check"></i><b>3.2.1</b> fetch cgbz</a></li>
+<li class="chapter" data-level="3.2.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-atcgbz"><i class="fa fa-check"></i><b>3.2.2</b> fetch atcgbz</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="file-manipulation.html"><a href="file-manipulation.html#refill"><i class="fa fa-check"></i><b>3.3</b> refill</a></li>
 <li class="chapter" data-level="3.4" data-path="file-manipulation.html"><a href="file-manipulation.html#intersect"><i class="fa fa-check"></i><b>3.4</b> intersect</a></li>
-<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a></li>
-<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a></li>
+<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-atcgmap"><i class="fa fa-check"></i><b>3.5.1</b> merge2 atcgmap</a></li>
+<li class="chapter" data-level="3.5.2" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-cgmap"><i class="fa fa-check"></i><b>3.5.2</b> merge2 cgmap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tomatrix"><i class="fa fa-check"></i><b>3.6.1</b> mergelist tomatrix</a></li>
+<li class="chapter" data-level="3.6.2" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tosingle"><i class="fa fa-check"></i><b>3.6.2</b> mergelist tosingle</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="file-manipulation.html"><a href="file-manipulation.html#sort"><i class="fa fa-check"></i><b>3.7</b> sort</a></li>
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
-<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
+<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="file-manipulation.html"><a href="file-manipulation.html#select-region"><i class="fa fa-check"></i><b>3.9.1</b> select region</a></li>
+<li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
@@ -95,8 +145,14 @@
 <li class="chapter" data-level="5.9" data-path="methylation-analysis.html"><a href="methylation-analysis.html#mtr"><i class="fa fa-check"></i><b>5.9</b> mtr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="coverage-analysis.html"><a href="coverage-analysis.html"><i class="fa fa-check"></i><b>6</b> Coverage Analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a></li>
-<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a></li>
+<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-bin"><i class="fa fa-check"></i><b>6.1.1</b> oac bin</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-stat"><i class="fa fa-check"></i><b>6.1.2</b> oac stat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-bin"><i class="fa fa-check"></i><b>6.2.1</b> mec bin</a></li>
+<li class="chapter" data-level="6.2.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-stat"><i class="fa fa-check"></i><b>6.2.2</b> mec stat</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>7</b> Graphics</a><ul>
 <li class="chapter" data-level="7.1" data-path="graphics.html"><a href="graphics.html#lollipop"><i class="fa fa-check"></i><b>7.1</b> lollipop</a></li>
@@ -130,31 +186,88 @@
 <div id="oac" class="section level2">
 <h2><span class="header-section-number">6.1</span> oac</h2>
 <ul>
-<li><p><strong>Description</strong>: Overall coverage (for ATCGmap).</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools oac &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Command</strong>:</p>
-<p><strong>bin</strong>: Overall coverage in bins.</p>
-<p>Usage: <code>cgmaptools oac bin  [-i &lt;ATCGmap&gt;] [-B 5000000]</code></p>
-<pre><code>-i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
-                      specified, STDIN will be used.
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools oac bin -i WG.ATCGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.oac_bin.data</code></p>
-<p><strong>stat</strong>: Get the distribution of overall coverages.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools oac stat [-i &lt;ATCGmap&gt;]</code></p>
-<pre><code>-i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
-                      specified, STDIN will be used.
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> oac -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools oac &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        bin      * overall coverage in bins
+#        stat     * overall coverage statistics globally</code></pre>
+<div id="oac-bin" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> oac bin</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> oac bin -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools oac bin  [-i &lt;ATCGmap&gt;] [-B 5000000] 
+#          (aka ATCGmapCovInBins)
+#   Description: Generate the overall coverage in Bins.
+#   Contact:     Guo, Weilong; guoweilong@126.com;
+#   Last Update: 2016-12-07
+#   Output Ex:
+#      chr1    1       5000    29.0000
+#      chr1    5001    10000   30.0396
+#      chr2    1       5000    35.0755
+#      chr2    5001    10000   40.0027
+#      chr3    1       5000    na
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -B BIN_SIZE           Define the size of bins [Default: 5000000]
+#     -f FILE, --figure-type=FILE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Height of figure in inch [Default: 4]
+#     -W FLOAT              Width of figure in inch [Default: 8]
+#     -p STRING             Prefix for output figures
+#     -t STRING, --title=STRING
+#                           title in the output figures</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>cgmaptools oac bin -i WG.ATCGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.oac_bin.data</code></p></li>
+<li><p><strong>Output figure</strong></p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-44"></span>
+<img src="AML.OverAllCove.png" alt="MEC example" width="80%" />
+<p class="caption">
+Figure 6.1: MEC example
+</p>
+</div>
+</div>
+<div id="oac-stat" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> oac stat</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> oac stat -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools oac stat [-i &lt;ATCGmap&gt;]
+#          (aka ATCGmapStatCov)
+#   Description: Get the distribution of overall coverages.
+#   Contact:     Guo, Weilong; guoweilong@126.com;
+#   Last Update: 2016-12-16
+#   Output Ex:
+#      OverAllCov      global  47.0395
+#      OverAllCov      chr1    45.3157
+#      OverAllCov      chr10   47.7380
+#      CovAndCount     1       1567
+#      CovAndCount     2       655
+#      CovAndCount     3       380
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .ATCGmap or .ATCGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -f FILE, --figure-type=FILE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Scale ratio for the Height of figure [Default: 1]
+#     -W FLOAT              Width of figure in inch [Default: 8]
+#     -p STRING             Prefix for output figures</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools oac stat -i WG.ATCGmap.gz -p WG -f png &gt; WG.oac_stat.data</code></p></li>
 <li><p><strong>output format</strong>:</p>
 <p>The output format of <code>bin</code>:</p>
@@ -171,59 +284,96 @@ CovAndCount     1       1567
 CovAndCount     2       655
 CovAndCount     3       380</code></pre></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
-<img src="AML.OverAllCove.png" alt="MEC example" width="80%" />
-<p class="caption">
-Figure 6.1: MEC example
-</p>
 </div>
 </div>
 <div id="mec" class="section level2">
 <h2><span class="header-section-number">6.2</span> mec</h2>
 <ul>
-<li><p><strong>Description</strong>: Methylation effective coverage (for CGmap).</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mec &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>bin</strong>: Generate the methylation-effective coverage in Bins.</p>
-<p>Usage: <code>cgmaptools mec bin [-i &lt;CGmap&gt;] [-B 5000000]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. If not
-                      specified, STDIN will be used.
--B BIN_SIZE           Define the size of bins [Default: 5000000]
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures
--t STRING, --title=STRING
-                      title in the output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools mec bin -i WG.CGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.mec_bin.data</code></p></li>
-<li><p><strong>output format</strong>:</p>
-<p>The output format of <code>bin</code>:</p>
-<pre><code>chr1    1       5000    29.0000
-chr1    5001    10000   30.0396
-chr2    1       5000    35.0755
-chr2    5001    10000   40.0027
-chr3    1       5000    na</code></pre>
-<p><strong>stat</strong>: Get the distribution of methylation-effective coverages.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mec stat [-i &lt;CGmap&gt;]</code></p>
-<pre><code>-i FILE               File name end with .CGmap or .CGmap.gz. If not
-                      specified, STDIN will be used.
--f FILE, --figure-type=FILE
-                      png, pdf, eps. Will not generate figure if not
-                      specified
--p STRING             Prefix for output figures</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
-<p><code>cgmaptools mec stat -i WG.CGmap.gz -p WG -f png &gt; WG.mec_stat.data</code></p></li>
-<li><p><strong>Output format</strong>:</p>
-<p>The output format of <code>stat</code>:</p>
-<pre><code>OverAllCov      global  47.0395
-OverAllCov      chr1    45.3157
-OverAllCov      chr10   47.7380
-CovAndCount     1       1567
-CovAndCount     2       655
-CovAndCount     3       380</code></pre></li>
+<li><strong>Command</strong></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mec -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools mec &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        bin      * methylation effective coverage in bins
+#        stat     * methylation effective coverage statistics globally</code></pre>
+<div id="mec-bin" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> mec bin</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mec bin -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mec bin [-i &lt;CGmap&gt;] [-B 5000000] 
+#         (aka CGmapCovInBins)
+#   Description: Generate the methylation-effective coverage in Bins.
+#   Contact:     Guo, Weilong; guoweilong@126.com;
+#   Last Update: 2016-12-07
+#   Output Ex:
+#      chr1    1       5000    29.0000
+#      chr1    5001    10000   30.0396
+#      chr2    1       5000    35.0755
+#      chr2    5001    10000   40.0027
+#      chr3    1       5000    na
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .CGmap or .CGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -B BIN_SIZE           Define the size of bins [Default: 5000000]
+#     -f FILE, --figure-type=FILE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Height of figure in inch [Default: 4]
+#     -W FLOAT              Width of figure in inch [Default: 8]
+#     -p STRING             Prefix for output figures
+#     -t STRING, --title=STRING
+#                           title in the output figures
+#     -C CONTEXT, --context=CONTEXT
+#                           specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
+#                           use all sites if not specified</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>cgmaptools mec bin -i WG.CGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.mec_bin.data</code></p></li>
+</ul>
+</div>
+<div id="mec-stat" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> mec stat</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mec stat -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mec stat [-i &lt;CGmap&gt;]  
+#         (aka CGmapStatCov)
+#   Description: Get the distribution of methylation-effective coverages.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-16
+#   Output Ex:
+#      MethEffectCove  global  47.0395
+#      MethEffectCove  chr1    45.3157
+#      MethEffectCove  chr10   47.7380
+#      CovAndCount     1       1567
+#      CovAndCount     2       655
+#      CovAndCount     3       380
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -i FILE               File name end with .CGmap or .CGmap.gz. If not
+#                           specified, STDIN will be used.
+#     -f FILE, --figure-type=FILE
+#                           png, pdf, eps. Will not generate figure if not
+#                           specified
+#     -H FLOAT              Scale factor for the Height of figure [Default: 1]
+#     -W FLOAT              Width of figure in inch [Default: 11]
+#     -p STRING             Prefix for output figures
+#     -C CONTEXT, --context=CONTEXT
+#                           specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
+#                           use all sites if not specified</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>cgmaptools mec stat -i WG.CGmap.gz -p WG -f png &gt; WG.mec_stat.data</code></p></li>
+<li><p><strong>Output figure</strong></p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
 <img src="AML.MethEffectCove.png" alt="MEC example" width="80%" />
 <p class="caption">
 Figure 6.2: MEC example
@@ -232,14 +382,16 @@ Figure 6.2: MEC example
 
 </div>
 </div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="methylation-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphics.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

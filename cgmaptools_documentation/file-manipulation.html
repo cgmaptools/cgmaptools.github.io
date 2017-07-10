@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -25,16 +24,15 @@
 
 
 
-<meta name="date" content="2017-02-20">
+<meta name="date" content="2017-07-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="new-file-format.html">
+<link rel="prev" href="file-formats.html">
 <link rel="next" href="snv-calling.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +48,48 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -67,20 +103,34 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="what-is-cgmaptools.html"><a href="what-is-cgmaptools.html"><i class="fa fa-check"></i><b>1</b> What is CGmapTools</a></li>
-<li class="chapter" data-level="2" data-path="new-file-format.html"><a href="new-file-format.html"><i class="fa fa-check"></i><b>2</b> New File Format</a><ul>
-<li class="chapter" data-level="2.1" data-path="new-file-format.html"><a href="new-file-format.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
-<li class="chapter" data-level="2.2" data-path="new-file-format.html"><a href="new-file-format.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2" data-path="file-formats.html"><a href="file-formats.html"><i class="fa fa-check"></i><b>2</b> File Formats</a><ul>
+<li class="chapter" data-level="2.1" data-path="file-formats.html"><a href="file-formats.html#atcgmap-format"><i class="fa fa-check"></i><b>2.1</b> ATCGmap Format</a></li>
+<li class="chapter" data-level="2.2" data-path="file-formats.html"><a href="file-formats.html#cgmap-format"><i class="fa fa-check"></i><b>2.2</b> CGmap Format</a></li>
+<li class="chapter" data-level="2.3" data-path="file-formats.html"><a href="file-formats.html#atcgbz-format"><i class="fa fa-check"></i><b>2.3</b> ATCGbz Format</a></li>
+<li class="chapter" data-level="2.4" data-path="file-formats.html"><a href="file-formats.html#cgbz-format"><i class="fa fa-check"></i><b>2.4</b> CGbz Format</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="file-manipulation.html"><a href="file-manipulation.html"><i class="fa fa-check"></i><b>3</b> File Manipulation</a><ul>
 <li class="chapter" data-level="3.1" data-path="file-manipulation.html"><a href="file-manipulation.html#convert"><i class="fa fa-check"></i><b>3.1</b> convert</a></li>
-<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a></li>
+<li class="chapter" data-level="3.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch"><i class="fa fa-check"></i><b>3.2</b> fetch</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-cgbz"><i class="fa fa-check"></i><b>3.2.1</b> fetch cgbz</a></li>
+<li class="chapter" data-level="3.2.2" data-path="file-manipulation.html"><a href="file-manipulation.html#fetch-atcgbz"><i class="fa fa-check"></i><b>3.2.2</b> fetch atcgbz</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="file-manipulation.html"><a href="file-manipulation.html#refill"><i class="fa fa-check"></i><b>3.3</b> refill</a></li>
 <li class="chapter" data-level="3.4" data-path="file-manipulation.html"><a href="file-manipulation.html#intersect"><i class="fa fa-check"></i><b>3.4</b> intersect</a></li>
-<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a></li>
-<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a></li>
+<li class="chapter" data-level="3.5" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2"><i class="fa fa-check"></i><b>3.5</b> merge2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-atcgmap"><i class="fa fa-check"></i><b>3.5.1</b> merge2 atcgmap</a></li>
+<li class="chapter" data-level="3.5.2" data-path="file-manipulation.html"><a href="file-manipulation.html#merge2-cgmap"><i class="fa fa-check"></i><b>3.5.2</b> merge2 cgmap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist"><i class="fa fa-check"></i><b>3.6</b> mergelist</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tomatrix"><i class="fa fa-check"></i><b>3.6.1</b> mergelist tomatrix</a></li>
+<li class="chapter" data-level="3.6.2" data-path="file-manipulation.html"><a href="file-manipulation.html#mergelist-tosingle"><i class="fa fa-check"></i><b>3.6.2</b> mergelist tosingle</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="file-manipulation.html"><a href="file-manipulation.html#sort"><i class="fa fa-check"></i><b>3.7</b> sort</a></li>
 <li class="chapter" data-level="3.8" data-path="file-manipulation.html"><a href="file-manipulation.html#split"><i class="fa fa-check"></i><b>3.8</b> split</a></li>
-<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a></li>
+<li class="chapter" data-level="3.9" data-path="file-manipulation.html"><a href="file-manipulation.html#select"><i class="fa fa-check"></i><b>3.9</b> select</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="file-manipulation.html"><a href="file-manipulation.html#select-region"><i class="fa fa-check"></i><b>3.9.1</b> select region</a></li>
+<li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
@@ -95,8 +145,14 @@
 <li class="chapter" data-level="5.9" data-path="methylation-analysis.html"><a href="methylation-analysis.html#mtr"><i class="fa fa-check"></i><b>5.9</b> mtr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="coverage-analysis.html"><a href="coverage-analysis.html"><i class="fa fa-check"></i><b>6</b> Coverage Analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a></li>
-<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a></li>
+<li class="chapter" data-level="6.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac"><i class="fa fa-check"></i><b>6.1</b> oac</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-bin"><i class="fa fa-check"></i><b>6.1.1</b> oac bin</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#oac-stat"><i class="fa fa-check"></i><b>6.1.2</b> oac stat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec"><i class="fa fa-check"></i><b>6.2</b> mec</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-bin"><i class="fa fa-check"></i><b>6.2.1</b> mec bin</a></li>
+<li class="chapter" data-level="6.2.2" data-path="coverage-analysis.html"><a href="coverage-analysis.html#mec-stat"><i class="fa fa-check"></i><b>6.2.2</b> mec stat</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>7</b> Graphics</a><ul>
 <li class="chapter" data-level="7.1" data-path="graphics.html"><a href="graphics.html#lollipop"><i class="fa fa-check"></i><b>7.1</b> lollipop</a></li>
@@ -132,9 +188,8 @@
 <div id="convert" class="section level2">
 <h2><span class="header-section-number">3.1</span> convert</h2>
 <ul>
-<li><p><strong>Description</strong>: File format coversion.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools convert &lt;command&gt; [options]</code></p></li>
-<li><p><strong>sub-command table</strong>:</p></li>
+<li><p><strong>Description</strong> : File format coversion.</p></li>
+<li><p><strong>Table of command for converting formats</strong>:</p></li>
 </ul>
 <table>
 <thead>
@@ -146,51 +201,86 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">bam2cgmap</td>
+<td align="center"><strong>bam2cgmap</strong></td>
 <td align="center">BAM</td>
 <td align="center">CGmap &amp; ATCGmap</td>
 </tr>
 <tr class="even">
-<td align="center">atcgmap2atcgbz</td>
+<td align="center"><strong>atcgmap2atcgbz</strong></td>
 <td align="center">ATCGmap</td>
 <td align="center">ATCGbz</td>
 </tr>
 <tr class="odd">
-<td align="center">atcgbz2atcgmap</td>
+<td align="center"><strong>atcgbz2atcgmap</strong></td>
 <td align="center">ATCGbz</td>
 <td align="center">ATCGmap</td>
 </tr>
 <tr class="even">
-<td align="center">atcgmap2cgmap</td>
+<td align="center"><strong>atcgmap2cgmap</strong></td>
 <td align="center">ATCGmap</td>
 <td align="center">CGmap</td>
 </tr>
 <tr class="odd">
-<td align="center">cgmap2cgbz</td>
+<td align="center"><strong>cgmap2cgbz</strong></td>
 <td align="center">CGamp</td>
 <td align="center">CGbz</td>
 </tr>
 <tr class="even">
-<td align="center">cgbz2cgmap</td>
+<td align="center"><strong>cgbz2cgmap</strong></td>
 <td align="center">CGbz</td>
 <td align="center">CGmap</td>
 </tr>
 <tr class="odd">
-<td align="center">cgmap2wig</td>
+<td align="center"><strong>cgmap2wig</strong></td>
 <td align="center">CGmap</td>
 <td align="center">WIG</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p><strong>Example commands</strong> :</p>
-<p>BAM to CGmap <code>cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG</code></p>
-<p>BAM to CGmap <code>cgmaptools convert bam2cgmap -b RR.bam -g genome.fa --rmOverlap -o RR</code></p>
-<p>ATCGmap to ATCGbz <code>cgmaptools convert atcgmap2atcgbz -c WG.ATCGmap.gz -b WG.ATCGbz</code></p>
-<p>ATCGvz to ATCGmap <code>cgmaptools convert atcgbz2atcgmap -c WG2.ATCGmap.gz -b WG.ATCGbz</code></p>
-<p>CGmap to CGbz <code>cgmaptools convert cgmap2cgbz -c RR.CGmap.gz -b RR.CGbz</code></p>
-<p>CGbz to CGmap <code>cgmaptools convert cgbz2cgmap -c RR2.CGmap.gz -b RR.CGbz</code></p>
-<p>CGmap =&gt; WIG <code>cgmaptools convert cgmap2wig [-i &lt;CGmap&gt;] [-w &lt;wig&gt;] [-c &lt;INT&gt; -b &lt;float&gt;]</code></p></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> convert -h </code></pre></div>
+<pre><code>#   Usage:    cgmaptools convert &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        bam2cgmap        BAM     =&gt; CGmap &amp; ATCGmap
+#        atcgmap2atcgbz   ATCGmap =&gt; ATCGbz
+#        atcgbz2atcgmap   ATCGbz  =&gt; ATCGmap
+#        atcgmap2cgmap    ATCGmap =&gt; CGmap
+#        cgmap2cgbz       CGamp   =&gt; CGbz
+#        cgbz2cgmap       CGbz    =&gt; CGmap
+#        cgmap2wig        CGmap   =&gt; WIG</code></pre>
+<ul>
+<li><p><strong>Example</strong> :</p>
+<ul>
+<li>BAM to CGmap</li>
+</ul>
+<p><code>cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG</code></p>
+<ul>
+<li>BAM to CGmap</li>
+</ul>
+<p><code>cgmaptools convert bam2cgmap -b RR.bam -g genome.fa --rmOverlap -o RR</code></p>
+<ul>
+<li>ATCGmap to ATCGbz</li>
+</ul>
+<p><code>cgmaptools convert atcgmap2atcgbz -c WG.ATCGmap.gz -b WG.ATCGbz</code></p>
+<ul>
+<li>ATCGvz to ATCGmap</li>
+</ul>
+<p><code>cgmaptools convert atcgbz2atcgmap -c WG2.ATCGmap.gz -b WG.ATCGbz</code></p>
+<ul>
+<li>CGmap to CGbz</li>
+</ul>
+<p><code>cgmaptools convert cgmap2cgbz -c RR.CGmap.gz -b RR.CGbz</code></p>
+<ul>
+<li>CGbz to CGmap</li>
+</ul>
+<p><code>cgmaptools convert cgbz2cgmap -c RR2.CGmap.gz -b RR.CGbz</code></p>
+<ul>
+<li>CGmap to WIG</li>
+</ul>
+<p><code>cgmaptools convert cgmap2wig -i &lt;CGmap&gt; [-w &lt;wig&gt;] [-c &lt;INT&gt; -b &lt;float&gt;]</code></p></li>
 </ul>
 <blockquote>
 <p>Note: please refer to the help message for usage details using <code>-h</code> option.</p>
@@ -200,165 +290,388 @@
 <h2><span class="header-section-number">3.2</span> fetch</h2>
 <ul>
 <li><p><strong>Description</strong>: Fastly acess methylation data in specified region.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools fetch &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>atcgbz</strong>: fetch lines from ATCGbz file.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools fetch atcgbz -b &lt;ATCGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;</code></p>
-<pre><code>-b, --ATCGbz &lt;arg&gt;     input ATCGbz file  
--C, --CHR &lt;arg&gt;        specify the chromosome name  
--L, --leftPos &lt;arg&gt;    the left position  
--R, --rightPos &lt;arg&gt;   the right position</code></pre>
-<p><strong>cgbz</strong>: fetch lines from CGbz file.</p>
-<p>Usage: <code>cgmaptools fetch cgbz -b &lt;CGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;</code></p>
-<pre><code>-b, --CGbz &lt;arg&gt;       intput CGbz file
--C, --CHR &lt;arg&gt;        specify the chromosome name
--L, --leftPos &lt;arg&gt;    the left position
--R, --rightPos &lt;arg&gt;   the right position</code></pre></li>
-<li><p><strong>Example commands</strong> :</p>
-<p><code>cgmaptools fetch atcgbz -b WG.ATCGbz -C chr2 -L 90 -R 100</code></p>
+<li><p><strong>Command</strong></p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fetch -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools fetch &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        atcgbz      fetch lines from ATCGbz
+#        cgbz        fetch lines from CGbz</code></pre>
+<div id="fetch-cgbz" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> fetch cgbz</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fetch cgbz -h</code></pre></div>
+<pre><code>#   
+#     Usage: cgmaptools fetch cgbz -b &lt;CGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;
+#            (aka CGvzFetchRegion)
+#     Description: Convert CGbz file to CGmap format.
+#     Contact: Guo, Weilong; guoweilong@126.com
+#     Last update: 2016-12-07
+#   
+#     Options:
+#   
+#       -h, --help             output help information
+#       -b, --CGbz &lt;arg&gt;       output CGbz file
+#       -C, --CHR &lt;arg&gt;        specify the chromosome name
+#       -L, --leftPos &lt;arg&gt;    the left position
+#       -R, --rightPos &lt;arg&gt;   the right position</code></pre>
+<ul>
+<li><p><strong>Example</strong> :</p>
 <p><code>cgmaptools fetch cgbz -b RR.CGbz -C chr3 -L 2200 -R 2400</code></p></li>
 </ul>
+</div>
+<div id="fetch-atcgbz" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> fetch atcgbz</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fetch atcgbz -h</code></pre></div>
+<pre><code>#   
+#     Usage: cgmaptools fetch atcgbz -b &lt;ATCGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;
+#           (aka ATCGbzFetchRegion)
+#     Description: Convert ATCGbz format to ATCGmap format.
+#     Contact:     Guo, Weilong; guoweilong@126.com
+#     Last update: 2016-12-07
+#   
+#     Options:
+#   
+#       -h, --help             output help information
+#       -b, --ATCGbz &lt;arg&gt;     output ATCGbz file
+#       -C, --CHR &lt;arg&gt;        specify the chromosome name
+#       -L, --leftPos &lt;arg&gt;    the left position
+#       -R, --rightPos &lt;arg&gt;   the right position</code></pre>
+<ul>
+<li><p><strong>Example</strong> :</p>
+<p><code>cgmaptools fetch atcgbz -b WG.ATCGbz -C chr2 -L 90 -R 100</code></p></li>
+</ul>
+</div>
 </div>
 <div id="refill" class="section level2">
 <h2><span class="header-section-number">3.3</span> refill</h2>
 <ul>
-<li><p><strong>Description</strong>: Fill the CG/CHG/CHH and CA/CC/CT/CG context to CGmap or ATCGmap files. Other fields will not be affected.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools refill [-i &lt;CGmap&gt;] -g &lt;genome.fa&gt; [-o output]</code></p>
-<pre><code>-i STRING     Input CGmap file (CGmap or CGmap.gz)
--g STRING     genome file, FASTA format (gzipped if end with &#39;.gz&#39;)
--o STRING     Output file name (gzipped if end with &#39;.gz&#39;)
--0, --0-base  0-based genome if specified [Default: 1-based]</code></pre></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> refill -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools refill [-i &lt;CGmap&gt;] -g &lt;genome.fa&gt; [-o output]
+#         (aka CGmapFillContext)
+#   Description: Fill the CG/CHG/CHH and CA/CC/CT/CG context.
+#                Other fields will not be affected.
+#                Can be applied to ATCGmap file.
+#   Contact:     Guo, Weilong; guoweilong@126.com; 
+#   Last Update: 2016-12-07
+#   Index Ex:
+#      Chr1    C       3541    -       -       0.0     0       1
+#   Output Ex:
+#      Chr1    C       3541    CG      CG      0.0     0       1
+#   
+#   Options:
+#     -h, --help    show this help message and exit
+#     -i STRING     Input CGmap file (CGmap or CGmap.gz)
+#     -g STRING     genome file, FASTA format (gzipped if end with &#39;.gz&#39;)
+#     -o STRING     Output file name (gzipped if end with &#39;.gz&#39;)
+#     -0, --0-base  0-based genome if specified [Default: 1-based]</code></pre>
+<ul>
 <li><p><strong>File formats</strong>:</p>
 <p>The input CGmap file, which is lacking C context on the 3rd and 4th columns:</p>
 <pre><code>Chr1    C       3541    -       -       0.0     0       1</code></pre>
 <p>After <code>refill</code> processing, the CGmap file would be as below, added C context information:</p>
 <pre><code>Chr1    C       3541    CG      CG      0.0     0       1</code></pre></li>
-<li><p><strong>Example command</strong>:</p>
+<li><p><strong>Example</strong>:</p>
 <p><code>zcat RR2.CGmap.gz | gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; '{$4=&quot;-&quot;; $5=&quot;-&quot;; print;}' | cgmaptools refill -g genome.fa -o RR3.CGmap.gz</code></p></li>
 </ul>
 </div>
 <div id="intersect" class="section level2">
 <h2><span class="header-section-number">3.4</span> intersect</h2>
 <ul>
-<li><p><strong>Description</strong>: Get the intersection of two CGmap files.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools intersect [-1 &lt;CGmap_1&gt;] -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]</code></p>
-<pre><code>-1 CGmap File  File name, end with .CGmap or .CGmap.gz.
--2 CGmap File  standard input if not specified
--o OUTFILE     To standard output if not specified. Compressed output if end
-               with .gz</code></pre></li>
-<li><p><strong>File formats</strong>:</p>
-<p>Suppose you have two CGmap file from two samples, the first one is:</p>
-<pre><code>Chr1  C  3541  CG  CG  0.8  4  5</code></pre>
-<p>and the second CGmap file is:</p>
-<pre><code>Chr1  C  3541  CG  CG  0.4  4  10</code></pre>
-<p>After intersction, the output contains sites covered in both CGmap files. And the last three columns of the output are extracted from the second CGmap file:</p>
-<pre><code>Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10</code></pre></li>
-<li><p><strong>Example command</strong> :</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> intersect -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools intersect [-1 &lt;CGmap_1&gt;] -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]
+#         (aka CGmapIntersect)
+#   Description: 
+#       Get the intersection of two CGmap files.Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-08-18
+#   Output Format:
+#       Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
+#   When 1st CGmap file is:
+#       Chr1  C  3541  CG  CG  0.8  4  5
+#   ,and 2nd CGmap file is:
+#       Chr1  C  3541  CG  CG  0.4  4  10
+#   
+#   Options:
+#     -h, --help            show this help message and exit
+#     -1 CGmap File         File name, end with .CGmap or .CGmap.gz.
+#     -2 CGmap File         standard input if not specified
+#     -o OUTFILE            To standard output if not specified. Compressed output
+#                           if end with .gz
+#     -C CONTEXT, --context=CONTEXT
+#                           specific context: CG, CH, CHG, CHH, CA, CC, CT, CW
+#                           use all sites if not specified</code></pre>
+<!--- **File formats**: 
+
+    Suppose you have two CGmap file from two samples, the first one is:
+    
+    ```
+    Chr1  C  3541  CG  CG  0.8  4  5
+    ```
+    
+    and the second CGmap file is:
+    
+    ```
+    Chr1  C  3541  CG  CG  0.4  4  10
+    ```
+    
+    After intersction, the output contains sites covered in both CGmap files. And the last three columns of the output are extracted from the second CGmap file:
+    
+    ```
+    Chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
+    ```
+-->
+<ul>
+<li><p><strong>Example</strong> :</p>
 <p><code>cgmaptools intersect -1 WG.CGmap.gz -2 RR.CGmap.gz -C CG -o intersect_CG.gz</code></p></li>
 </ul>
 </div>
 <div id="merge2" class="section level2">
 <h2><span class="header-section-number">3.5</span> merge2</h2>
+<p><strong>Command</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> merge2 -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools merge2 &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        atcgmap      merge two ATCGmap files into one
+#        cgmap        merge two CGmap files into one</code></pre>
+<div id="merge2-atcgmap" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> merge2 atcgmap</h3>
+<p><strong>Command</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> merge2 atcgmap -h</code></pre></div>
+<pre><code>#   Unknown option: -h
+#   Usage:  cgmaptools merge2 atcgmap -1 &lt;ATCGmap&gt; -2 &lt;ATCGmap&gt;
+#          (aka ATCGmapMerge)
+#   Contact:     Guo, Weilong; guoweilong@126.com;
+#   Last Update: 2016-12-07
+#   Options:
+#     -1    Input, 1st ATCGmap file
+#     -2    Input, 2nd ATCGmap file
+#   Output to STDOUT in ATCGmap format
+#   Tips: Two input files should have the same order of chromosomes</code></pre>
 <ul>
-<li><p><strong>Description</strong>: Merge two CGmap or ATCGmap files together.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools merge2 &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>atcgmap</strong>: merge two ATCGmap files into one.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools merge2 atcgmap -1 &lt;ATCGmap&gt; -2 &lt;ATCGmap&gt;</code></p>
-<pre><code>-1  Input, 1st ATCGmap file
--2  Input, 2nd ATCGmap file
-Output to STDOUT in ATCGmap format
-Tips: Two input files should have the same order of chromosomes</code></pre>
-<p><strong>cgmap</strong>: merge two CGmap files into one.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools merge2 cgmap -1 &lt;CGmap_1&gt; -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]</code></p>
-<pre><code>-1 FILE     File name end with .CGmap or .CGmap.gz
--2 FILE     If not specified, STDIN will be used.
--o OUTFILE  CGmap, output file. Use STDOUT if omitted (gzipped if end with
-            &#39;.gz&#39;).</code></pre></li>
+<li><p><strong>Example</strong></p>
+<p><code>cgmaptools merge2 atcgmap -1 WG.ATCGmap.gz -2 RR.ATCGmap.gz | gzip &gt; merge.ATCGmap.gz</code></p></li>
+</ul>
+</div>
+<div id="merge2-cgmap" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> merge2 cgmap</h3>
+<p><strong>Command</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> merge2 cgmap -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools merge2 cgmap -1 &lt;CGmap_1&gt; -2 &lt;CGmap_2&gt; [-o &lt;output&gt;]
+#         (aka CGmapMerge)
+#   Description: Merge two CGmap files together.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   Note: The two input CGmap files should be sorted in the same order first.
+#   
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -1 FILE     File name end with .CGmap or .CGmap.gz
+#     -2 FILE     If not specified, STDIN will be used.
+#     -o OUTFILE  CGmap, output file. Use STDOUT if omitted (gzipped if end with
+#                 &#39;.gz&#39;).</code></pre>
+<ul>
+<li><p><strong>Example</strong></p></li>
 <li><p><strong>Example command</strong> :</p>
-<p><code>cgmaptools merge2 atcgmap -1 WG.ATCGmap.gz -2 RR.ATCGmap.gz | gzip &gt; merge.ATCGmap.gz</code></p>
 <p><code>cgmaptools merge2 cgmap -1 WG.CGmap.gz -2 RR.CGmap.gz | gzip &gt; merge.CGmap.gz</code></p></li>
 </ul>
+</div>
 </div>
 <div id="mergelist" class="section level2">
 <h2><span class="header-section-number">3.6</span> mergelist</h2>
 <ul>
-<li><p><strong>Description</strong>: merge a list of files.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mergelist &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>tomatrix</strong>: Fill methylation levels according to the Index file for CGmap files in list.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools mergelist tomatrix  [-i &lt;index&gt;] -f &lt;IN1,IN2,..&gt; -t &lt;tag1,tag2,..&gt; [-o output]</code></p>
-<pre><code>-i FILE     TXT file, index file, use STDIN if omitted
--f STRING   List of (input) CGmap files (CGmap or CGmap.gz)
--t STRING   List of tags, same order with &#39;-f&#39;
--c INT      minimum coverage [default: 1]
--C INT      maximum coverage [default: 200]
--o STRING   Output file name (gzipped if end with &#39;.gz&#39;)</code></pre></li>
-<li><p><strong>Example commands</strong> :</p>
-<p><code>zcat RR*.CGmap.gz WG.CGmap.gz | gawk '$8&gt;=5' | cut -f1,3 | sort -u | cgmaptools sort -c 1 -p 2 &gt; index</code></p>
-<p><code>cgmaptools mergelist tomatrix -i index -f RR.CGmap.gz,RR2.CGmap.gz,WG.CGmap.gz -t RR,RR2,WG -c 5 -C 100 -o matrix.CG.gz</code></p>
-<p><strong>tosingle</strong>: merge list of input files into one.</p>
-<p>Usage: <code>cgmaptools mergelist tosingle -i f1,f2,..,fn [-o &lt;output&gt;]</code></p>
-<pre><code>-i FILE     List of input files; gzipped file ends with &#39;.gz&#39;
--f FILE     cgmap or atcgmap [Default: cgmap]
--o OUTFILE  To standard output if not specified; gzipped file if end with
-            &#39;.gz&#39;</code></pre></li>
+<li><strong>Command</strong></li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mergelist -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools mergelist &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        tomatrix   mC levels matrix from multiple files
+#        tosingle   merge list of input files into one</code></pre>
+<div id="mergelist-tomatrix" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> mergelist tomatrix</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mergelist tomatrix -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mergelist tomatrix  [-i &lt;index&gt;] -f &lt;IN1,IN2,..&gt; -t &lt;tag1,tag2,..&gt; [-o output]
+#         (aka CGmapFillIndex)
+#   Description: Fill methylation levels according to the Index file for CGmap files in list.
+#   Contact: Guo, Weilong; guoweilong@126.com;
+#   Last Updated: 2016-12-07
+#   Index format Ex:
+#      chr10   100005504
+#   Output format Ex:
+#      chr     pos     tag1    tag2    tag3
+#      Chr1    111403  0.30    nan     0.80
+#      Chr1    111406  0.66    0.40    0.60
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     TXT file, index file, use STDIN if omitted
+#     -f STRING   List of (input) CGmap files (CGmap or CGmap.gz)
+#     -t STRING   List of tags, same order with &#39;-f&#39;
+#     -c INT      minimum coverage [default: 1]
+#     -C INT      maximum coverage [default: 200]
+#     -o STRING   Output file name (gzipped if end with &#39;.gz&#39;)</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>zcat RR*.CGmap.gz WG.CGmap.gz | gawk '$8&gt;=5' | cut -f1,3 | sort -u | cgmaptools sort -c 1 -p 2 &gt; index</code></p>
+<p><code>cgmaptools mergelist tomatrix -i index -f RR.CGmap.gz,RR2.CGmap.gz,WG.CGmap.gz -t RR,RR2,WG -c 5 -C 100 -o matrix.CG.gz</code></p></li>
+</ul>
+</div>
+<div id="mergelist-tosingle" class="section level3">
+<h3><span class="header-section-number">3.6.2</span> mergelist tosingle</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> mergelist tosingle -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools mergelist tosingle -i f1,f2,..,fn [-o &lt;output&gt;]
+#         (aka MergeListOfCGmap)
+#   Description: Merge multiple CGmap/ATCGmap files into one.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   Note: Large memory is needed.
+#   
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     List of input files; gzipped file ends with &#39;.gz&#39;
+#     -f FILE     cgmap or atcgmap [Default: cgmap]
+#     -o OUTFILE  To standard output if not specified; gzipped file if end with
+#                 &#39;.gz&#39;</code></pre>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+</div>
 </div>
 <div id="sort" class="section level2">
 <h2><span class="header-section-number">3.7</span> sort</h2>
 <ul>
-<li><p><strong>Description</strong>: Sort the input files by chromosome and position.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools sort [-i &lt;input&gt;] [-c 1] [-p 3] [-o output]</code></p>
-<pre><code>-i FILE            File name end with .CGmap or .CGmap.gz. 
-                   If not specified, STDIN will be used.
--c INT, --chr=INT  The column of chromosome [default: 1]
--p INT, --pos=INT  The column of position [default: 2]
--o OUTFILE         To standard output if not specified</code></pre></li>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> sort -h</code></pre></div>
+<pre><code>#   Usage: Sort_chr_pos [-i &lt;input&gt;] [-c 1] [-p 3] [-o output]
+#   Author : Guo, Weilong; guoweilong@gmail.com; 2014-05-11
+#   Last Update: 2016-12-07
+#   Description: Sort the input files by chromosome and position.
+#        The order of chromosomes would be :
+#        &quot;chr1 chr2 ... chr11 chr11_random ... chr21 ... chrM chrX chrY&quot;
+#   
+#   Options:
+#     -h, --help         show this help message and exit
+#     -i FILE            File name end with .CGmap or .CGmap.gz. If not specified,
+#                        STDIN will be used.
+#     -c INT, --chr=INT  The column of chromosome [default: 1]
+#     -p INT, --pos=INT  The column of position [default: 2]
+#     -o OUTFILE         To standard output if not specified</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
+<p><code>zcat RR*.CGmap.gz WG.CGmap.gz | gawk '$8&gt;=5' | cut -f1,3 | sort -u | cgmaptools sort -c 1 -p 2 &gt; index</code></p></li>
 </ul>
 </div>
 <div id="split" class="section level2">
 <h2><span class="header-section-number">3.8</span> split</h2>
 <ul>
-<li><p><strong>Description</strong>: Split the files by each chromosomes.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools split -i &lt;input&gt; -p &lt;prefix[.chr.]&gt; -s &lt;[.chr.]suffix&gt;</code></p>
-<pre><code>-i FILE     Input file, CGmap or ATCGmap foramt, use STDIN when not specified.
-            (gzipped if end with &#39;gz&#39;).
--p STRING   The prefix for output file
--s STRING   The suffix for output file (gzipped if end with &#39;gz&#39;).</code></pre></li>
-<li><p><strong>Example command</strong> :</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> split -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools split -i &lt;input&gt; -p &lt;prefix[.chr.]&gt; -s &lt;[.chr.]suffix&gt;
+#         (aka CGmapSplitByChr)
+#   Description: Split the files by each chromosomes. 
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     Input file, CGmap or ATCGmap foramt, use STDIN when not
+#                 specified.(gzipped if end with &#39;gz&#39;).
+#     -p STRING   The prefix for output file
+#     -s STRING   The suffix for output file (gzipped if end with &#39;gz&#39;).</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>cgmaptools split -i WG.CGmap.gz -p WG -s CGmap.gz</code></p></li>
 </ul>
 </div>
 <div id="select" class="section level2">
 <h2><span class="header-section-number">3.9</span> select</h2>
 <ul>
-<li><p><strong>Description</strong>: Split the files by each chromosomes.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools select &lt;command&gt; [options]</code></p></li>
-<li><p><strong>Commands</strong>:</p>
-<p><strong>region</strong>: Lines in input CGmap/ATCGmap be selected/excluded by BED file. Strand is NOT considered. Output to STDOUT in same format with input.</p></li>
-<li><p><strong>Usage</strong>: <code>cgmaptools select region [-i &lt;CGmap/ATCGmap&gt;] -r &lt;BED&gt; [-R]</code></p>
-<pre><code>-i  Input, CGmap/ATCGmap file; use STDIN if not specified
-    Please use &quot;gunzip -c &lt;input&gt;.gz &quot; and pipe as input for gzipped file.
-    Ex: chr12   G   19898796    ...
--r  Input, Region file, BED file to store regions
-    At least 3 columns are required
-    Ex: chr12 19898766 19898966 XX XXX XXX
--R  [optional] Reverse selection. Sites in region file will be excluded when specified</code></pre></li>
-<li><p><strong>Example command</strong> :</p>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> select -h</code></pre></div>
+<pre><code>#   Usage:    cgmaptools select &lt;command&gt; [options]
+#   Version:  0.0.1
+#   Commands:
+#        region     select or exclude liens by region lists
+#        site       select or exclude lines by site list</code></pre>
+<div id="select-region" class="section level3">
+<h3><span class="header-section-number">3.9.1</span> select region</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> select region -h</code></pre></div>
+<pre><code>#   Usage:  cgmaptools select region [-i &lt;CGmap/ATCGmap&gt;] -r &lt;BED&gt; [-R]
+#         (aka CGmapSelectByRegion)
+#   Description: Lines in input CGmap/ATCGmap be selected/excluded by BED file.
+#                Strand is NOT considered.
+#                Output to STDOUT in same format with input.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   Options:
+#     -i  Input, CGmap/ATCGmap file; use STDIN if not specified
+#         Please use &quot;gunzip -c &lt;input&gt;.gz &quot; and pipe as input for gzipped file.
+#         Ex: chr12 G   19898796    ...
+#     -r  Input, Region file, BED file to store regions
+#         At least 3 columns are required
+#         Ex: chr12 19898766 19898966 XX XXX XXX
+#     -R  [optional] Reverse selection. Sites in region file will be excluded when specified
+#     -h  help
+#   Tips: program will do binary search for each site in regions</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+200, &quot;+&quot;;}' ; done) ; done &gt; region.bed</code></p>
-<p><code>zcat WG.CGmap.gz | cgmaptools select region -r region.bed | head</code></p>
-<p><strong>site</strong>: Select lines from input CGmap/ATCGmap in index or reverse.</p></li>
-<li><p><strong>Usage</strong> : <code>cgmaptools select site -i &lt;index&gt; [-f &lt;CGmap/ATCGmap&gt;] [-r] [-o output]</code></p>
-<pre><code>-i FILE     Name of Index file required (gzipped if end with &#39;.gz&#39;).
--r          reverse selected, remove site in index if specified
--f STRING   Input CGmap/ATCGmap files. Use STDIN if not specified
--o STRING   CGmap, Output file name (gzipped if end with &#39;.gz&#39;).</code></pre></li>
-<li><p><strong>Example commands</strong> :</p>
+<p><code>zcat WG.CGmap.gz | cgmaptools select region -r region.bed | head</code></p></li>
+</ul>
+</div>
+<div id="select-site" class="section level3">
+<h3><span class="header-section-number">3.9.2</span> select site</h3>
+<ul>
+<li><strong>Command</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> select site -h</code></pre></div>
+<pre><code>#   Usage: cgmaptools select site -i &lt;index&gt; [-f &lt;CGmap/ATCGmap&gt;] [-r] [-o output]
+#         (aka CGmapSelectBySite)
+#   Description: Select lines from input CGmap/ATCGmap in index or reverse.
+#   Contact:     Guo, Weilong; guoweilong@126.com
+#   Last Update: 2016-12-07
+#   Index format example:
+#      chr10   100504
+#      chr10   103664
+#   
+#   Options:
+#     -h, --help  show this help message and exit
+#     -i FILE     Name of Index file required (gzipped if end with &#39;.gz&#39;).
+#     -r          reverse selected, remove site in index if specified
+#     -f STRING   Input CGmap/ATCGmap files. Use STDIN if not specified
+#     -o STRING   CGmap, Output file name (gzipped if end with &#39;.gz&#39;).</code></pre>
+<ul>
+<li><p><strong>Example</strong></p>
 <p><code>gawk 'NR%100==50' index &gt; site</code></p>
 <p><code>cgmaptools select site -f RR.CGmap.gz -i site -o RR_select.CGmap.gz</code></p></li>
 </ul>
 
+</div>
 </div>
 </div>
             </section>
@@ -366,9 +679,10 @@ Tips: Two input files should have the same order of chromosomes</code></pre>
           </div>
         </div>
       </div>
-<a href="new-file-format.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="snv-calling.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="file-formats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="snv-calling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="coverage-analysis.html">
-<link rel="next" href="other-ultilities.html">
+<link rel="prev" href="what-is-cgmaptools.html">
+<link rel="next" href="file-manipulation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -181,283 +181,133 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphics" class="section level1">
-<h1><span class="header-section-number">7</span> Graphics</h1>
-<div id="lollipop" class="section level2">
-<h2><span class="header-section-number">7.1</span> lollipop</h2>
-<ul>
-<li><strong>Command</strong></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> lollipop -h</code></pre></div>
-<pre><code>#   Usage: cgmaptools lollipop [options] file
-#         (aka mCLollipop) 
-#   Description: Plot local mC level for multiple samples 
-#   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2016-12-07 
-#   Example: 
-#     /Users/weilongguo/Documents/program/cgmaptools/bin/mCLollipop [-i input] -o gene.png 
-#   -Input Format: 
-#       &gt;= 3 columns, 1st line is the header, using R color name or &quot;NaN&quot;. 
-#       Can be output by &quot;cgmaptools mergelist tomatrix&quot;. Use STDIN if omitted.
-#     Example: 
-#      chr     pos     tag1    tag2    tag3
-#      Chr1    111403  0.30    nan     0.80
-#      Chr1    111406  0.66    0.40    0.60
-#   -Site File foramt 
-#     Example: 
-#       chr  pos  E_vs_EMT  EMT_vs_M    E_vs_M
-#       chr1    13116801    NaN NaN darkgreen
-#       chr1    13116899    NaN red NaN
-#   -BED File Format:
-#       the first 4 columns are required
-#     Example: 
-#       chr1  213941196  213942363  REGION-1 
-#       chr1  213942363  213943530  REGION-2 
-#                 
-#   
-#   Options:
-#       -i INFILE, --infile=INFILE
-#           input file
-#   
-#       -a ANNOTATION, --annotation=ANNOTATION
-#           [opt] sample name
-#   
-#       -o OUTFILE, --outfile=OUTFILE
-#           [opt] output file
-#   
-#       -f FORMAT, --format=FORMAT
-#           [opt] the format for output figure: pdf (default), png, eps
-#   
-#       -l LEFT, --left=LEFT
-#           [opt] Left-most position
-#   
-#       -r RIGHT, --right=RIGHT
-#           [opt] Right-most position
-#   
-#       -c CHR, --chr=CHR
-#           [opt] chromosome name
-#   
-#       -t TITLE, --title=TITLE
-#           [opt] text shown on title
-#   
-#       -w WIDTH, --width=WIDTH
-#           [opt] width (in inch). Default: 8.
-#   
-#       --height=HEIGHT
-#           [opt] height (in inch). Default: 8.
-#   
-#       -s SITE, --site=SITE
-#           [opt] file of site to be marked
-#   
-#       -b BED, --bed=BED
-#           [opt] BED file for region to be markered
-#   
-#       -h, --help
-#           Show this help message and exit</code></pre>
+<div id="file-formats" class="section level1">
+<h1><span class="header-section-number">2</span> File Formats</h1>
+<p>To facilitate high throughput data manipulation and reduce storage usage, several file format have been proposed and generaly accepted as the standard. Due to these great efforts (e.g. SAM/BAM and VCF), data analysis and tool development become more easier and highly efficient. However, when it comes to bisulfite sequencing data, currently, available tools possess their own tool specific data format. In consequence, integrating results from several tools leads to extra efforts in unifying data format and developing custermized tools, which is time comsuming and error prone.</p>
+<p>The widely-used BS-seq alignment software <a href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/"><em><strong>BS-Seeker2</strong></em></a> defines <strong>CGmap</strong> and <strong>ATCGmap</strong> file formats for the representation of DNA methylomes. In CGmapTools, we used <strong>ATCGmap</strong> and <strong>CGmap</strong> as the standard file format interface, so that to simplify the development of downstream DNA methylation analysis tools and to provide standard formats for storing and sharing the DNA methylomes.</p>
+<div id="atcgmap-format" class="section level2">
+<h2><span class="header-section-number">2.1</span> ATCGmap Format</h2>
+<p>Similar with <a href="http://samtools.sourceforge.net/pileup.shtml"><strong>pileup</strong></a>, <strong>ATCGmap</strong> format summarizes the information of mapped reads covered on each nucleotide on both strands, specially designed for BS-seq data.</p>
+<p>Here, we defined ATCGmap file format to integrate both mapping and coverage of non-cytosine and cytosine sites with estimated DNA methylation in a single file.</p>
 <ul>
 <li><p><strong>Example</strong></p>
-<p><code>cgmaptools lollipop -i matrix.CG.gz -a anno.refFlat -f pdf</code></p></li>
-<li><p><strong>Figure examples</strong></p></li>
+<pre><code>chr1    T   3009410 --  --  0   10  0   0   0   0   3   0   0   0   na
+chr1    C   3009411 CHH CC  0   10  0   0   0   0   4   0   0   0   0.0
+chr1    C   3009412 CHG CC  0   10  0   0   0   0   9   1   0   0   0.0
+chr1    C   3009413 CG  CG  0   10  50  0   0   0   20  1   0   0   0.83</code></pre></li>
+<li><p><strong>Column Description</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
-<img src="TRIM59.png" alt="Lollipop example-1" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="ATCGmap_Description.png" alt="Description of ATCGmap" width="90%" />
 <p class="caption">
-Figure 7.1: Lollipop example-1
+Figure 2.1: Description of ATCGmap
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
-<img src="VCAN.png" alt="Lollipop example-2" width="80%" />
-<p class="caption">
-Figure 7.2: Lollipop example-2
-</p>
+<!--```{r, echo=FALSE, results='asis'}
+library(knitr)
+atcgmap.format <- read.table("atcgmap.format.txt", header = T, sep = ";", quote = "")
+names(atcgmap.format) <- c("Col", "Field", "Type", "Regexp/Range", "Brief description")
+kable(atcgmap.format)
+```-->
 </div>
-</div>
-<div id="heatmap" class="section level2">
-<h2><span class="header-section-number">7.2</span> heatmap</h2>
-<ul>
-<li><strong>Command</strong></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> heatmap -h</code></pre></div>
-<pre><code>#   Usage: cgmaptools heatmap [options]
-#         (aka mCBinHeatmap)
-#   Description: Plot methylation dynamics of target region for multiple samples [heatmap]
-#   Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#   Last update: 2016-12-07
-#   Example: 
-#     mCBinHeatmap.R -i input -m white -o chr1.xxx-xxx.pdf 
-#     -Input File Format: 
-#     1st line is the header.
-#     Each column contains methylation measurements of a sample. 
-#     Example: 
-#     Region  Sample1  Sample2 ...  
-#     Region1 0.1      0.1     ...  
-#     Region2 0.1      0.1     ...  
-#   
-#   
-#   Options:
-#       -i INFILE, --infile=INFILE
-#           input file
-#   
-#       -o OUTFILE, --outfile=OUTFILE
-#           [opt] output file name. [default: mCBinHeatmap.SysDate.pdf]
-#   
-#       -c, --cluster
-#           [opt] cluster samples by methylation in regions. [default: FALSE]
-#   
-#       -l COLORLOW, --colorLow=COLORLOW
-#           [opt] color used for the lowest methylation value. [default: cyan3]
-#   
-#       -m COLORMID, --colorMid=COLORMID
-#           [opt] color used for the middle methylation value. [default: null]
-#   
-#       -b COLORHIGH, --colorHigh=COLORHIGH
-#           [opt] color used for the highest methylation value. [default: coral2]
-#   
-#       -n COLORNUMBER, --colorNumber=COLORNUMBER
-#           [opt] desired number of color elements in the panel. [default: 10]
-#   
-#       -W WIDTH, --width=WIDTH
-#           [opt] width of figure (inch). [default: 7]
-#   
-#       -H HEIGHT, --height=HEIGHT
-#           [opt] height of figure (inch). [default: 7]
-#   
-#       -f FORMAT, --format=FORMAT
-#           [opt] format of output figure. Alternative: png. [default: pdf]
-#   
-#       -R RESOLUTION, --resolution=RESOLUTION
-#           [opt] Resolution in ppi. Only available for png format. [default: 300]
-#   
-#       -h, --help
-#           Show this help message and exit</code></pre>
-<ul>
-<li><p><strong>Example</strong>:</p>
-<p><code>cgmaptools heatmap -i mmbin -c -o cluster.pdf -f pdf</code></p></li>
-<li><p><strong>Figure examples</strong></p></li>
-</ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-54"></span>
-<img src="mC_Cluster.png" alt="heatmap example-1" width="80%" />
-<p class="caption">
-Figure 7.3: heatmap example-1
-</p>
-</div>
-</div>
-<div id="fragreg" class="section level2">
-<h2><span class="header-section-number">7.3</span> fragreg</h2>
-<ul>
-<li><strong>Command</strong></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fragreg -h</code></pre></div>
-<pre><code>#   Usage: cgmaptools fragreg [options]
-#         (aka mCFragRegView) 
-#   Description: Plot methylation dynamics of target and flanking region for multiple samples 
-#   Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#   Last update: 2016-12-07
-#   Example: 
-#     FragRegView.R -i input -r 5 -o genebody.pdf 
-#   -Input File Format: 
-#     1st line is the header.
-#   Each row contains methylation measurements of a sample. 
-#   Example: 
-#     Sample  Up1  Up2  ...  Region1  Region2 ...  Down1  Down2  ... 
-#     Sample1 0.1  0.1  ...  0.2      0.2     ...  0.3    0.3    ...
-#     Sample2 0.1  0.1  ...  0.2      0.2     ...  0.3    0.3    ...
-#   
-#   
-#   Options:
-#       -i INFILE, --infile=INFILE
-#           input file
-#   
-#       -r RATIO, --ratio=RATIO
-#           [opt] range ratio between target region and flanking region in plot. [default: 5]
-#   
-#       -o OUTFILE, --outfile=OUTFILE
-#           [opt] output file name. [default: FragRegView.SysDate.pdf
-#   
-#       -W WIDTH, --width=WIDTH
-#           [opt] width of figure (inch). [default: 7]
-#   
-#       -H HEIGHT, --height=HEIGHT
-#           [opt] height of figure (inch). [default: 7]
-#   
-#       -f FORMAT, --format=FORMAT
-#           [opt] format of output figure. Alternative: png. [default: pdf]
-#   
-#       -R RESOLUTION, --resolution=RESOLUTION
-#           [opt] Resolution in ppi. Only available for png format. [default: 300]
-#   
-#       -h, --help
-#           Show this help message and exit</code></pre>
+<div id="cgmap-format" class="section level2">
+<h2><span class="header-section-number">2.2</span> CGmap Format</h2>
+<p>In cases we only want to retain DNA methylation on cytonsines to save storage usage, we defined another file format called <strong>CGmap</strong> which provides sequence context and estimated DNA methylation level of any covered cytosines on the reference genome.</p>
 <ul>
 <li><p><strong>Example</strong></p>
-<p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code> <code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p></li>
-<li><p><strong>Output figure</strong></p></li>
+<pre><code>chr1    G   3000851   CHH   CC  0.1   1   10
+chr1    C   3001624   CHG   CA  0.0   0   9
+chr1    C   3001631   CG    CG  1.0   5   5
+chr1    G   3001632   CG    CG  0.9   9   10</code></pre></li>
+<li><p><strong>Column Description</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-56"></span>
-<img src="GeneBody_mC_profile.png" alt="FragRegMC example" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="CGmap_Description.png" alt="Description of CGmap" width="90%" />
 <p class="caption">
-Figure 7.4: FragRegMC example
+Figure 2.2: Description of CGmap
 </p>
 </div>
+<!--```{r, echo=FALSE, results='asis'}
+cgmap.format <- read.table("cgmap.format.txt", header = T, sep = ";", quote = "")
+names(cgmap.format) <- c("Col", "Field", "Type", "Regexp/Range", "Brief description")
+kable(cgmap.format)
+```-->
 </div>
-<div id="tanghulu" class="section level2">
-<h2><span class="header-section-number">7.4</span> tanghulu</h2>
+<div id="atcgbz-format" class="section level2">
+<h2><span class="header-section-number">2.3</span> ATCGbz Format</h2>
+<p><strong>ATCGbz</strong> format is the binary compressed version for <strong>ATCGmap</strong> format. <strong>ATCGmap</strong> format is readable, while quite large for storing, and difficult for fetching information in a specific position. <strong>ATCGbz</strong> is defined as the sorted binary version, that storing all information of <strong>ATCGmap</strong> into standard binary form, largely reduced the storage requirement, and also supporting fast retrival of methylation information for any position on genome.</p>
 <ul>
-<li><strong>Command</strong></li>
+<li><strong>Data structure</strong></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> tanghulu -h</code></pre></div>
-<pre><code>#   DESCRIPTION
-#           Circle plot representing DNA methylation of each C [defualt CpG] site
-#           on each mapped reads.
-#   
-#   USAGE
-#           cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133-144
-#           or: cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133
-#           (aka mCTanghulu)
-#   
-#           Options:
-#           -r    Samtools indexed reference genome seqeunce, fasta format. eg. hg19.fa
-#                 - use samtools to index reference: samtools faidx &lt;hg19.fa&gt;
-#           -b    Samtools indexed Bam file to view.
-#                 - use samtools to index bam file: samtools index &lt;input.bam&gt;
-#           -l    Region in which to display DNA methylation.
-#                 - or specify a single position (eg. heterozygous SNP site), we will show allele specific methylation.
-#           -s    Path to samtools eg. /home/user/bin/samtools
-#                 - by defualt, we try to search samtools in your system PATH.
-#           -o    Output results to file [default: CirclePlot.Ctype.region.Date.pdf].
-#           -t    C context. [default: CG]
-#                 - available context: C, CG, CH, CW, CC, CA, CT, CHG, CHH
-#           -d    Ouput device. [default: pdf]
-#                 - alternative: png
-#           -c    Seperate reads by chain. [default: OFF]
-#                 - specify this option to turn ON.
-#           -v    Show vague allele linked reads. [ default: OFF]
-#           -g    Genotype of heterozygous SNP site.
-#                 - This option provides two alleles of htSNP site. eg. AT
-#                 - The genotype information can be used to reduce vague alleles.
-#                 - This option is specific to display methylation in allele specific mode.
-#           -D    Minimum number of reads (depth) covered in this region or allele linked. [default: 0|OFF]
-#           -C    Minimum number of C (specified type) covered in this region or allele linked. [default: 0|OFF]
-#           -W    Width of graphics reigon in inches. [default: 4]
-#           -H    Height of graphics reigon in inches. [default: 4]
-#           -R    Resolution in ppi. [default: 300]
-#                 - only available for png device.
-#           -h    Help message.
-#   
-#   AUTHOR
-#           Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#           Last update: 2016-12-07</code></pre>
-<ul>
-<li><p><strong>Example</strong></p>
-<p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
-<li><p><strong>Output figure</strong></p></li>
-</ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
-<img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="FragRegMC example" width="50%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="ATCGbz_structure1.png" alt="Data structure of ATCGbz" width="80%" />
 <p class="caption">
-Figure 7.5: FragRegMC example
+Figure 2.3: Data structure of ATCGbz
 </p>
 </div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="ATCGbz_structure2.png" alt="Data structure of info field of ATCGbz" width="100%" />
+<p class="caption">
+Figure 2.4: Data structure of info field of ATCGbz
+</p>
+</div>
+<ul>
+<li>Related command</li>
+</ul>
+<p><strong>Command</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fetch atcgbz -h </code></pre></div>
+<pre><code>#   
+#     Usage: cgmaptools fetch atcgbz -b &lt;ATCGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;
+#           (aka ATCGbzFetchRegion)
+#     Description: Convert ATCGbz format to ATCGmap format.
+#     Contact:     Guo, Weilong; guoweilong@126.com
+#     Last update: 2016-12-07
+#   
+#     Options:
+#   
+#       -h, --help             output help information
+#       -b, --ATCGbz &lt;arg&gt;     output ATCGbz file
+#       -C, --CHR &lt;arg&gt;        specify the chromosome name
+#       -L, --leftPos &lt;arg&gt;    the left position
+#       -R, --rightPos &lt;arg&gt;   the right position</code></pre>
+</div>
+<div id="cgbz-format" class="section level2">
+<h2><span class="header-section-number">2.4</span> CGbz Format</h2>
+<p><strong>CGbz</strong> format is the binary compressed version for <strong>CGmap</strong> format.</p>
+<ul>
+<li><strong>Data structure</strong></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="CGbz_structure1.png" alt="Data structure of ATCGbz" width="80%" />
+<p class="caption">
+Figure 2.5: Data structure of ATCGbz
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="CGbz_structure2.png" alt="Data structure of info field of CGbz" width="60%" />
+<p class="caption">
+Figure 2.6: Data structure of info field of CGbz
+</p>
+</div>
+<ul>
+<li>Related command</li>
+</ul>
+<p><strong>Command</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> fetch cgbz -h </code></pre></div>
+<pre><code>#   
+#     Usage: cgmaptools fetch cgbz -b &lt;CGbz&gt; -C &lt;CHR&gt; -L &lt;LeftPos&gt; -R &lt;RightPos&gt;
+#            (aka CGvzFetchRegion)
+#     Description: Convert CGbz file to CGmap format.
+#     Contact: Guo, Weilong; guoweilong@126.com
+#     Last update: 2016-12-07
+#   
+#     Options:
+#   
+#       -h, --help             output help information
+#       -b, --CGbz &lt;arg&gt;       output CGbz file
+#       -C, --CHR &lt;arg&gt;        specify the chromosome name
+#       -L, --leftPos &lt;arg&gt;    the left position
+#       -R, --rightPos &lt;arg&gt;   the right position</code></pre>
 
 </div>
 </div>
@@ -466,8 +316,8 @@ Figure 7.5: FragRegMC example
           </div>
         </div>
       </div>
-<a href="coverage-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-ultilities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="what-is-cgmaptools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="file-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
