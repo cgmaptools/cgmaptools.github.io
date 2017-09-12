@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-07-10">
+<meta name="date" content="2017-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -193,34 +193,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #         (aka mCLollipop) 
 #   Description: Plot local mC level for multiple samples 
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2016-12-07 
+#   Last Update: 2017-09-12 
 #   Example: 
-#     /Users/weilongguo/Documents/program/cgmaptools/bin/mCLollipop [-i input] -o gene.png 
-#   -Input Format: 
-#       &gt;= 3 columns, 1st line is the header, using R color name or &quot;NaN&quot;. 
+#       mCLollipop [-i input] -o gene.png 
+#   -Input Format (-i)
 #       Can be output by &quot;cgmaptools mergelist tomatrix&quot;. Use STDIN if omitted.
-#     Example: 
-#      chr     pos     tag1    tag2    tag3
-#      Chr1    111403  0.30    nan     0.80
-#      Chr1    111406  0.66    0.40    0.60
-#   -Site File foramt 
-#     Example: 
-#       chr  pos  E_vs_EMT  EMT_vs_M    E_vs_M
-#       chr1    13116801    NaN NaN darkgreen
-#       chr1    13116899    NaN red NaN
-#   -BED File Format:
-#       the first 4 columns are required
-#     Example: 
-#       chr1  213941196  213942363  REGION-1 
-#       chr1  213942363  213943530  REGION-2 
-#                 
+#       The 1st line (header line) is required.
+#       Example: 
+#          chr     pos     tag1    tag2    tag3
+#          Chr1    111403  0.30    nan     0.80
+#          Chr1    111406  0.66    0.40    0.60
+#   -Site File (-s)
+#       &gt;= 3 columns, the 1st line (header line) is required, using R color name or &quot;NaN&quot;. 
+#       To show specific sites (such as DMS, SNV) at the bottom as triangles. 
+#       Example: 
+#           chr   pos       A_vs_B  B_vs_C  A_vs_C
+#           chr1  13116801  NaN     NaN     darkgreen
+#           chr1  13116899  NaN     red     NaN
+#   -Region File (-b)
+#       the first 4 columns are required.
+#       To show specific region (such as DMR, Repeats) at the bottom as blocks. 
+#       Example: 
+#           chr1  213941196  213942363  hyper-DMR 
+#           chr1  213942363  213943530  hypo-DMR 
+#       #   chr   left       right      region-description
+#   -annotation file (-a), refFlat Format:
+#       To show the structure of genes/transcripts. One-line in annotation, one-track in figure. 
+#       Example: 
+#           GeneA   TransA  chr2  +      1000      2000       1100    1950     3     1100,1500,1700,  1200,1580,1950,
+#       #   GeneID  TrandID ChrID Strand TransLeft TransRight CDSLeft CDSRight nExon ExonLefts        ExonRights
+#       
 #   
 #   Options:
 #       -i INFILE, --infile=INFILE
 #           input file
 #   
 #       -a ANNOTATION, --annotation=ANNOTATION
-#           [opt] sample name
+#           [opt] annotation file name, refFlat format
 #   
 #       -o OUTFILE, --outfile=OUTFILE
 #           [opt] output file
@@ -237,6 +246,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #       -c CHR, --chr=CHR
 #           [opt] chromosome name
 #   
+#       -s SITE, --site=SITE
+#           [opt] file of site to be marked
+#   
+#       -b BED, --bed=BED
+#           [opt] BED file for region to be markered
+#   
 #       -t TITLE, --title=TITLE
 #           [opt] text shown on title
 #   
@@ -245,12 +260,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #   
 #       --height=HEIGHT
 #           [opt] height (in inch). Default: 8.
-#   
-#       -s SITE, --site=SITE
-#           [opt] file of site to be marked
-#   
-#       -b BED, --bed=BED
-#           [opt] BED file for region to be markered
 #   
 #       -h, --help
 #           Show this help message and exit</code></pre>
@@ -271,6 +280,22 @@ Figure 7.1: Lollipop example-1
 Figure 7.2: Lollipop example-2
 </p>
 </div>
+<ul>
+<li><p><strong>refFlat</strong> format</p></li>
+<li><p>Example</p></li>
+</ul>
+<p><code>GeneA TransA  chr2    +   1000    2000    1100    1950    3   1100,1500,1700, 1200,1580,1950,</code></p>
+<ul>
+<li>Description</li>
+</ul>
+<blockquote>
+<p>Col 1: Gene ID Col 2: Transcript ID Col 3: chromatine ID Col 4: strand, “+” or “-” Col 5: The left-most position of transcript Col 6: The right-most position of transcript Col 7: The left-most position of CDS Col 8: The right-most position of CDS Col 9: Number of exons Col 10: List of left-most position of exons, seperated by “,” Col 11: List of right-most position of exons, seperated by “,”</p>
+</blockquote>
+<ul>
+<li>The following script could help you convert a gtf file into refFlat format</li>
+</ul>
+<p>First, “gtfToGenePred” is a command tool downloaded from UCSC utility.</p>
+<p><code>gtfToGenePred  -genePredExt -geneNameAsName2 -allErrors  AGPv4.gtf AGPv4.GenePred   paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) &gt; AGPv4.refFlat   paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) | sed -i s/transcript://g | cut -f9 | gawk -F&quot;[\&quot;:]&quot; '{print $3&quot;\t&quot;$6;}' | sort -u &gt; trans_gene_ID   cut -f1-10 AGPv4.GenePred &gt; AGPv4.refFlat.tmp   gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; 'ARGIND==1{GeneID[$1]=$2;} ARGIND==2{printf GeneID[$1]&quot;\t&quot;$0}' trans_gene_ID AGPv4.refFlat.tmp &gt; AGPv4.refFlat   rm ${GN}.refFlat.txt AGPv4.GenePred</code></p>
 </div>
 <div id="heatmap" class="section level2">
 <h2><span class="header-section-number">7.2</span> heatmap</h2>
@@ -429,47 +454,47 @@ Figure 7.4: FragRegMC example
 <li><strong>Command</strong></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cgmaptools</span> tanghulu -h</code></pre></div>
-<pre><code>#   DESCRIPTION
-#           Circle plot representing DNA methylation of each C [defualt CpG] site
-#           on each mapped reads.
-#   
-#   USAGE
-#           cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133-144
-#           or: cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133
-#           (aka mCTanghulu)
-#   
-#           Options:
-#           -r    Samtools indexed reference genome seqeunce, fasta format. eg. hg19.fa
-#                 - use samtools to index reference: samtools faidx &lt;hg19.fa&gt;
-#           -b    Samtools indexed Bam file to view.
-#                 - use samtools to index bam file: samtools index &lt;input.bam&gt;
-#           -l    Region in which to display DNA methylation.
-#                 - or specify a single position (eg. heterozygous SNP site), we will show allele specific methylation.
-#           -s    Path to samtools eg. /home/user/bin/samtools
-#                 - by defualt, we try to search samtools in your system PATH.
-#           -o    Output results to file [default: CirclePlot.Ctype.region.Date.pdf].
-#           -t    C context. [default: CG]
-#                 - available context: C, CG, CH, CW, CC, CA, CT, CHG, CHH
-#           -d    Ouput device. [default: pdf]
-#                 - alternative: png
-#           -c    Seperate reads by chain. [default: OFF]
-#                 - specify this option to turn ON.
-#           -v    Show vague allele linked reads. [ default: OFF]
-#           -g    Genotype of heterozygous SNP site.
-#                 - This option provides two alleles of htSNP site. eg. AT
-#                 - The genotype information can be used to reduce vague alleles.
-#                 - This option is specific to display methylation in allele specific mode.
-#           -D    Minimum number of reads (depth) covered in this region or allele linked. [default: 0|OFF]
-#           -C    Minimum number of C (specified type) covered in this region or allele linked. [default: 0|OFF]
-#           -W    Width of graphics reigon in inches. [default: 4]
-#           -H    Height of graphics reigon in inches. [default: 4]
-#           -R    Resolution in ppi. [default: 300]
-#                 - only available for png device.
-#           -h    Help message.
-#   
-#   AUTHOR
-#           Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#           Last update: 2016-12-07</code></pre>
+<pre><code>#  DESCRIPTION
+#          Circle plot representing DNA methylation of each C [defualt CpG] site
+#          on each mapped reads.
+#  
+#  USAGE
+#          cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133-144
+#          or: cgmaptools tanghulu [options] -r &lt;ref&gt; -b &lt;bam&gt; -l chr1:133
+#          (aka mCTanghulu)
+#  
+#          Options:
+#          -r    Samtools indexed reference genome seqeunce, fasta format. eg. hg19.fa
+#                - use samtools to index reference: samtools faidx &lt;hg19.fa&gt;
+#          -b    Samtools indexed Bam file to view.
+#                - use samtools to index bam file: samtools index &lt;input.bam&gt;
+#          -l    Region in which to display DNA methylation.
+#                - or specify a single position (eg. heterozygous SNP site), we will show allele specific methylation.
+#          -s    Path to samtools eg. /home/user/bin/samtools
+#                - by defualt, we try to search samtools in your system PATH.
+#          -o    Output results to file [default: CirclePlot.Ctype.region.Date.pdf].
+#          -t    C context. [default: CG]
+#                - available context: C, CG, CH, CW, CC, CA, CT, CHG, CHH
+#          -d    Ouput device. [default: pdf]
+#                - alternative: png
+#          -c    Seperate reads by chain. [default: OFF]
+#                - specify this option to turn ON.
+#          -v    Show vague allele linked reads. [ default: OFF]
+#          -g    Genotype of heterozygous SNP site.
+#                - This option provides two alleles of htSNP site. eg. AT
+#                - The genotype information can be used to reduce vague alleles.
+#                - This option is specific to display methylation in allele specific mode.
+#          -D    Minimum number of reads (depth) covered in this region or allele linked. [default: 0|OFF]
+#          -C    Minimum number of C (specified type) covered in this region or allele linked. [default: 0|OFF]
+#          -W    Width of graphics reigon in inches. [default: 4]
+#          -H    Height of graphics reigon in inches. [default: 4]
+#          -R    Resolution in ppi. [default: 300]
+#                - only available for png device.
+#          -h    Help message.
+#  
+#  AUTHOR
+#          Contact:     Zhu, Ping; pingzhu.work@gmail.com
+#          Last update: 2016-12-07</code></pre>
 <ul>
 <li><p><strong>Example</strong></p>
 <p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
