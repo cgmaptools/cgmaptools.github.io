@@ -289,13 +289,31 @@ Figure 7.2: Lollipop example-2
 <li>Description</li>
 </ul>
 <blockquote>
-<p>Col 1: Gene ID Col 2: Transcript ID Col 3: chromatine ID Col 4: strand, “+” or “-” Col 5: The left-most position of transcript Col 6: The right-most position of transcript Col 7: The left-most position of CDS Col 8: The right-most position of CDS Col 9: Number of exons Col 10: List of left-most position of exons, seperated by “,” Col 11: List of right-most position of exons, seperated by “,”</p>
+<p>Col 1: Gene ID<br />
+Col 2: Transcript ID<br />
+Col 3: chromatine ID<br />
+Col 4: strand, “+” or “-”<br />
+Col 5: The left-most position of transcript<br />
+Col 6: The right-most position of transcript<br />
+Col 7: The left-most position of CDS<br />
+Col 8: The right-most position of CDS<br />
+Col 9: Number of exons<br />
+Col 10: List of left-most position of exons, seperated by “,”<br />
+Col 11: List of right-most position of exons, seperated by “,”</p>
 </blockquote>
 <ul>
-<li>The following script could help you convert a gtf file into refFlat format</li>
+<li>Convert GTF format to refFlat format</li>
 </ul>
-<p>First, “gtfToGenePred” is a command tool downloaded from UCSC utility.</p>
-<p><code>gtfToGenePred  -genePredExt -geneNameAsName2 -allErrors  AGPv4.gtf AGPv4.GenePred   paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) &gt; AGPv4.refFlat   paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) | sed -i s/transcript://g | cut -f9 | gawk -F&quot;[\&quot;:]&quot; '{print $3&quot;\t&quot;$6;}' | sort -u &gt; trans_gene_ID   cut -f1-10 AGPv4.GenePred &gt; AGPv4.refFlat.tmp   gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; 'ARGIND==1{GeneID[$1]=$2;} ARGIND==2{printf GeneID[$1]&quot;\t&quot;$0}' trans_gene_ID AGPv4.refFlat.tmp &gt; AGPv4.refFlat   rm ${GN}.refFlat.txt AGPv4.GenePred</code></p>
+<p>The following is an example for Z. mays.</p>
+<blockquote>
+<p>“gtfToGenePred” is a command tool downloaded from UCSC utility.</p>
+</blockquote>
+<pre><code>gtfToGenePred  -genePredExt -geneNameAsName2 -allErrors  AGPv4.gtf AGPv4.GenePred
+paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) &gt; AGPv4.refFlat
+paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) | sed -i s/transcript://g | cut -f9 | gawk -F&quot;[\&quot;:]&quot; &#39;{print $3&quot;\t&quot;$6;}&#39; | sort -u &gt; trans_gene_ID
+cut -f1-10 AGPv4.GenePred &gt; AGPv4.refFlat.tmp
+gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; &#39;ARGIND==1{GeneID[$1]=$2;} ARGIND==2{printf GeneID[$1]&quot;\t&quot;$0}&#39; trans_gene_ID AGPv4.refFlat.tmp &gt; AGPv4.refFlat
+rm ${GN}.refFlat.txt AGPv4.GenePred</code></pre>
 </div>
 <div id="heatmap" class="section level2">
 <h2><span class="header-section-number">7.2</span> heatmap</h2>
