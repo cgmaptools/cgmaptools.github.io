@@ -307,7 +307,7 @@ Figure 5.3: Dynamic Fragmentation Strategy
 <p>Feeding with the precisely predicted heterozygous SNVs (by <code>cgmaptools snv</code>), <strong><em>CGmapTools</em></strong> can identify Allele-Specific Methylated (<strong>ASM</strong>) regions from BAM files.</p>
 <p>Following showed an interesting ASM region by analysing a previous cohort (<a href="http://www.nature.com/articles/srep32207">Weilong Guo, et al., Scientifc Report, 2016</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-43"></span>
-<img src="ASM_ex.png" alt="Examples showed allele-specific methylated region reported by CGmapTools" width="80%" />
+<img src="ASM_ex.png" alt="Examples showed allele-specific methylated region reported by CGmapTools" width="50%" />
 <p class="caption">
 Figure 5.4: Examples showed allele-specific methylated region reported by CGmapTools
 </p>
@@ -604,10 +604,13 @@ Figure 5.8: Output format description for cgmaptools mmbin
 </div>
 <div id="mstat" class="section level2">
 <h2><span class="header-section-number">5.8</span> mstat</h2>
-<p><strong><em>CGmapTools</em></strong> provide resourceful statistic analysis on DNA methylation globally. The <code>cgmaptools mstat</code> command will generated a table summary, together with several graphs: * mC contributions of different contexts in Pie chart * Bulk mC levels of different contexts * Fragmented distribution of mC in different contexts</p>
-<p>For plants, the contexts for DNA methylations are known as <strong>CG</strong>, <strong>CHG</strong> and <strong>CHH</strong>, where <span class="math inline">\(H=\{A,C,T\}\)</span>.</p>
-<p>For animals, the situation is different. In 2014, <a href="http://nar.oxfordjournals.org/content/42/5/3009.abstract">Weilong Guo, et al., Nucleic Acids Research, 2014</a> showed that it is unnecessary to seperate CHG methylations and CHH methylations in human. In 2016, <a href="http://www.nature.com/articles/srep32207">Weilong Guo, et al., Scientifc Report, 2016</a> designed <strong><em>MiDD</em></strong> method and de novo predicted the main separated contexts for non-CG (CH) methylation should be CW (<span class="math inline">\(W=\{A,T\}\)</span>) and CC, and mCW is cell-type specific and conserved between human and mice.</p>
-<p>In <strong><em>CGmapTools</em></strong>, we support both human view (<strong>CG</strong>, <strong>CW</strong> and <strong>CC</strong>) and plant view (<strong>CG</strong>, <strong>CHG</strong>, and <strong>CHH</strong>) for DNA methylation contexts.</p>
+<p><strong><em>CGmapTools</em></strong> provide resourceful statistic analysis on DNA methylation globally. The <code>cgmaptools mstat</code> command will generated a table summary, together with several graphs:</p>
+<ul>
+<li>mC contributions of different contexts in Pie chart</li>
+<li>Bulk mC levels of different contexts</li>
+<li>Fragmented distribution of mC in different contexts</li>
+</ul>
+<p>The methylation contexts are diffferent for plants and animals. - For plants, the contexts for DNA methylations are known as <strong>CG</strong>, <strong>CHG</strong> and <strong>CHH</strong>, where <span class="math inline">\(H=\{A,C,T\}\)</span>. - For animals, the situation is different. In 2014, <a href="http://nar.oxfordjournals.org/content/42/5/3009.abstract">Weilong Guo, et al.</a> showed that it is unnecessary to seperate CHG methylations and CHH methylations in human. In 2016, <a href="http://www.nature.com/articles/srep32207">Weilong Guo, et al.</a> designed <strong><em>MiDD</em></strong> method and de novo predicted the main separated contexts for non-CG (CH) methylation should be CW (<span class="math inline">\(W=\{A,T\}\)</span>) and CC, and mCW is cell-type specific and conserved between human and mice. In <strong><em>CGmapTools</em></strong>, we support both human view (<strong>CG</strong>, <strong>CW</strong> and <strong>CC</strong>) and plant view (<strong>CG</strong>, <strong>CHG</strong>, and <strong>CHH</strong>) for DNA methylation contexts.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>

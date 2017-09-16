@@ -185,7 +185,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">6</span> Coverage Analysis</h1>
 <p>Read coverage is an important factor for interpreting DNA methylomes.</p>
 <p>It requires different coverage levels for different purpose. For example, SNV calling requires higher coverage than it is required for DMR study. The SNV calling process is depending on all nucleotides (A, T, C and G), whereas DNA methylation levels only depend on T and C read counts aligned to cytosines.</p>
-<p>In <strong><em>CGmapTools</em></strong>, we propsed two ways for evaluating the coverages of DNA methylations: <strong>OverAll Coverage (OAC)</strong> and <strong>Methylation-Effective Coverage (MEC)</strong>. - OAC is calculated as the average read coverage on all nucleotides on both strands, which are calculated from the ATCGmap file. - MEC is calculated as the average read coverage only for cytosines, which is calculated from the CGmap file. Generally, the MEC is slightly higher than half of the OAC.</p>
+<p>In <strong><em>CGmapTools</em></strong>, we propsed two ways for evaluating the coverages of DNA methylations: <strong>OverAll Coverage (OAC)</strong> and <strong>Methylation-Effective Coverage (MEC)</strong>.</p>
+<ul>
+<li>OAC is calculated as the average read coverage on all nucleotides on both strands, which are calculated from the ATCGmap file.</li>
+<li>MEC is calculated as the average read coverage only for cytosines, which is calculated from the CGmap file. Generally, the MEC is slightly higher than half of the OAC.</li>
+</ul>
 <p>In <strong><em>CGmapTools</em></strong>, we provides function for basic statistics of coverages (<code>cgmaptools oac stat</code> and <code>cgmaptools mec stat</code>) and visualization of coverages in bins across genome (<code>cgmaptools oac bin</code> and <code>cgmaptools mec stat</code>).</p>
 <div id="oac" class="section level2">
 <h2><span class="header-section-number">6.1</span> oac</h2>

@@ -193,14 +193,14 @@ Figure 4.1: ATCGmap table used for SNV calling
 </div>
 <p>However, removing the vague reads leads to information lost in most cases making variant calling less confident, especially when the sequencing depth is low.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
-<img src="ATCGmapEx.png" alt="Example that alignments refer to vague genotypes" width="60%" />
+<img src="ATCGmapEx.png" alt="Example that alignments refer to vague genotypes" width="50%" />
 <p class="caption">
 Figure 4.2: Example that alignments refer to vague genotypes
 </p>
 </div>
 <p>To solve this problem, we tried to introduce wild-card in genotype calling. Even for these amiguouse genotypes, we can still learning something.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-34"></span>
-<img src="AmbiguousGenotypes.png" alt="Table for definition of amibiguous genotype" width="80%" />
+<img src="AmbiguousGenotypes.png" alt="Table for definition of amibiguous genotype" width="60%" />
 <p class="caption">
 Figure 4.3: Table for definition of amibiguous genotype
 </p>
@@ -208,7 +208,7 @@ Figure 4.3: Table for definition of amibiguous genotype
 <p>We proposed two independent methods called BinomWC (based on binomial) and BayesWC (based on bayesian), taking vague reads into consideration.</p>
 <strong>Performances on simulation data</strong>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-35"></span>
-<img src="WGBS_precision_recall.png" alt="Precision-Recall analysis on simulated WGBS data" width="80%" />
+<img src="WGBS_precision_recall.png" alt="Precision-Recall analysis on simulated WGBS data" width="70%" />
 <p class="caption">
 Figure 4.4: Precision-Recall analysis on simulated WGBS data
 </p>
