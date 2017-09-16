@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-09-12">
+<meta name="date" content="2017-09-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -185,6 +185,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">7</span> Graphics</h1>
 <div id="lollipop" class="section level2">
 <h2><span class="header-section-number">7.1</span> lollipop</h2>
+<p>The consideration that we design novel <strong>Lollipop</strong> plot, is to be able to distinguish <strong>un-methylated sites</strong> and <strong>un-detected sites</strong>. Each covered cytosine would have a large round head; color and height of the bar represent DNA methylation level.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -193,7 +194,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #         (aka mCLollipop) 
 #   Description: Plot local mC level for multiple samples 
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2017-09-12 
+#   Last Update: 2017-09-16 
 #   Example: 
 #       mCLollipop [-i input] -o gene.png 
 #   -Input Format (-i)
@@ -268,13 +269,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>cgmaptools lollipop -i matrix.CG.gz -a anno.refFlat -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-61"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-65"></span>
 <img src="TRIM59.png" alt="Lollipop example-1" width="80%" />
 <p class="caption">
 Figure 7.1: Lollipop example-1
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-62"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
 <img src="VCAN.png" alt="Lollipop example-2" width="80%" />
 <p class="caption">
 Figure 7.2: Lollipop example-2
@@ -325,7 +326,7 @@ rm ${GN}.refFlat.txt AGPv4.GenePred</code></pre>
 #         (aka mCBinHeatmap)
 #   Description: Plot methylation dynamics of target region for multiple samples [heatmap]
 #   Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#   Last update: 2016-12-07
+#   Last update: 2017-09-16
 #   Example: 
 #     mCBinHeatmap.R -i input -m white -o chr1.xxx-xxx.pdf 
 #     -Input File Format: 
@@ -375,10 +376,10 @@ rm ${GN}.refFlat.txt AGPv4.GenePred</code></pre>
 #           Show this help message and exit</code></pre>
 <ul>
 <li><p><strong>Example</strong>:</p>
-<p><code>cgmaptools heatmap -i mmbin -c -o cluster.pdf -f pdf</code></p></li>
+<p><code>cgmaptools mmbin -l 1.CGmap,2.CGmap,3.CGmap &gt; mmbin.tab</code> <code>cgmaptools heatmap -i mmbin.tab -c -o cluster.pdf -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-64"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
 <img src="mC_Cluster.png" alt="heatmap example-1" width="80%" />
 <p class="caption">
 Figure 7.3: heatmap example-1
@@ -395,7 +396,7 @@ Figure 7.3: heatmap example-1
 #         (aka mCFragRegView) 
 #   Description: Plot methylation dynamics of target and flanking region for multiple samples 
 #   Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#   Last update: 2016-12-07
+#   Last update: 2017-09-16
 #   Example: 
 #     FragRegView.R -i input -r 5 -o genebody.pdf 
 #   -Input File Format: 
@@ -459,15 +460,16 @@ total_sum_NO    30      30      30      10</code></pre>
 </ul></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
-<img src="GeneBody_mC_profile.png" alt="FragRegMC example" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-70"></span>
+<img src="GeneBody_mC_profile.png" alt="DNA methylation distribution across gene body" width="80%" />
 <p class="caption">
-Figure 7.4: FragRegMC example
+Figure 7.4: DNA methylation distribution across gene body
 </p>
 </div>
 </div>
 <div id="tanghulu" class="section level2">
 <h2><span class="header-section-number">7.4</span> tanghulu</h2>
+<p>The <strong>Tanghulu</strong> plot is designed as show the methylation state on each cytosine by reads. (See what does “<em>Tanghulu</em>” strand for? <a href="https://en.wikipedia.org/wiki/Tanghulu">Wikipedia</a>)</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -518,10 +520,17 @@ Figure 7.4: FragRegMC example
 <p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
-<img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="FragRegMC example" width="50%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-72"></span>
+<img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="Tanghulu plot example" width="50%" />
 <p class="caption">
-Figure 7.5: FragRegMC example
+Figure 7.5: Tanghulu plot example
+</p>
+</div>
+<p>We also designed <strong>Tanghulu</strong> plot for visualizing reads that are support methylated, un-methylated, and vague reads for Allele-Specific Methylation (ASM) region.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-73"></span>
+<img src="TanghuluPlot.png" alt="Tanghulu plot show vague-reads" width="50%" />
+<p class="caption">
+Figure 7.6: Tanghulu plot show vague-reads
 </p>
 </div>
 
