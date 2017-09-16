@@ -186,24 +186,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Bisulfite sequencing data contains information of both methylation and genome sequences. In addition to DNA methylation analysis, we can also call variants using bisulfite data. Due to bisulfite coversion and PCR amplification during library preparation, the unmethylated cytosines on the DNA fragments would be converted to thymines. Thus, it’s difficult to distinguish thymine produced by bisulfite coversion with the real thymine allele.</p>
 <p>In recent years, few tools are adapted to bisulfite data for SNP calling. The main idea is removing vague reads that may contain unmethylated cytosines for a given positoin. Consequently, the rest reads can be regarded as reads generated from a normal genome DNA without bisulfite treatment and can be used to call variants using regular methods without consideration of bisulfite conversion.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
-<img src="ATCGmapTable.png" alt="ATCGmap table used for SNV calling" width="60%" />
+<img src="ATCGmapTable.png" alt="ATCGmap table used for SNV calling" width="40%" />
 <p class="caption">
 Figure 4.1: ATCGmap table used for SNV calling
 </p>
 </div>
 <p>However, removing the vague reads leads to information lost in most cases making variant calling less confident, especially when the sequencing depth is low.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
-<img src="./ATCGmapTableEx.png" alt="Examples that alignments refer to vague genotypes" width="60%" />
+<img src="ATCGmapEx.png" alt="Example that alignments refer to vague genotypes" width="60%" />
 <p class="caption">
-Figure 4.2: Examples that alignments refer to vague genotypes
+Figure 4.2: Example that alignments refer to vague genotypes
 </p>
 </div>
-<p>To solve this problem, we proposed two independent methods called BinomWC (based on binomial) and BayesWC (based on bayesian), taking vague reads into consideration.</p>
-<strong>Performances on simulation data</strong>
+<p>To solve this problem, we tried to introduce wild-card in genotype calling. Even for these amiguouse genotypes, we can still learning something.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-34"></span>
-<img src="WGBS_precision_recall.png" alt="Precision-Recall analysis on simulated WGBS data" width="60%" />
+<img src="AmbiguousGenotypes.png" alt="Table for definition of amibiguous genotype" width="80%" />
 <p class="caption">
-Figure 4.3: Precision-Recall analysis on simulated WGBS data
+Figure 4.3: Table for definition of amibiguous genotype
+</p>
+</div>
+<p>We proposed two independent methods called BinomWC (based on binomial) and BayesWC (based on bayesian), taking vague reads into consideration.</p>
+<strong>Performances on simulation data</strong>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-35"></span>
+<img src="WGBS_precision_recall.png" alt="Precision-Recall analysis on simulated WGBS data" width="80%" />
+<p class="caption">
+Figure 4.4: Precision-Recall analysis on simulated WGBS data
 </p>
 </div>
 <p><strong>Command</strong></p>
@@ -258,10 +265,10 @@ chr1    T       8454    0, 39, 0, 0     0, 0, 0, 0      T/C             1.00e-01
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-36"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-37"></span>
 <img src="ATCG_SNV.png" alt="Output format description for cgmaptools snv" width="100%" />
 <p class="caption">
-Figure 4.4: Output format description for cgmaptools snv
+Figure 4.5: Output format description for cgmaptools snv
 </p>
 </div>
 
@@ -314,6 +321,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

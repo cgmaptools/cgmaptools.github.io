@@ -183,8 +183,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="methylation-analysis" class="section level1">
 <h1><span class="header-section-number">5</span> Methylation Analysis</h1>
+<p>The <strong><em>CGmapTools</em></strong> supports both differentially methylated site (<strong>DMS</strong>) analyses and differentially methylated region (<strong>DMR</strong>) analyses are supported.</p>
+<p>As the current available DNA methylome are either low coverage (such as WGBS) or fragmented in covered region (such as RRBS). In <strong><em>CGmapTools</em></strong>, we proposed a novel method <strong>dynamic fragmentation strategy</strong> for identifying DMRs between a pair of CGmap files.</p>
 <div id="dms" class="section level2">
 <h2><span class="header-section-number">5.1</span> dms</h2>
+<p>Differentially methylated site analysis, supporting <strong><em>Chi-square</em></strong> and <strong><em>Fisher</em></strong> tests.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -225,7 +228,7 @@ chr1    G   8376    CG  CG  0.62    0.64    9.35e-01</code></pre>
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-38"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-39"></span>
 <img src="CGmapInterDiff.png" alt="Output format description for cgmaptools dms" width="100%" />
 <p class="caption">
 Figure 5.1: Output format description for cgmaptools dms
@@ -234,6 +237,7 @@ Figure 5.1: Output format description for cgmaptools dms
 </div>
 <div id="dmr" class="section level2">
 <h2><span class="header-section-number">5.2</span> dmr</h2>
+<p>Differentially methylated region analysis, using <strong>dynamic fragmentation strategy</strong> .</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -282,16 +286,16 @@ chr1    1123931 1123933 inf     0.00e+00    0.0600  0.0000</code></pre>
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-40"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-41"></span>
 <img src="CGmapIDR.png" alt="Output format description for cgmaptools dmr" width="100%" />
 <p class="caption">
 Figure 5.2: Output format description for cgmaptools dmr
 </p>
 </div>
 <ul>
-<li><strong>Strategy</strong></li>
+<li><strong>Dynamic Fragment Strategy</strong></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-41"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-42"></span>
 <img src="Dynamic_Fragment_Strategy.png" alt="Dynamic Fragmentation Strategy" width="100%" />
 <p class="caption">
 Figure 5.3: Dynamic Fragmentation Strategy
@@ -300,6 +304,14 @@ Figure 5.3: Dynamic Fragmentation Strategy
 </div>
 <div id="asm" class="section level2">
 <h2><span class="header-section-number">5.3</span> asm</h2>
+<p>Feeding with the precisely predicted heterozygous SNVs (by <code>cgmaptools snv</code>), <strong><em>CGmapTools</em></strong> can identify Allele-Specific Methylated (<strong>ASM</strong>) regions from BAM files.</p>
+<p>Following showed an interesting ASM region by analysing a previous cohort (<a href="http://www.nature.com/articles/srep32207">Weilong Guo, et al., Scientifc Report, 2016</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-43"></span>
+<img src="ASM_ex.png" alt="Examples showed allele-specific methylated region reported by CGmapTools" width="80%" />
+<p class="caption">
+Figure 5.4: Examples showed allele-specific methylated region reported by CGmapTools
+</p>
+</div>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -359,10 +371,10 @@ Chr1    8965481 A         A            T               8965494  12,3    12,4    
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-43"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
 <img src="TAB_ASS.png" alt="Output format description for cgmaptools asm -m ass" width="100%" />
 <p class="caption">
-Figure 5.4: Output format description for cgmaptools asm -m ass
+Figure 5.5: Output format description for cgmaptools asm -m ass
 </p>
 </div>
 <ul>
@@ -377,15 +389,17 @@ chr1       8966879   C        C        G                    0.93-0-0     0.81-0-
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-44"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-46"></span>
 <img src="TAB_ASR.png" alt="Output format description for cgmaptools asm -m asr" width="80%" />
 <p class="caption">
-Figure 5.5: Output format description for cgmaptools asm -m asr
+Figure 5.6: Output format description for cgmaptools asm -m asr
 </p>
 </div>
 </div>
 <div id="mbed" class="section level2">
 <h2><span class="header-section-number">5.4</span> mbed</h2>
+<p>The <code>cgmaptools mbed</code> command will calculated <strong>one</strong> DNA methylation level for <strong>all the investiaged regions</strong>, which is different from <code>cgmaptools mtr</code>.</p>
+<p>For example, this function can be applied when calculating the average DNA methylation levels in regions, such as promoter, gene body, specific Transposon Elements (TEs).</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -431,6 +445,13 @@ chr5    282   0.1272      222     0.1589      504     0.1412</code></pre></li>
 </div>
 <div id="mbin" class="section level2">
 <h2><span class="header-section-number">5.5</span> mbin</h2>
+<p>This function will calculated the average methylation levels in equal-length bins, across genome, generating both summary table and distribution graph.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
+<img src="mbin_ex.png" alt="Output figure example for cgmaptools mbin" width="100%" />
+<p class="caption">
+Figure 5.7: Output figure example for cgmaptools mbin
+</p>
+</div>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -482,6 +503,7 @@ chr3    1       5000    na</code></pre></li>
 </div>
 <div id="mmbin" class="section level2">
 <h2><span class="header-section-number">5.6</span> mmbin</h2>
+<p>This function will calculate the average methylation levels in equal-length bins for <strong>mulitple</strong> samples, generating a summary table.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -526,15 +548,16 @@ Chr2    20000       20500   0.96    0.33    0.66</code></pre>
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
 <img src="TAB_RMM.png" alt="Output format description for cgmaptools mmbin" width="100%" />
 <p class="caption">
-Figure 5.6: Output format description for cgmaptools mmbin
+Figure 5.8: Output format description for cgmaptools mmbin
 </p>
 </div>
 </div>
 <div id="mfg" class="section level2">
 <h2><span class="header-section-number">5.7</span> mfg</h2>
+<p>The <code>cgmaptools mfg</code> supports studys of Methylation in FraGmented regions. The function can be applied to draw mC distribution across gene body, transposon elements, and other user-provided regions. The fragmented regions can be generated using <code>cgmaptools bed2fragreg</code>.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -581,6 +604,10 @@ Figure 5.6: Output format description for cgmaptools mmbin
 </div>
 <div id="mstat" class="section level2">
 <h2><span class="header-section-number">5.8</span> mstat</h2>
+<p><strong><em>CGmapTools</em></strong> provide resourceful statistic analysis on DNA methylation globally. The <code>cgmaptools mstat</code> command will generated a table summary, together with several graphs: * mC contributions of different contexts in Pie chart * Bulk mC levels of different contexts * Fragmented distribution of mC in different contexts</p>
+<p>For plants, the contexts for DNA methylations are known as <strong>CG</strong>, <strong>CHG</strong> and <strong>CHH</strong>, where <span class="math inline">\(H=\{A,C,T\}\)</span>.</p>
+<p>For animals, the situation is different. In 2014, <a href="http://nar.oxfordjournals.org/content/42/5/3009.abstract">Weilong Guo, et al., Nucleic Acids Research, 2014</a> showed that it is unnecessary to seperate CHG methylations and CHH methylations in human. In 2016, <a href="http://www.nature.com/articles/srep32207">Weilong Guo, et al., Scientifc Report, 2016</a> designed <strong><em>MiDD</em></strong> method and de novo predicted the main separated contexts for non-CG (CH) methylation should be CW (<span class="math inline">\(W=\{A,T\}\)</span>) and CC, and mCW is cell-type specific and conserved between human and mice.</p>
+<p>In <strong><em>CGmapTools</em></strong>, we support both human view (<strong>CG</strong>, <strong>CW</strong> and <strong>CC</strong>) and plant view (<strong>CG</strong>, <strong>CHG</strong>, and <strong>CHH</strong>) for DNA methylation contexts.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -630,27 +657,28 @@ mean_mC_byChr   chr1    0.0840  0.4181  0.0340  0.0412  0.0794  0.0065  0.0251  
 mean_mC_byChr   chr10   0.0917  0.4106  0.0758  0.0421  0.0968  0.0097  0.0349  0.0502  0.0655</code></pre></li>
 <li><p><strong>Output figures</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-54"></span>
 <img src="Pie_mC_contribution.png" alt="mC contribution example" width="80%" />
 <p class="caption">
-Figure 5.7: mC contribution example
+Figure 5.9: mC contribution example
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
 <img src="DNAmethylationLevel_ByContext.png" alt="Bulk mC example" width="80%" />
 <p class="caption">
-Figure 5.8: Bulk mC example
+Figure 5.10: Bulk mC example
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-53"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-56"></span>
 <img src="DNAmethylationDistribution_ByContext.png" alt="mC fragmented distribution example" width="80%" />
 <p class="caption">
-Figure 5.9: mC fragmented distribution example
+Figure 5.11: mC fragmented distribution example
 </p>
 </div>
 </div>
 <div id="mtr" class="section level2">
 <h2><span class="header-section-number">5.9</span> mtr</h2>
+<p>The <code>cgmaptools mtr</code> command will calculated the DNA methylation levels for each investiaged region.</p>
 <ul>
 <li><strong>Command</strong></li>
 </ul>
@@ -692,10 +720,10 @@ chr2   8275   8429    0.50   12    0.45   40</code></pre>
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
 <img src="TAB_RSM.png" alt="Output format description for cgmaptools mtr" width="100%" />
 <p class="caption">
-Figure 5.10: Output format description for cgmaptools mtr
+Figure 5.12: Output format description for cgmaptools mtr
 </p>
 </div>
 
@@ -749,6 +777,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

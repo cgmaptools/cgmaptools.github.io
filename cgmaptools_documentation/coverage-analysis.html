@@ -183,6 +183,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="coverage-analysis" class="section level1">
 <h1><span class="header-section-number">6</span> Coverage Analysis</h1>
+<p>Read coverage is an important factor for interpreting DNA methylomes.</p>
+<p>It requires different coverage levels for different purpose. For example, SNV calling requires higher coverage than it is required for DMR study. The SNV calling process is depending on all nucleotides (A, T, C and G), whereas DNA methylation levels only depend on T and C read counts aligned to cytosines.</p>
+<p>In <strong><em>CGmapTools</em></strong>, we propsed two ways for evaluating the coverages of DNA methylations: <strong>OverAll Coverage (OAC)</strong> and <strong>Methylation-Effective Coverage (MEC)</strong>. - OAC is calculated as the average read coverage on all nucleotides on both strands, which are calculated from the ATCGmap file. - MEC is calculated as the average read coverage only for cytosines, which is calculated from the CGmap file. Generally, the MEC is slightly higher than half of the OAC.</p>
+<p>In <strong><em>CGmapTools</em></strong>, we provides function for basic statistics of coverages (<code>cgmaptools oac stat</code> and <code>cgmaptools mec stat</code>) and visualization of coverages in bins across genome (<code>cgmaptools oac bin</code> and <code>cgmaptools mec stat</code>).</p>
 <div id="oac" class="section level2">
 <h2><span class="header-section-number">6.1</span> oac</h2>
 <ul>
@@ -230,7 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>cgmaptools oac bin -i WG.ATCGmap.gz -B 1000 -f png -p WG -t WG &gt; WG.oac_bin.data</code></p></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-61"></span>
 <img src="AML.OverAllCove.png" alt="MEC example" width="80%" />
 <p class="caption">
 Figure 6.1: MEC example
@@ -373,7 +377,7 @@ CovAndCount     3       380</code></pre></li>
 <p><code>cgmaptools mec stat -i WG.CGmap.gz -p WG -f png &gt; WG.mec_stat.data</code></p></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
 <img src="AML.MethEffectCove.png" alt="MEC example" width="80%" />
 <p class="caption">
 Figure 6.2: MEC example
@@ -431,6 +435,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
