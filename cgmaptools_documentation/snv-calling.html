@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-09-17">
+<meta name="date" content="2017-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -132,7 +132,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a><ul>
+<li class="chapter" data-level="4.1" data-path="snv-calling.html"><a href="snv-calling.html#bayswc-strategy"><i class="fa fa-check"></i><b>4.1</b> BaysWC strategy</a></li>
+<li class="chapter" data-level="4.2" data-path="snv-calling.html"><a href="snv-calling.html#binomwc-strategy"><i class="fa fa-check"></i><b>4.2</b> BinomWC strategy</a></li>
+<li class="chapter" data-level="4.3" data-path="snv-calling.html"><a href="snv-calling.html#performance"><i class="fa fa-check"></i><b>4.3</b> Performance</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -206,11 +210,45 @@ Figure 4.3: Table for definition of amibiguous genotype
 </p>
 </div>
 <p>We proposed two independent methods called BinomWC (based on binomial) and BayesWC (based on bayesian), taking vague reads into consideration.</p>
-<strong>Performances on simulation data</strong>
+<div id="bayswc-strategy" class="section level2">
+<h2><span class="header-section-number">4.1</span> BaysWC strategy</h2>
+<p><strong>BinomWC</strong> strategy combines bayesian method and wildcard strategy for predicting the genotype. The likelyhood matrix is designed as following.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-35"></span>
+<img src="BayesWC_likelyhood_matrix.png" alt="The likelyhood matrix for BayesWC strategy" width="30%" />
+<p class="caption">
+Figure 4.4: The likelyhood matrix for BayesWC strategy
+</p>
+</div>
+</div>
+<div id="binomwc-strategy" class="section level2">
+<h2><span class="header-section-number">4.2</span> BinomWC strategy</h2>
+<p><strong>BinomWC</strong> (Binomial-WildCard) strategy works as following for 3 cases.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-36"></span>
+<img src="BinomWC_case1.png" alt="Case 1 for BinomWC strategy" width="30%" />
+<p class="caption">
+Figure 4.5: Case 1 for BinomWC strategy
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-37"></span>
+<img src="BinomWC_case2.png" alt="Case 2 for BinomWC strategy" width="30%" />
+<p class="caption">
+Figure 4.6: Case 2 for BinomWC strategy
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-38"></span>
+<img src="BinomWC_case3.png" alt="Case 3 for BinomWC strategy" width="30%" />
+<p class="caption">
+Figure 4.7: Case 3 for BinomWC strategy
+</p>
+</div>
+</div>
+<div id="performance" class="section level2">
+<h2><span class="header-section-number">4.3</span> Performance</h2>
+<strong>Performances on simulation data</strong>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-39"></span>
 <img src="WGBS_precision_recall.png" alt="Precision-Recall analysis on simulated WGBS data" width="70%" />
 <p class="caption">
-Figure 4.4: Precision-Recall analysis on simulated WGBS data
+Figure 4.8: Precision-Recall analysis on simulated WGBS data
 </p>
 </div>
 <p><strong>Command</strong></p>
@@ -265,13 +303,14 @@ chr1    T       8454    0, 39, 0, 0     0, 0, 0, 0      T/C             1.00e-01
 <li><strong>Column Description</strong></li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-37"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-41"></span>
 <img src="ATCG_SNV.png" alt="Output format description for cgmaptools snv" width="100%" />
 <p class="caption">
-Figure 4.5: Output format description for cgmaptools snv
+Figure 4.9: Output format description for cgmaptools snv
 </p>
 </div>
 
+</div>
 </div>
             </section>
 

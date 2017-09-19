@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-09-17">
+<meta name="date" content="2017-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -132,7 +132,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.9.2" data-path="file-manipulation.html"><a href="file-manipulation.html#select-site"><i class="fa fa-check"></i><b>3.9.2</b> select site</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a></li>
+<li class="chapter" data-level="4" data-path="snv-calling.html"><a href="snv-calling.html"><i class="fa fa-check"></i><b>4</b> SNV calling</a><ul>
+<li class="chapter" data-level="4.1" data-path="snv-calling.html"><a href="snv-calling.html#bayswc-strategy"><i class="fa fa-check"></i><b>4.1</b> BaysWC strategy</a></li>
+<li class="chapter" data-level="4.2" data-path="snv-calling.html"><a href="snv-calling.html#binomwc-strategy"><i class="fa fa-check"></i><b>4.2</b> BinomWC strategy</a></li>
+<li class="chapter" data-level="4.3" data-path="snv-calling.html"><a href="snv-calling.html#performance"><i class="fa fa-check"></i><b>4.3</b> Performance</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="methylation-analysis.html"><a href="methylation-analysis.html"><i class="fa fa-check"></i><b>5</b> Methylation Analysis</a><ul>
 <li class="chapter" data-level="5.1" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dms"><i class="fa fa-check"></i><b>5.1</b> dms</a></li>
 <li class="chapter" data-level="5.2" data-path="methylation-analysis.html"><a href="methylation-analysis.html#dmr"><i class="fa fa-check"></i><b>5.2</b> dmr</a></li>
@@ -269,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>cgmaptools lollipop -i matrix.CG.gz -a anno.refFlat -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-72"></span>
 <img src="TRIM59.png" alt="Lollipop example-1" width="80%" />
 <p class="caption">
 Figure 7.1: Lollipop example-1
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-69"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-73"></span>
 <img src="VCAN.png" alt="Lollipop example-2" width="80%" />
 <p class="caption">
 Figure 7.2: Lollipop example-2
@@ -379,7 +383,7 @@ rm ${GN}.refFlat.txt AGPv4.GenePred</code></pre>
 <p><code>cgmaptools mmbin -l 1.CGmap,2.CGmap,3.CGmap &gt; mmbin.tab</code> <code>cgmaptools heatmap -i mmbin.tab -c -o cluster.pdf -f pdf</code></p></li>
 <li><p><strong>Figure examples</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-71"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-75"></span>
 <img src="mC_Cluster.png" alt="heatmap example-1" width="80%" />
 <p class="caption">
 Figure 7.3: heatmap example-1
@@ -460,7 +464,7 @@ total_sum_NO    30      30      30      10</code></pre>
 </ul></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-73"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-77"></span>
 <img src="GeneBody_mC_profile.png" alt="DNA methylation distribution across gene body" width="80%" />
 <p class="caption">
 Figure 7.4: DNA methylation distribution across gene body
@@ -520,14 +524,14 @@ Figure 7.4: DNA methylation distribution across gene body
 <p><code>cgmaptools tanghulu -r genome.fa -b WG.bam -l chr1:2000-2400 -t CG</code></p></li>
 <li><p><strong>Output figure</strong></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-75"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-79"></span>
 <img src="CirclePlot.CG.chr1_3017150_3017200.png" alt="Tanghulu plot example" width="50%" />
 <p class="caption">
 Figure 7.5: Tanghulu plot example
 </p>
 </div>
 <p>We also designed <strong>Tanghulu</strong> plot for visualizing reads that are support methylated, un-methylated, and vague reads for Allele-Specific Methylation (ASM) region.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-76"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-80"></span>
 <img src="TanghuluPlot.png" alt="Tanghulu plot show vague-reads" width="50%" />
 <p class="caption">
 Figure 7.6: Tanghulu plot show vague-reads
