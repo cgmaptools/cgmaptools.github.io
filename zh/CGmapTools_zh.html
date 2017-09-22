@@ -1,0 +1,508 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Arial, Lato:300,300italic,400,400italic,700,700italic|monospace, consolas, Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CGmapTools, DNA methylation, Bisulfite sequencing, Allele specific methylation, SNP calling" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CGmapTools">
+<meta property="og:url" content="https://cgmaptools.github.io/zh/CGmapTools_zh.html">
+<meta property="og:site_name" content="CGmapTools">
+<meta property="og:description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
+<meta property="og:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
+<meta property="og:image" content="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png">
+<meta property="og:updated_time" content="2017-09-22T09:34:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CGmapTools">
+<meta name="twitter:description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
+<meta name="twitter:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cgmaptools.github.io/zh/CGmapTools_zh.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | CGmapTools
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/CGmapTools_logo.png"
+             alt="CGmapTools"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CGmapTools</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">(40 functions for CGmap-oriented DNA methylation analyses)</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tutorial">
+          <a href="/cgmaptools_documentation/what-is-cgmaptools.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Tutorial
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-source code">
+          <a href="/source-code" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            Source Code
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-release log">
+          <a href="/release-log" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list-ol"></i> <br />
+            
+            Release log
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-quick start">
+          <a href="/quick-start" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-play"></i> <br />
+            
+            Quick Start
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-q&a">
+          <a href="/q-a" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Q&A
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-㊥">
+          <a href="/zh/CGmapTools_zh.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            menu.㊥
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline"></h2>
+
+
+
+</header>
+
+    
+    
+      <h1 id="CGmapTools-DNA甲基化数据分析和可视化工具"><a href="#CGmapTools-DNA甲基化数据分析和可视化工具" class="headerlink" title="CGmapTools: DNA甲基化数据分析和可视化工具"></a>CGmapTools: DNA甲基化数据分析和可视化工具</h1><p>Date: 2017年7月22日<br>By: 朱平</p>
+<h2 id="DNA甲基化与亚硫酸盐测序"><a href="#DNA甲基化与亚硫酸盐测序" class="headerlink" title="DNA甲基化与亚硫酸盐测序"></a>DNA甲基化与亚硫酸盐测序</h2><p>在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、维持基因组印记、参与X染色体的失活等。</p>
+<p>目前，亚硫酸盐转化结合高通量测序(Bisulfite conversion + High throughput sequencing)是检测DNA甲基化信号的金标准。其主要原理是：亚硫酸盐能特异性的将DNA上没有甲基化的C转化成U，通过PCR扩增我们最终检测到的信号为T，但是有甲基化的C则不会被改变。因此，通过比较测序数据中C和T的比例，我们可以评估DNA甲基化的程度。</p>
+<p><img src="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png" alt="亚硫酸盐转化"></p>
+<p>随着测序成本的降低以及新技术方法的开发，DNA甲基化的研究越来越多，如何高效存储、共享、分析和可视化DNA甲基化数据成为我们亟需解决的问题。此前，已有一些针对DNA甲基化数据分析的工具被开发出来，涵盖质量控制、比对、找差异甲基化区域、预测SNP位点、Allele特异的甲基化等。尽管组合现有工具能够解决我们大部分的分析需求，但由于不同工具没有统一的输入／输出格式，给整合分析造成了较大困难，且部分工具的性能还有待较大提升。</p>
+<h2 id="CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化"><a href="#CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化" class="headerlink" title="CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化"></a>CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化</h2><p>郭伟龙博士（中国农业大学）和朱平博士（天津血研所/北京大学）等人合作开发了DNA甲基化数据分析工具包：<a href="https://cgmaptools.github.io">CGmapTools</a>，包含40个独立的命令行工具，提供了全面的DNA甲基化数据分析和可视化功能。目前该工作已经在生物信息学著名期刊<strong>Bioinformatics</strong>上以original paper形式发表。</p>
+<p>Weilong Guo <em> #, Ping Zhu </em>, et al. (2017), <a href="https://doi.org/10.1093/bioinformatics/btx595" target="_blank" rel="external">CGmapTools improves the precision of heterozygous SNV calls and supports allele-specific methylation detection and visualization in bisulfite-sequencing data</a>, <strong>Bioinformatics</strong>, btx595.</p>
+<h2 id="CGmapTools的特色"><a href="#CGmapTools的特色" class="headerlink" title="CGmapTools的特色"></a>CGmapTools的特色</h2><p><img src="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png" alt="CGmapTools示意图"></p>
+<h3 id="1-统一的数据格式"><a href="#1-统一的数据格式" class="headerlink" title="1. 统一的数据格式"></a>1. 统一的数据格式</h3><p>该工作提出将ATCGmap和CGmap文件格式作为存储DNA甲基化信息的标准格式。CGmapTools提供的大部分高级分析都基于这两类文件进行。统一的文件格式接口将打破数据格式的屏障，有助于DNA甲基化组学领域实现数据共享和互通。</p>
+<blockquote>
+<p>目前，CGmapTools支持对BS-Seeker2生成的CGmap和ATCGmap文件直接分析；也支持将Bismark的比对结果（BAM文件）进行解读为CGmap和ATCGmap格式的文件，或对Bismark的甲基化信息格式转化为CGmap格式。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从 BAM 格式生成 CGmap 格式文件</span></div><div class="line">cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG</div><div class="line"><span class="comment"># 将 Bismark 分析结果转换为 CGmap 格式</span></div><div class="line">cgmaptools convert bismark2cgmap -i bismark.dat -o output.CGmap</div></pre></td></tr></table></figure>
+<h3 id="2-命令行模式轻松支持功能扩展"><a href="#2-命令行模式轻松支持功能扩展" class="headerlink" title="2. 命令行模式轻松支持功能扩展"></a>2. 命令行模式轻松支持功能扩展</h3><p>支持标准输入(STDIN)和输出(STDOUT)，轻松实现工具的多重组合。</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将多个CGmap文件合并为一个CGmap文件</span></div><div class="line">cgmaptools merge2 cgmap -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools merge2 cgmap -1 C.CGmap.gz | cgmaptools merge2 cgmap -1 D.CGmap.gz -o ABCD.CGmap.gz</div><div class="line"><span class="comment"># 或者</span></div><div class="line">cgmaptools mergelist tosingle <span class="_">-f</span> cgmap <span class="_">-l</span> A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -o ABCD.CGmap.gz</div><div class="line"><span class="comment"># 将多个CGmap文件总结成为矩阵表格</span></div><div class="line">zcat *.CGmap.gz  | gawk <span class="string">'$8&gt;=5&#123;print $1, $3&#125;'</span> | sort -u | cgmaptools sort -c 1 -p 2  <span class="_">-f</span> A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -t A,B,C,D -c 5 -C 100 -o matrix.CG.gz</div></pre></td></tr></table></figure>
+<h3 id="3-支持快速检索"><a href="#3-支持快速检索" class="headerlink" title="3. 支持快速检索"></a>3. 支持快速检索</h3><p>在ATCGmap和CGmap文件基础之上，我开发了对应的二进制压缩文件格式ATCGbz和CGbz，可以快速检索指定基因组区域的DNA甲基化状态，同时在保留主要DNA甲基化组学信息的同事，大大减少了硬盘存储的占用空间（例如，对于WGBS来说，BAM文件需50G，CGmap压缩格式需5.6G，CGbz格式只需3.9G）。</p>
+<blockquote>
+<p>此功能受到了samtools view功能的启发。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将 CGmap 转换为 CGbz</span></div><div class="line">cgmaptools convert cgmap2cgbz -c in.CGmap.gz -b out.CGbz</div><div class="line"><span class="comment"># 从大文件中获得基因组上的局部甲基化信息</span></div><div class="line">cgmaptools fetch cgbz -b input.CGbz -C chr1 -L 1010101 -R 2010256 | gzip &gt; chr1_1010101_2010256.CGmap.gz</div></pre></td></tr></table></figure>
+<h3 id="4-优化差异甲基化区域分析"><a href="#4-优化差异甲基化区域分析" class="headerlink" title="4. 优化差异甲基化区域分析"></a>4. 优化差异甲基化区域分析</h3><p>针对基因组覆盖度较低的全基因组甲基化测序数据(WGBS)和覆盖不连续的简化甲基化测序数据(RRBS)，该工作提出了动态片段化(dynamic fragment)的策略，实现数据的有效比较。</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计算 DMR</span></div><div class="line">cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dmr -o DMR_A_vs_B.gz</div><div class="line"><span class="comment"># 计算 DMS</span></div><div class="line">cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dms -o DMS_A_vs_B.gz</div></pre></td></tr></table></figure>
+<h3 id="5-BS-Seq数据准确计算SNV新方法"><a href="#5-BS-Seq数据准确计算SNV新方法" class="headerlink" title="5. BS-Seq数据准确计算SNV新方法"></a>5. BS-Seq数据准确计算SNV新方法</h3><p>利用ATCGmap文件的信息，通过引入wildcard的基因型，结合贝叶斯模型和二项分布模型设计了BayesWC和BinomWC两种SNV calling策略，似的从DNA甲基化数据计算heterozygous SNV的precision从之前80%提高到99%。</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># BayesWC模型</span></div><div class="line">cgmaptools snv -i WG.ATCGmap.gz -m bayes -v bayes.vcf -o bayes.snv --bayes-dynamicP</div><div class="line"><span class="comment"># BinomWC模型</span></div><div class="line">cgmaptools snv -i WG.ATCGmap.gz -m binom -o binom.snv</div></pre></td></tr></table></figure>
+<h3 id="6-支持Allele特异的甲基化分析和可视化"><a href="#6-支持Allele特异的甲基化分析和可视化" class="headerlink" title="6. 支持Allele特异的甲基化分析和可视化"></a>6. 支持Allele特异的甲基化分析和可视化</h3><p>利用高精确度的杂合SNV作为输入，分析Allele-specific DNA methylation (ASM)，并通过Tanghulu(“糖葫芦”)图对ASM区域的读段上DNA甲基化的状态进行直观展示。</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 利用预测的杂合SNV信息计算链特异的DNA甲基化（ASM）</span></div><div class="line">gawk <span class="string">'&#123;if(/^#/)&#123;print&#125;else&#123;print "chr"$0;&#125;&#125;'</span> bayes.vcf &gt; bayes2.vcf</div><div class="line">cgmaptools asm -r genome.fa -b WG.bam <span class="_">-l</span> bayes2.vcf &gt; WG.asm</div></pre></td></tr></table></figure>
+<h3 id="7-提供多层次甲基化分析和可视化工具"><a href="#7-提供多层次甲基化分析和可视化工具" class="headerlink" title="7. 提供多层次甲基化分析和可视化工具"></a>7. 提供多层次甲基化分析和可视化工具</h3><p>支持基于不同水平的DNA甲基化分析和可视化，如不同C的类型(CpG、非CpG等）、不同基因组区域(如基因区域、启动子区域等）、不同窗口大小、不同样本等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># bin-wise DNA甲基化分析</span></div><div class="line">cgmaptools mbin -h</div><div class="line"><span class="comment"># region-wise DNA甲基化分析</span></div><div class="line">cgmaptools mfg -h</div><div class="line"><span class="comment"># site-wise DNA甲基化分析:“棒棒糖图”（lollipop plot）</span></div><div class="line">cgmaptools lollipop -h</div><div class="line"><span class="comment"># read-wise DNA甲基化分析: “糖葫芦图” （tanghulu plot）</span></div><div class="line">cgmaptools tanghulu -h</div><div class="line"><span class="comment"># sample-wise DNA甲基化分析:热图和聚类</span></div><div class="line">cgmaptools heatmap -h</div><div class="line"><span class="comment"># context-wise DNA甲基化分析</span></div><div class="line">cgmaptools mstat -h</div></pre></td></tr></table></figure>
+<p>##CGmapTools的安装<br>从<a href="https://cgmaptools.github.io/source-code"><strong>CGmapTools</strong></a>的github主页上下载最新版本安装包，解压缩并安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># decompress the gzip tarball</span></div><div class="line">tar -zxf cgmaptools.X.X.X.tar.gz</div><div class="line"><span class="comment"># go to cgmaptool.X.X.X</span></div><div class="line"><span class="built_in">cd</span> cgmaptools.X.X.X</div><div class="line"><span class="comment"># install</span></div><div class="line">sh ./install.sh</div></pre></td></tr></table></figure>
+<p>CGmapTools充分利用了DNA甲基化数据的特性（即同时包含甲基化和基因组序列信息），从多组学角度提供了针对不同生物问题的分析功能。以下介绍CGmapTools在不同生物问题分析中的应用示例。</p>
+<p>更多使用方法，可参考CGmapTools的<a href="https://cgmaptools.github.io/cgmaptools_documentation/what-is-cgmaptools.html">网上教程</a>。</p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Weilong Guo and Ping Zhu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
