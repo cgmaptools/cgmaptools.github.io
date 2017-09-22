@@ -88,48 +88,21 @@
 
 
 
-<meta name="description" content="CGmapTools- DNA甲基化数据分析和可视化工具
-
-
-
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;">
+<meta name="description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CGmapTools">
 <meta property="og:url" content="https://cgmaptools.github.io/zh/CGmapTools_zh.html">
 <meta property="og:site_name" content="CGmapTools">
-<meta property="og:description" content="CGmapTools- DNA甲基化数据分析和可视化工具
-
-
-
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;">
+<meta property="og:description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
 <meta property="og:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
 <meta property="og:image" content="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png">
-<meta property="og:updated_time" content="2017-09-22T09:30:07.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:34:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CGmapTools">
-<meta name="twitter:description" content="CGmapTools- DNA甲基化数据分析和可视化工具
-
-
-
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;">
+<meta name="twitter:description" content="CGmapTools: DNA甲基化数据分析和可视化工具Date: 2017年7月22日By: 朱平
+DNA甲基化与亚硫酸盐测序在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、">
 <meta name="twitter:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
 
 
@@ -292,16 +265,6 @@ body {
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-chinese">
-          <a href="/zh/CGmapTools_zh.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            menu.chinese
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -332,606 +295,44 @@ body {
 
     
     
-      <!DOCTYPE html>
-<html>
-
-<head>
-
-<meta charset="utf-8">
-<title>CGmapTools- DNA甲基化数据分析和可视化工具</title>
-
-
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
-}
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-}
-</style>
-
-<style type="text/css">
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #f5f2f0;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: slategray;
-}
-
-.token.punctuation {
-	color: #999;
-}
-
-.namespace {
-	opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
-}
-
-.token.function {
-	color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-</style>
-
-
-</head>
-
-<body>
-
-<h1 id="toc_0">CGmapTools: DNA甲基化数据分析和可视化工具</h1>
-
-<p>Date: 2017年7月22日<br>
-By: 朱平</p>
-
-<h2 id="toc_1">DNA甲基化与亚硫酸盐测序</h2>
-
-<p>在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、维持基因组印记、参与X染色体的失活等。</p>
-
+      <h1 id="CGmapTools-DNA甲基化数据分析和可视化工具"><a href="#CGmapTools-DNA甲基化数据分析和可视化工具" class="headerlink" title="CGmapTools: DNA甲基化数据分析和可视化工具"></a>CGmapTools: DNA甲基化数据分析和可视化工具</h1><p>Date: 2017年7月22日<br>By: 朱平</p>
+<h2 id="DNA甲基化与亚硫酸盐测序"><a href="#DNA甲基化与亚硫酸盐测序" class="headerlink" title="DNA甲基化与亚硫酸盐测序"></a>DNA甲基化与亚硫酸盐测序</h2><p>在DNA甲基化转移酶(DNMT)的作用下，哺乳动物基因组上的胞嘧啶(C)第5位碳上会被加上一个甲基($-CH_3$)，我们称之为DNA甲基化，简称5mC。作为表观遗传学的重要组成之一，DNA甲基化在许多生物过程中都扮演着非常重要的角色，如抑制转座子的活性、调控基因的表达、维持基因组印记、参与X染色体的失活等。</p>
 <p>目前，亚硫酸盐转化结合高通量测序(Bisulfite conversion + High throughput sequencing)是检测DNA甲基化信号的金标准。其主要原理是：亚硫酸盐能特异性的将DNA上没有甲基化的C转化成U，通过PCR扩增我们最终检测到的信号为T，但是有甲基化的C则不会被改变。因此，通过比较测序数据中C和T的比例，我们可以评估DNA甲基化的程度。</p>
-
 <p><img src="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png" alt="亚硫酸盐转化"></p>
-
 <p>随着测序成本的降低以及新技术方法的开发，DNA甲基化的研究越来越多，如何高效存储、共享、分析和可视化DNA甲基化数据成为我们亟需解决的问题。此前，已有一些针对DNA甲基化数据分析的工具被开发出来，涵盖质量控制、比对、找差异甲基化区域、预测SNP位点、Allele特异的甲基化等。尽管组合现有工具能够解决我们大部分的分析需求，但由于不同工具没有统一的输入／输出格式，给整合分析造成了较大困难，且部分工具的性能还有待较大提升。</p>
-
-<h2 id="toc_2">CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化</h2>
-
-<p>郭伟龙博士（中国农业大学）和朱平博士（天津血研所/北京大学）等人合作开发了DNA甲基化数据分析工具包：<a href="https://cgmaptools.github.io">CGmapTools</a>，包含40个独立的命令行工具，提供了全面的DNA甲基化数据分析和可视化功能。目前该工作已经在生物信息学著名期刊<strong>Bioinformatics</strong>上以original paper形式发表。</p>
-
-<p>Weilong Guo * #, Ping Zhu *, et al. (2017), <a href="https://doi.org/10.1093/bioinformatics/btx595" target="_blank" rel="external">CGmapTools improves the precision of heterozygous SNV calls and supports allele-specific methylation detection and visualization in bisulfite-sequencing data</a>, <strong>Bioinformatics</strong>, btx595.</p>
-
-<h2 id="toc_3">CGmapTools的特色</h2>
-
-<p><img src="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png" alt="CGmapTools示意图"></p>
-
-<h3 id="toc_4">1. 统一的数据格式</h3>
-
-<p>该工作提出将ATCGmap和CGmap文件格式作为存储DNA甲基化信息的标准格式。CGmapTools提供的大部分高级分析都基于这两类文件进行。统一的文件格式接口将打破数据格式的屏障，有助于DNA甲基化组学领域实现数据共享和互通。</p>
-
+<h2 id="CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化"><a href="#CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化" class="headerlink" title="CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化"></a>CGmapTools显著提升BS-seq数据中计算杂合SNV的精准度，支持链特异DNA甲基化等40种分析及可视化</h2><p>郭伟龙博士（中国农业大学）和朱平博士（天津血研所/北京大学）等人合作开发了DNA甲基化数据分析工具包：<a href="https://cgmaptools.github.io">CGmapTools</a>，包含40个独立的命令行工具，提供了全面的DNA甲基化数据分析和可视化功能。目前该工作已经在生物信息学著名期刊<strong>Bioinformatics</strong>上以original paper形式发表。</p>
+<p>Weilong Guo <em> #, Ping Zhu </em>, et al. (2017), <a href="https://doi.org/10.1093/bioinformatics/btx595" target="_blank" rel="external">CGmapTools improves the precision of heterozygous SNV calls and supports allele-specific methylation detection and visualization in bisulfite-sequencing data</a>, <strong>Bioinformatics</strong>, btx595.</p>
+<h2 id="CGmapTools的特色"><a href="#CGmapTools的特色" class="headerlink" title="CGmapTools的特色"></a>CGmapTools的特色</h2><p><img src="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png" alt="CGmapTools示意图"></p>
+<h3 id="1-统一的数据格式"><a href="#1-统一的数据格式" class="headerlink" title="1. 统一的数据格式"></a>1. 统一的数据格式</h3><p>该工作提出将ATCGmap和CGmap文件格式作为存储DNA甲基化信息的标准格式。CGmapTools提供的大部分高级分析都基于这两类文件进行。统一的文件格式接口将打破数据格式的屏障，有助于DNA甲基化组学领域实现数据共享和互通。</p>
 <blockquote>
 <p>目前，CGmapTools支持对BS-Seeker2生成的CGmap和ATCGmap文件直接分析；也支持将Bismark的比对结果（BAM文件）进行解读为CGmap和ATCGmap格式的文件，或对Bismark的甲基化信息格式转化为CGmap格式。</p>
 </blockquote>
-
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># 从 BAM 格式生成 CGmap 格式文件
-cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG
-# 将 Bismark 分析结果转换为 CGmap 格式
-cgmaptools convert bismark2cgmap -i bismark.dat -o output.CGmap</code></pre></div>
-
-<h3 id="toc_5">2. 命令行模式轻松支持功能扩展</h3>
-
-<p>支持标准输入(STDIN)和输出(STDOUT)，轻松实现工具的多重组合。</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从 BAM 格式生成 CGmap 格式文件</span></div><div class="line">cgmaptools convert bam2cgmap -b WG.bam -g genome.fa --rmOverlap -o WG</div><div class="line"><span class="comment"># 将 Bismark 分析结果转换为 CGmap 格式</span></div><div class="line">cgmaptools convert bismark2cgmap -i bismark.dat -o output.CGmap</div></pre></td></tr></table></figure>
+<h3 id="2-命令行模式轻松支持功能扩展"><a href="#2-命令行模式轻松支持功能扩展" class="headerlink" title="2. 命令行模式轻松支持功能扩展"></a>2. 命令行模式轻松支持功能扩展</h3><p>支持标准输入(STDIN)和输出(STDOUT)，轻松实现工具的多重组合。</p>
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># 将多个CGmap文件合并为一个CGmap文件
-cgmaptools merge2 cgmap -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools merge2 cgmap -1 C.CGmap.gz | cgmaptools merge2 cgmap -1 D.CGmap.gz -o ABCD.CGmap.gz
-# 或者
-cgmaptools mergelist tosingle -f cgmap -l A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -o ABCD.CGmap.gz
-# 将多个CGmap文件总结成为矩阵表格
-zcat *.CGmap.gz  | gawk &#39;$8&gt;=5{print $1, $3}&#39; | sort -u | cgmaptools sort -c 1 -p 2  -f A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -t A,B,C,D -c 5 -C 100 -o matrix.CG.gz</code></pre></div>
-
-<h3 id="toc_6">3. 支持快速检索</h3>
-
-<p>在ATCGmap和CGmap文件基础之上，我们开发了对应的二进制压缩文件格式ATCGbz和CGbz，可以快速检索指定基因组区域的DNA甲基化状态，同时在保留主要DNA甲基化组学信息的同事，大大减少了硬盘存储的占用空间（例如，对于WGBS来说，BAM文件需50G，CGmap压缩格式需5.6G，CGbz格式只需3.9G）。</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将多个CGmap文件合并为一个CGmap文件</span></div><div class="line">cgmaptools merge2 cgmap -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools merge2 cgmap -1 C.CGmap.gz | cgmaptools merge2 cgmap -1 D.CGmap.gz -o ABCD.CGmap.gz</div><div class="line"><span class="comment"># 或者</span></div><div class="line">cgmaptools mergelist tosingle <span class="_">-f</span> cgmap <span class="_">-l</span> A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -o ABCD.CGmap.gz</div><div class="line"><span class="comment"># 将多个CGmap文件总结成为矩阵表格</span></div><div class="line">zcat *.CGmap.gz  | gawk <span class="string">'$8&gt;=5&#123;print $1, $3&#125;'</span> | sort -u | cgmaptools sort -c 1 -p 2  <span class="_">-f</span> A.CGmap.gz,B.CGmap.gz,C.CGmap.gz,D.CGmap.gz -t A,B,C,D -c 5 -C 100 -o matrix.CG.gz</div></pre></td></tr></table></figure>
+<h3 id="3-支持快速检索"><a href="#3-支持快速检索" class="headerlink" title="3. 支持快速检索"></a>3. 支持快速检索</h3><p>在ATCGmap和CGmap文件基础之上，我开发了对应的二进制压缩文件格式ATCGbz和CGbz，可以快速检索指定基因组区域的DNA甲基化状态，同时在保留主要DNA甲基化组学信息的同事，大大减少了硬盘存储的占用空间（例如，对于WGBS来说，BAM文件需50G，CGmap压缩格式需5.6G，CGbz格式只需3.9G）。</p>
 <blockquote>
 <p>此功能受到了samtools view功能的启发。</p>
 </blockquote>
-
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># 将 CGmap 转换为 CGbz
-cgmaptools convert cgmap2cgbz -c in.CGmap.gz -b out.CGbz
-# 从大文件中获得基因组上的局部甲基化信息
-cgmaptools fetch cgbz -b input.CGbz -C chr1 -L 1010101 -R 2010256 | gzip &gt; chr1_1010101_2010256.CGmap.gz</code></pre></div>
-
-<h3 id="toc_7">4. 优化差异甲基化区域分析</h3>
-
-<p>针对基因组覆盖度较低的全基因组甲基化测序数据(WGBS)和覆盖不连续的简化甲基化测序数据(RRBS)，该工作提出了动态片段化(dynamic fragment)的策略，实现数据的有效比较。</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将 CGmap 转换为 CGbz</span></div><div class="line">cgmaptools convert cgmap2cgbz -c in.CGmap.gz -b out.CGbz</div><div class="line"><span class="comment"># 从大文件中获得基因组上的局部甲基化信息</span></div><div class="line">cgmaptools fetch cgbz -b input.CGbz -C chr1 -L 1010101 -R 2010256 | gzip &gt; chr1_1010101_2010256.CGmap.gz</div></pre></td></tr></table></figure>
+<h3 id="4-优化差异甲基化区域分析"><a href="#4-优化差异甲基化区域分析" class="headerlink" title="4. 优化差异甲基化区域分析"></a>4. 优化差异甲基化区域分析</h3><p>针对基因组覆盖度较低的全基因组甲基化测序数据(WGBS)和覆盖不连续的简化甲基化测序数据(RRBS)，该工作提出了动态片段化(dynamic fragment)的策略，实现数据的有效比较。</p>
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># 计算 DMR
-cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dmr -o DMR_A_vs_B.gz
-# 计算 DMS
-cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dms -o DMS_A_vs_B.gz</code></pre></div>
-
-<h3 id="toc_8">5. BS-Seq数据准确计算SNV新方法</h3>
-
-<p>利用ATCGmap文件的信息，通过引入wildcard的基因型，结合贝叶斯模型和二项分布模型设计了BayesWC和BinomWC两种SNV calling策略，似的从DNA甲基化数据计算heterozygous SNV的precision从之前80%提高到99%。</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计算 DMR</span></div><div class="line">cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dmr -o DMR_A_vs_B.gz</div><div class="line"><span class="comment"># 计算 DMS</span></div><div class="line">cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dms -o DMS_A_vs_B.gz</div></pre></td></tr></table></figure>
+<h3 id="5-BS-Seq数据准确计算SNV新方法"><a href="#5-BS-Seq数据准确计算SNV新方法" class="headerlink" title="5. BS-Seq数据准确计算SNV新方法"></a>5. BS-Seq数据准确计算SNV新方法</h3><p>利用ATCGmap文件的信息，通过引入wildcard的基因型，结合贝叶斯模型和二项分布模型设计了BayesWC和BinomWC两种SNV calling策略，似的从DNA甲基化数据计算heterozygous SNV的precision从之前80%提高到99%。</p>
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># BayesWC模型
-cgmaptools snv -i WG.ATCGmap.gz -m bayes -v bayes.vcf -o bayes.snv --bayes-dynamicP
-# BinomWC模型
-cgmaptools snv -i WG.ATCGmap.gz -m binom -o binom.snv</code></pre></div>
-
-<h3 id="toc_9">6. 支持Allele特异的甲基化分析和可视化</h3>
-
-<p>利用高精确度的杂合SNV作为输入，分析Allele-specific DNA methylation (ASM)，并通过Tanghulu(&quot;糖葫芦&quot;)图对ASM区域的读段上DNA甲基化的状态进行直观展示。</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># BayesWC模型</span></div><div class="line">cgmaptools snv -i WG.ATCGmap.gz -m bayes -v bayes.vcf -o bayes.snv --bayes-dynamicP</div><div class="line"><span class="comment"># BinomWC模型</span></div><div class="line">cgmaptools snv -i WG.ATCGmap.gz -m binom -o binom.snv</div></pre></td></tr></table></figure>
+<h3 id="6-支持Allele特异的甲基化分析和可视化"><a href="#6-支持Allele特异的甲基化分析和可视化" class="headerlink" title="6. 支持Allele特异的甲基化分析和可视化"></a>6. 支持Allele特异的甲基化分析和可视化</h3><p>利用高精确度的杂合SNV作为输入，分析Allele-specific DNA methylation (ASM)，并通过Tanghulu(“糖葫芦”)图对ASM区域的读段上DNA甲基化的状态进行直观展示。</p>
 <p>示例：</p>
-
-<div><pre><code class="language-bash"># 利用预测的杂合SNV信息计算链特异的DNA甲基化（ASM）
-gawk &#39;{if(/^#/){print}else{print &quot;chr&quot;$0;}}&#39; bayes.vcf &gt; bayes2.vcf
-cgmaptools asm -r genome.fa -b WG.bam -l bayes2.vcf &gt; WG.asm</code></pre></div>
-
-<h3 id="toc_10">7. 提供多层次甲基化分析和可视化工具</h3>
-
-<p>支持基于不同水平的DNA甲基化分析和可视化，如不同C的类型(CpG、非CpG等）、不同基因组区域(如基因区域、启动子区域等）、不同窗口大小、不同样本等。</p>
-
-<div><pre><code class="language-bash"># bin-wise DNA甲基化分析
-cgmaptools mbin -h
-# region-wise DNA甲基化分析
-cgmaptools mfg -h
-# site-wise DNA甲基化分析:“棒棒糖图”（lollipop plot）
-cgmaptools lollipop -h
-# read-wise DNA甲基化分析: “糖葫芦图” （tanghulu plot）
-cgmaptools tanghulu -h
-# sample-wise DNA甲基化分析:热图和聚类
-cgmaptools heatmap -h
-# context-wise DNA甲基化分析
-cgmaptools mstat -h</code></pre></div>
-
-<h2 id="toc_11">CGmapTools的安装</h2>
-
-<p>从<a href="https://cgmaptools.github.io/source-code"><strong>CGmapTools</strong></a>的github主页上下载最新版本安装包，解压缩并安装。</p>
-
-<div><pre><code class="language-bash"># decompress the gzip tarball
-tar -zxf cgmaptools.X.X.X.tar.gz
-# go to cgmaptool.X.X.X
-cd cgmaptools.X.X.X
-# install
-sh ./install.sh</code></pre></div>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 利用预测的杂合SNV信息计算链特异的DNA甲基化（ASM）</span></div><div class="line">gawk <span class="string">'&#123;if(/^#/)&#123;print&#125;else&#123;print "chr"$0;&#125;&#125;'</span> bayes.vcf &gt; bayes2.vcf</div><div class="line">cgmaptools asm -r genome.fa -b WG.bam <span class="_">-l</span> bayes2.vcf &gt; WG.asm</div></pre></td></tr></table></figure>
+<h3 id="7-提供多层次甲基化分析和可视化工具"><a href="#7-提供多层次甲基化分析和可视化工具" class="headerlink" title="7. 提供多层次甲基化分析和可视化工具"></a>7. 提供多层次甲基化分析和可视化工具</h3><p>支持基于不同水平的DNA甲基化分析和可视化，如不同C的类型(CpG、非CpG等）、不同基因组区域(如基因区域、启动子区域等）、不同窗口大小、不同样本等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># bin-wise DNA甲基化分析</span></div><div class="line">cgmaptools mbin -h</div><div class="line"><span class="comment"># region-wise DNA甲基化分析</span></div><div class="line">cgmaptools mfg -h</div><div class="line"><span class="comment"># site-wise DNA甲基化分析:“棒棒糖图”（lollipop plot）</span></div><div class="line">cgmaptools lollipop -h</div><div class="line"><span class="comment"># read-wise DNA甲基化分析: “糖葫芦图” （tanghulu plot）</span></div><div class="line">cgmaptools tanghulu -h</div><div class="line"><span class="comment"># sample-wise DNA甲基化分析:热图和聚类</span></div><div class="line">cgmaptools heatmap -h</div><div class="line"><span class="comment"># context-wise DNA甲基化分析</span></div><div class="line">cgmaptools mstat -h</div></pre></td></tr></table></figure>
+<p>##CGmapTools的安装<br>从<a href="https://cgmaptools.github.io/source-code"><strong>CGmapTools</strong></a>的github主页上下载最新版本安装包，解压缩并安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># decompress the gzip tarball</span></div><div class="line">tar -zxf cgmaptools.X.X.X.tar.gz</div><div class="line"><span class="comment"># go to cgmaptool.X.X.X</span></div><div class="line"><span class="built_in">cd</span> cgmaptools.X.X.X</div><div class="line"><span class="comment"># install</span></div><div class="line">sh ./install.sh</div></pre></td></tr></table></figure>
 <p>CGmapTools充分利用了DNA甲基化数据的特性（即同时包含甲基化和基因组序列信息），从多组学角度提供了针对不同生物问题的分析功能。以下介绍CGmapTools在不同生物问题分析中的应用示例。</p>
-
 <p>更多使用方法，可参考CGmapTools的<a href="https://cgmaptools.github.io/cgmaptools_documentation/what-is-cgmaptools.html">网上教程</a>。</p>
-
-
-
-<script type="text/javascript">
-var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
-</script>
-
-<script type="text/javascript">
-!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
-</script>
-
-
-</body>
-
-</html>
 
     
   </div>
