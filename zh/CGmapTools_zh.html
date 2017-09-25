@@ -88,7 +88,7 @@
 
 
 
-<meta name="description" content="CGmapTools- DNA甲基化数据分析和可视化工具
+<meta name="description" content="CGmapTools_zh
 
 
 
@@ -98,12 +98,13 @@ body {
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: white;">
+  background-color: white;
+  padding: 30p">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CGmapTools">
 <meta property="og:url" content="https://cgmaptools.github.io/zh/CGmapTools_zh.html">
 <meta property="og:site_name" content="CGmapTools">
-<meta property="og:description" content="CGmapTools- DNA甲基化数据分析和可视化工具
+<meta property="og:description" content="CGmapTools_zh
 
 
 
@@ -113,13 +114,14 @@ body {
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: white;">
+  background-color: white;
+  padding: 30p">
 <meta property="og:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
 <meta property="og:image" content="https://cgmaptools.github.io/images/cgmaptools_schematicDiagram.png">
-<meta property="og:updated_time" content="2017-09-22T09:30:07.000Z">
+<meta property="og:updated_time" content="2017-09-25T08:57:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CGmapTools">
-<meta name="twitter:description" content="CGmapTools- DNA甲基化数据分析和可视化工具
+<meta name="twitter:description" content="CGmapTools_zh
 
 
 
@@ -129,7 +131,8 @@ body {
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: white;">
+  background-color: white;
+  padding: 30p">
 <meta name="twitter:image" content="http://www.atdbio.com/img/articles/bisulfite-sequencing-large.png">
 
 
@@ -338,7 +341,7 @@ body {
 <head>
 
 <meta charset="utf-8">
-<title>CGmapTools- DNA甲基化数据分析和可视化工具</title>
+<title>CGmapTools_zh</title>
 
 
 <style type="text/css">
@@ -788,7 +791,7 @@ pre[class*="language-"] {
 
 <h1 id="toc_0">CGmapTools: DNA甲基化数据分析和可视化工具</h1>
 
-<p>Date: 2017年7月22日<br>
+<p>Date: 2017年9月25日<br>
 By: 朱平</p>
 
 <h2 id="toc_1">DNA甲基化与亚硫酸盐测序</h2>
@@ -841,10 +844,10 @@ zcat *.CGmap.gz  | gawk &#39;$8&gt;=5{print $1, $3}&#39; | sort -u | cgmaptools 
 
 <h3 id="toc_6">3. 支持快速检索</h3>
 
-<p>在ATCGmap和CGmap文件基础之上，我们开发了对应的二进制压缩文件格式ATCGbz和CGbz，可以快速检索指定基因组区域的DNA甲基化状态，同时在保留主要DNA甲基化组学信息的同事，大大减少了硬盘存储的占用空间（例如，对于WGBS来说，BAM文件需50G，CGmap压缩格式需5.6G，CGbz格式只需3.9G）。</p>
+<p>在ATCGmap和CGmap文件基础之上，我开发了对应的二进制压缩文件格式ATCGbz和CGbz，可以快速检索指定基因组区域的DNA甲基化状态，同时在保留主要DNA甲基化组信息的同时，大大减少了硬盘存储的占用空间（例如，对于WGBS来说，BAM文件需50G，CGmap压缩格式需5.6G，CGbz格式只需3.9G）。</p>
 
 <blockquote>
-<p>此功能受到了samtools view功能的启发。</p>
+<p>此功能受到了<code>samtools view</code>功能的启发。</p>
 </blockquote>
 
 <p>示例：</p>
@@ -867,7 +870,7 @@ cgmaptools intersect -1 A.CGmap.gz -2 B.CGmap.gz | cgmaptools dms -o DMS_A_vs_B.
 
 <h3 id="toc_8">5. BS-Seq数据准确计算SNV新方法</h3>
 
-<p>利用ATCGmap文件的信息，通过引入wildcard的基因型，结合贝叶斯模型和二项分布模型设计了BayesWC和BinomWC两种SNV calling策略，似的从DNA甲基化数据计算heterozygous SNV的precision从之前80%提高到99%。</p>
+<p>利用ATCGmap文件的信息，通过引入wildcard的基因型，结合贝叶斯模型和二项分布模型设计了BayesWC和BinomWC两种SNV calling策略，使得从DNA甲基化数据计算heterozygous SNV的precision从之前80%提高到99%。</p>
 
 <p>示例：</p>
 
