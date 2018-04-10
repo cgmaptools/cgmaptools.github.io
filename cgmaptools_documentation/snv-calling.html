@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-12-13">
+<meta name="date" content="2018-04-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -257,7 +257,7 @@ Figure 4.8: Precision-Recall analysis on simulated WGBS data
 #         (aka SNVFromATCGmap)
 #   Description: Predict the SNV from ATCGmap file.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last update: 2017-10-25
+#   Last update: 2018-01-02
 #   Output format example:
 #      #chr  nuc  pos    ATCG_watson  ATCG_crick  predicted_nuc  p_value
 #      chr1  G    4752   17,0,0,69    0,0,0,0     A,G            9.3e-07
@@ -269,7 +269,7 @@ Figure 4.8: Precision-Recall analysis on simulated WGBS data
 #     -h, --help            show this help message and exit
 #     -i FILE               ATCGmap format, STDIN if not specified
 #     -v FILE, --vcf=FILE   VCF format file for output
-#     -a, --all_nt          Show all sites with enough coverage (-l). Only show
+#     -a, --all_nt          Show all sites with an predictable genotype. Only show
 #                           SNP sites if not specified.
 #     -o OUTFILE            STDOUT if not specified
 #     -m MODE, --mode=MODE  Mode for calling SNP [Default: binom]
@@ -329,13 +329,14 @@ Figure 4.9: Output format description for cgmaptools snv
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -365,9 +366,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

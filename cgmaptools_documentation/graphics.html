@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-12-13">
+<meta name="date" content="2018-04-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -198,7 +198,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #         (aka mCLollipop) 
 #   Description: Plot local mC level for multiple samples 
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2017-09-16 
+#   Last Update: 2018-04-10 
 #   Example: 
 #       mCLollipop [-i input] -o gene.png 
 #   -Input Format (-i)
@@ -221,7 +221,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #       Example: 
 #           chr1  213941196  213942363  hyper-DMR 
 #           chr1  213942363  213943530  hypo-DMR 
-#       #   chr   left       right      region-description
+#       #   chr   left       right      region-description 
 #   -annotation file (-a), refFlat Format:
 #       To show the structure of genes/transcripts. One-line in annotation, one-track in figure. 
 #       Example: 
@@ -231,7 +231,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #   
 #   Options:
 #       -i INFILE, --infile=INFILE
-#           input file
+#           input file, use STDIN if ommited, multiple-chr is not suggested
 #   
 #       -a ANNOTATION, --annotation=ANNOTATION
 #           [opt] annotation file name, refFlat format
@@ -243,13 +243,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #           [opt] the format for output figure: pdf (default), png, eps
 #   
 #       -l LEFT, --left=LEFT
-#           [opt] Left-most position
+#           [opt] Left-most position, use the 1st position if omitted
 #   
 #       -r RIGHT, --right=RIGHT
-#           [opt] Right-most position
+#           [opt] Right-most position, use the last position of input if omitted
 #   
 #       -c CHR, --chr=CHR
-#           [opt] chromosome name
+#           [opt] chromosome name, use the chr in 1st line of input file if omitted
 #   
 #       -s SITE, --site=SITE
 #           [opt] file of site to be marked
@@ -313,12 +313,19 @@ Col 11: List of right-most position of exons, seperated by “,”</p>
 <blockquote>
 <p>“gtfToGenePred” is a command tool downloaded from UCSC utility.</p>
 </blockquote>
-<pre><code>gtfToGenePred  -genePredExt -geneNameAsName2 -allErrors  AGPv4.gtf AGPv4.GenePred
+<pre><code>```
+gtfToGenePred  -genePredExt -geneNameAsName2 -allErrors  AGPv4.gtf AGPv4.GenePred
+
 paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) &gt; AGPv4.refFlat
+
 paste &lt;(cut -f13 AGPv4.GenePred) &lt;(cut -f1-10 AGPv4.GenePred) | sed -i s/transcript://g | cut -f9 | gawk -F&quot;[\&quot;:]&quot; &#39;{print $3&quot;\t&quot;$6;}&#39; | sort -u &gt; trans_gene_ID
+
 cut -f1-10 AGPv4.GenePred &gt; AGPv4.refFlat.tmp
+
 gawk -F&quot;\t&quot; -vOFS=&quot;\t&quot; &#39;ARGIND==1{GeneID[$1]=$2;} ARGIND==2{printf GeneID[$1]&quot;\t&quot;$0}&#39; trans_gene_ID AGPv4.refFlat.tmp &gt; AGPv4.refFlat
-rm ${GN}.refFlat.txt AGPv4.GenePred</code></pre>
+
+rm ${GN}.refFlat.txt AGPv4.GenePred
+```</code></pre>
 </div>
 <div id="heatmap" class="section level2">
 <h2><span class="header-section-number">7.2</span> heatmap</h2>
@@ -400,12 +407,14 @@ Figure 7.3: heatmap example-1
 #         (aka mCFragRegView) 
 #   Description: Plot methylation dynamics of target and flanking region for multiple samples 
 #   Contact:     Zhu, Ping; pingzhu.work@gmail.com
-#   Last update: 2017-09-16
+#   Last update: 2018-02-12
 #   Example: 
 #     FragRegView.R -i input -r 5 -o genebody.pdf 
 #   -Input File Format: 
 #     1st line is the header.
-#   Each row contains methylation measurements of a sample. 
+#     Each row contains methylation measurements of a sample. 
+#     The user may need to use shell script to generate following format 
+#     based on the results of &quot;cgmaptools mfg&quot;. 
 #   Example: 
 #     Sample  Up1  Up2  ...  Region1  Region2 ...  Down1  Down2  ... 
 #     Sample1 0.1  0.1  ...  0.2      0.2     ...  0.3    0.3    ...
@@ -437,32 +446,21 @@ Figure 7.3: heatmap example-1
 #       -h, --help
 #           Show this help message and exit</code></pre>
 <ul>
-<li><p><strong>Example</strong></p>
-<p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code> <code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p></li>
-<li><p><strong>Output format</strong></p>
-<ul>
 <li><strong>Example</strong></li>
 </ul>
-<pre><code>Region_ID       R_1     R_2     R_3     R_4
-sense_ave_mC    0.50    0.40    0.30    0.20
-sense_sum_mC    5.0     4.0     3.0     2.0
-sense_sum_NO    10      10      10      10   
-anti_ave_mC     0.40    0.20    0.10    NaN
-anti_sum_mC     8.0     4.0     2.0     0.0
-anti_sum_NO     20      20      20      0
-total_ave_mC    0.43    0.27    0.17    0.2
-total_sum_mC    13.0    8.0     5.0     2.0
-total_sum_NO    30      30      30      10</code></pre>
+<p>The input file can be generated from the output of <strong>cgmaptools mfg</strong>.</p>
+<pre><code>```
+cgmaptools mfg -i S1.CGmap.gz -r fragreg.bed -c 2 -x CG &gt; S1.mfg
+cgmaptools mfg -i S2.CGmap.gz -r fragreg.bed -c 2 -x CG &gt; S2.mfg
+(head -1 S1.mfg | gawk &#39;{$1=&quot;Sample&quot;; print $0;}&#39;;
+ for F in *.mfg; do
+   gawk -vSampleName=`echo $F | sed s/.mfg//g` &#39;/total_ave_mC/{$1=SampleName; print $0;}&#39;
+ done
+) &gt; mfg_merge.xls
+cgmaptools fragreg -i mfg_merge.xls -o merge.fragreg.pdf -f pdf
+```</code></pre>
 <ul>
-<li><p><strong>Column Description</strong></p>
-<ul>
-<li>Tab-delimited file with header line</li>
-<li>Content in 1st col is fixed</li>
-<li>Column number is dynamic</li>
-<li>Invalid number is annotated as “NaN”</li>
-</ul></li>
-</ul></li>
-<li><p><strong>Output figure</strong></p></li>
+<li><strong>Output figure</strong></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-77"></span>
 <img src="GeneBody_mC_profile.png" alt="DNA methylation distribution across gene body" width="80%" />
@@ -557,13 +555,14 @@ Figure 7.6: Tanghulu plot show vague-reads
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -593,9 +592,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

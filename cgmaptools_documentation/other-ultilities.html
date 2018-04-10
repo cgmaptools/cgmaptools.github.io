@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-12-13">
+<meta name="date" content="2018-04-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -197,7 +197,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #         (aka FiindCCGG)
 #   Description: Get the positions of all the C&#39;CGG---CCG&#39;G fragments.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2017-01-20
+#   Last Update: 2018-01-02
 #   Output Ex:
 #       chr1    4025    5652
 #       chr1    8274    8431
@@ -205,8 +205,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #   Options:
 #     -h, --help  show this help message and exit
 #     -i FILE     Genome sequence file in Fasta format
-#     -o FILE     Name of the output file (standard output if not
-#                 specified).Format: chr cCgg_pos ccGg_pos (0-base)</code></pre>
+#     -o FILE     Name of the output file (standard output if not specified).
+#                 Format: chr cCgg_pos ccGg_pos (0-base)</code></pre>
 <ul>
 <li><p><strong>Example</strong></p>
 <p><code>cgmaptools findCCGG -i genome.fa -o genome.ccgg</code></p></li>
@@ -222,7 +222,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 #         (aka FragRegFromBED)
 #   Description: Generate fragmented regions from BED file.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2017-01-20
+#   Last Update: 2018-01-02
 #      Split input region into N bins, get fragments from 5&#39; end and 3&#39; end.
 #   Input Ex:
 #      chr1   1000    2000   +
@@ -283,13 +283,14 @@ Figure 8.1: Output format description for cgmaptools bed2fragreg
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -319,9 +320,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

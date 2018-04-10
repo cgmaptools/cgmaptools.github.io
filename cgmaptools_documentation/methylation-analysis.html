@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <meta name="description" content="A bisulfite sequencing analysis toolset with enhanced features on SNV calling and allele specific methylations and visualizations.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-12-13">
+<meta name="date" content="2018-04-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -251,7 +251,7 @@ Figure 5.1: Output format description for cgmaptools dms
 #   Description: 
 #     Get the differentially methylated regions using dynamic fragment strategy.
 #   Author:  Guo, Weilong; guoweilong@126.com; 
-#   Last Updated: 2017-09-28
+#   Last Updated: 2018-01-02
 #   Input Format, same as the output of CGmapIntersect.py:
 #      chr1  C  3541  CG  CG  0.8  4  5  0.4  4  10
 #   Output Format, Ex:
@@ -516,7 +516,7 @@ chr3    1       5000    na</code></pre></li>
 #         (aka CGmapsMethInBins)
 #   Description: Generate the methylation in Bins.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2016-12-07
+#   Last Update: 2018-01-02
 #   Output Ex:
 #      chr1    1       5000    0.0000
 #      chr1    5001    10000   0.0396
@@ -600,10 +600,32 @@ Figure 5.8: Output format description for cgmaptools mmbin
 #      total_sum_mC    13.0    8.0     5.0     2.0
 #      total_sum_NO    30      30      30      10</code></pre>
 <ul>
-<li><p><strong>Example</strong>:</p>
-<p><code>for CHR in 1 2 3 4 5; do (for P in 1 2 3 4 5; do echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}' ; done) ; done | cgmaptools bed2fragreg -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code></p>
-<p><code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p>
-<p><code>cgmaptools fragreg -i WG.mfg -f pdf -o WG_mfg.pdf</code></p></li>
+<li><p><strong>Example</strong></p>
+<p><code>for CHR in 1 2 3 4 5; do    for P in 1 2 3 4 5; do      echo | gawk -vC=$CHR -vP=$P -vOFS=&quot;\t&quot; '{print &quot;chr&quot;C, P*1000, P*1000+1000, &quot;+&quot;;}'     done done | cgmaptools bed2fragreg \    -n 30 -F 50,50,50,50,50,50,50,50,50,50 -T 50,50,50,50,50,50,50,50,50,50 &gt; fragreg.bed</code></p>
+<p><code>gunzip -c WG.CGmap.gz | cgmaptools mfg -r fragreg.bed -c 2 -x CG &gt; WG.mfg</code></p></li>
+<li><p><strong>Output format</strong></p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code>Region_ID       R_1     R_2     R_3     R_4
+sense_ave_mC    0.50    0.40    0.30    0.20
+sense_sum_mC    5.0     4.0     3.0     2.0
+sense_sum_NO    10      10      10      10   
+anti_ave_mC     0.40    0.20    0.10    NaN
+anti_sum_mC     8.0     4.0     2.0     0.0
+anti_sum_NO     20      20      20      0
+total_ave_mC    0.43    0.27    0.17    0.2
+total_sum_mC    13.0    8.0     5.0     2.0
+total_sum_NO    30      30      30      10</code></pre>
+<ul>
+<li><p><strong>Column Description</strong></p>
+<ul>
+<li>Tab-delimited file with header line</li>
+<li>Content in 1st col is fixed</li>
+<li>Column number is dynamic</li>
+<li>Invalid number is annotated as “NaN”</li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 <div id="mstat" class="section level2">
@@ -623,7 +645,7 @@ Figure 5.8: Output format description for cgmaptools mmbin
 #         (aka CGmapStatMeth)
 #   Description: Generate the bulk methylation.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2016-12-08
+#   Last Update: 2018-01-02
 #   Output Ex:
 #      MethStat        context C       CG      CHG      CHH     CA      CC      CT      CH      CW
 #      mean_mC         global  0.0798  0.3719  0.0465  0.0403  0.0891  0.0071  0.0241  0.0419  0.0559
@@ -694,7 +716,7 @@ Figure 5.11: mC fragmented distribution example
 #         (aka CGmapToRegion)
 #   Description: Calculated the methylation levels in regions in two ways.
 #   Contact:     Guo, Weilong; guoweilong@126.com
-#   Last Update: 2017-01-20
+#   Last Update: 2018-01-02
 #   Format of Region file:
 #     #chr    start_pos  end_pos
 #      chr1   8275       8429
@@ -753,13 +775,14 @@ Figure 5.12: Output format description for cgmaptools mtr
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -789,9 +812,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
